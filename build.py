@@ -72,7 +72,13 @@ else:
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://ethmikel.github.io/portfolio/">
+<meta property="og:image" content="https://ethmikel.github.io/portfolio/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="전동현. 숫자가 안 보이면, 볼 도구를 만듭니다.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ethmikel.github.io/portfolio/assets/og.png">
 <link rel="icon" href="{favicon}">
 </head>
 <body>
