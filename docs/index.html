@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전동현</title>
+<meta name="description" content="숫자가 안 보이면 볼 도구를 만듭니다. 가상자산 마케팅 4년, 그리고 AI로 만든 것들.">
+<meta name="author" content="전동현">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="전동현">
+<meta property="og:description" content="숫자가 안 보이면 볼 도구를 만듭니다. 가상자산 마케팅 4년, 그리고 AI로 만든 것들.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8F%9B</text></svg>">
+</head>
+<body>
+<style>
+@font-face{
+  font-family:'Galmuri11';
+  src:url('assets/galmuri11.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
+:root{
+  /* 메인 = 토스 라이트. TDS 실측값. */
+  --w:#ffffff;
+  --g50:#f9fafb; --g100:#f2f4f6; --g200:#e5e8eb; --g300:#d1d6db;
+  --g400:#b0b8c1; --g500:#8b95a1; --g600:#6b7684; --g700:#4e5968;
+  --g800:#333d4b; --g900:#191f28;
+  --blue:#3182f6; --blue50:#e8f3ff; --blue700:#1b64da;
+
+  /* 서브페이지 고정 라벨색. 프로젝트마다 하나씩. */
+  --c-game:#d9a441; --c-tool:#0e7c86; --c-codex:#c4472f; --c-net:#6b4e8f;
+
+  /* 게임 서브 토큰. print.css 실측값 그대로. */
+  --ink-900:#17130f;--ink-800:#1c150f;--ink-700:#241c14;--ink-500:#4a3a1e;
+  --paper-100:#efe3cf;--paper-200:#dccbae;--paper-300:#b39b78;
+  --gold-line:rgb(217 164 65 / 38%);
+
+  --body:'Apple SD Gothic Neo','Pretendard','Malgun Gothic',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --pix:'Galmuri11','Apple SD Gothic Neo',system-ui,sans-serif;
+  --mono:'SF Mono',Menlo,ui-monospace,'D2Coding',Consolas,monospace;
+
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s8:32px;--s10:40px;--s12:48px;--s16:64px;--s20:80px;
+  --r:20px;
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+:root[data-theme="dark"],:root[data-theme="light"]{color-scheme:light;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;background:var(--w);color:var(--g900);
+  font-family:var(--body);font-size:16px;line-height:1.75;
+  word-break:keep-all;overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;
+  transition:background-color .5s var(--ease),color .5s var(--ease);
+}
+body[data-view="game"]{background:var(--ink-900);color:var(--paper-100);}
+body[data-view="tools"]{background:#0f1214;color:#d6dee1;}
+body[data-view="codex"]{background:#0d0d0e;color:#d7d3cc;}
+body[data-view="net"]{background:#131019;color:#ded8e8;}
+
+p{margin:0 0 var(--s3);}
+p:last-child{margin-bottom:0;}
+strong{font-weight:700;}
+a{color:inherit;text-decoration:none;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px;}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;}
+
+.wrap{max-width:880px;margin:0 auto;padding:0 var(--s6);}
+
+/* ── 상단 바 ───────────────────────────────────────────────────────────── */
+.topbar{position:sticky;top:0;z-index:20;backdrop-filter:saturate(180%) blur(12px);
+  background:rgb(255 255 255 / 82%);border-bottom:1px solid var(--g200);}
+body[data-view="game"] .topbar{background:rgb(23 19 15 / 86%);border-bottom-color:var(--ink-500);}
+body[data-view="tools"] .topbar{background:rgb(15 18 20 / 86%);border-bottom-color:#232a2d;}
+body[data-view="tools"] .brand em,body[data-view="tools"] .back{color:#7d8a8e;}
+body[data-view="codex"] .topbar{background:rgb(13 13 14 / 86%);border-bottom-color:#26262a;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:56px;}
+.brand{font-size:17px;font-weight:700;letter-spacing:-.03em;}
+.brand em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s2);font-size:13px;letter-spacing:0;}
+.back{font-size:14px;font-weight:600;color:var(--g600);display:inline-flex;align-items:center;gap:var(--s2);}
+.back[hidden]{display:none;}
+.back:hover{color:var(--blue);}
+body[data-view="game"] .brand em,body[data-view="game"] .back{color:var(--paper-300);}
+body[data-view="game"] .back:hover{color:var(--c-game);}
+body[data-view="codex"] .brand em,body[data-view="codex"] .back{color:#7d7a74;}
+body[data-view="codex"] .back:hover{color:var(--c-codex);}
+body[data-view="tools"] .back:hover{color:var(--c-tool);}
+body[data-view="net"] .topbar{background:rgb(19 16 25 / 86%);border-bottom-color:#2a2434;}
+body[data-view="net"] .brand em,body[data-view="net"] .back{color:#8b81a0;}
+body[data-view="net"] .back:hover{color:var(--c-net);}
+body[data-view="net"] #prog{background:var(--c-net);}
+
+.view{display:none;}
+.view.on{display:block;animation:viewin .5s var(--ease) both;}
+@keyframes viewin{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* 읽은 만큼 차오르는 선. 상단 바 아래에 붙는다. */
+#prog{position:fixed;left:0;right:0;top:0;height:3px;z-index:40;
+  background:var(--blue);transform:scaleX(0);transform-origin:left center;will-change:transform;}
+body[data-view="game"] #prog{background:var(--c-game);}
+body[data-view="tools"] #prog{background:var(--c-tool);}
+body[data-view="codex"] #prog{background:var(--c-codex);}
+
+/* 화면을 훑고 지나가는 색. 다른 세계로 넘어가는 그 한 번. */
+#wipe{position:fixed;inset:0;z-index:60;pointer-events:none;
+  transform:translateY(100%);background:var(--blue);}
+#wipe.go{animation:sweep .78s cubic-bezier(.66,0,.34,1) both;}
+@keyframes sweep{
+  0%{transform:translateY(100%);}
+  42%{transform:translateY(0);}
+  58%{transform:translateY(0);}
+  100%{transform:translateY(-100%);}
+}
+
+/* 연도 축이 먼저 깔리고 그 위로 막대가 그려진다 */
+.axis span{opacity:0;transform:translateY(-4px);transition:opacity .4s ease,transform .4s var(--ease);}
+.on .axis span{opacity:1;transform:none;}
+.on .axis span:nth-child(2){transition-delay:.05s;}
+.on .axis span:nth-child(3){transition-delay:.1s;}
+.on .axis span:nth-child(4){transition-delay:.15s;}
+.on .axis span:nth-child(5){transition-delay:.2s;}
+.on .axis span:nth-child(6){transition-delay:.25s;}
+.on .axis span:nth-child(7){transition-delay:.3s;}
+.on .bar:nth-child(2) .fill{transition-delay:.12s;}
+.on .bar:nth-child(3) .fill{transition-delay:.24s;}
+
+/* ══ 메인 ═══════════════════════════════════════════════════════════════ */
+.hero{padding:var(--s20) 0 var(--s16);}
+.hero > *{opacity:0;transform:translateY(16px);animation:heroin .7s var(--ease) both;}
+.hero > *:nth-child(1){animation-delay:.04s;}
+.hero > *:nth-child(2){animation-delay:.13s;}
+.hero > *:nth-child(3){animation-delay:.22s;}
+.hero > *:nth-child(4){animation-delay:.31s;}
+.hero > *:nth-child(5){animation-delay:.40s;}
+@keyframes heroin{to{opacity:1;transform:none;}}
+
+.hero .nm{font-size:52px;font-weight:700;letter-spacing:-.045em;line-height:1.15;margin:0;
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:0 var(--s2);}
+.hero .nm em{font-style:normal;font-size:19px;font-weight:500;color:var(--g400);letter-spacing:-.01em;margin-left:var(--s4);}
+.hero .role{font-size:14px;font-weight:600;color:var(--blue);margin:var(--s4) 0 0;letter-spacing:-.01em;}
+.hero .lede{font-size:26px;font-weight:700;letter-spacing:-.035em;line-height:1.5;margin:var(--s6) 0 0;max-width:22ch;}
+.hero .sub{font-size:17px;line-height:1.75;color:var(--g700);margin:var(--s4) 0 0;max-width:46ch;letter-spacing:-.01em;}
+.mailbtn{display:inline-block;vertical-align:middle;font-size:13px;font-weight:600;
+  letter-spacing:-.01em;color:var(--g700);background:var(--g100);
+  padding:7px 14px;border-radius:999px;margin-left:auto;align-self:center;white-space:nowrap;
+  transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
+.mailbtn:hover{background:var(--blue50);color:var(--blue700);transform:translateY(-2px);}
+
+.lab{font-size:14px;font-weight:700;color:var(--g900);display:block;margin-bottom:var(--s5);letter-spacing:-.02em;}
+.lab em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s3);font-size:13.5px;}
+
+.sec{padding:0 0 var(--s20);}
+
+/* ── 경력 그래프 ───────────────────────────────────────────────────────── */
+.panel{background:var(--g50);border-radius:var(--r);padding:var(--s8);}
+.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--g400);font-weight:600;
+  border-bottom:1px solid var(--g200);padding-bottom:var(--s2);}
+.bars{display:grid;gap:var(--s2);padding:var(--s4) 0 0;}
+.bar{position:relative;height:22px;}
+.bar .fill{position:absolute;top:0;height:100%;border-radius:999px;background:var(--g900);
+  transform:scaleX(0);transform-origin:left center;transition:transform 1.05s cubic-bezier(.16,.84,.32,1);}
+.bar.b2 .fill{background:var(--g600);}
+.bar.b3 .fill{background:var(--g400);}
+.on .bar .fill{transform:scaleX(1);}
+
+.legend{display:grid;gap:var(--s3);margin-top:var(--s6);}
+.lg{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s3);font-size:15px;
+  opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s var(--ease);}
+.on .lg{opacity:1;transform:none;}
+.on .lg:nth-child(2){transition-delay:.08s;}
+.on .lg:nth-child(3){transition-delay:.16s;}
+.lg i{width:9px;height:9px;border-radius:999px;flex:none;background:var(--g900);align-self:center;}
+.lg.l2 i{background:var(--g600);} .lg.l3 i{background:var(--g400);}
+.lg b{font-weight:700;letter-spacing:-.02em;}
+.lg .dt{color:var(--g600);font-size:14px;}
+.lg .rr{color:var(--g500);font-size:14px;}
+
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);margin:0 0 var(--s10);}
+.figs > div{background:var(--g50);border-radius:var(--r);padding:var(--s6) var(--s5);}
+.figs b{display:block;font-size:30px;font-weight:700;letter-spacing:-.045em;line-height:1.15;}
+.figs span{display:block;font-size:13px;color:var(--g600);margin-top:var(--s1);line-height:1.5;}
+
+/* ── 경력 요약 ─────────────────────────────────────────────────────────── */
+.sum{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);}
+.sm h4{letter-spacing:-.03em;}
+.sm{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);padding:var(--s6);}
+.sm h4{font-size:16px;font-weight:700;margin:0 0 var(--s2);letter-spacing:-.025em;}
+.sm p{font-size:14.5px;line-height:1.7;color:var(--g700);}
+.sm .num{font-weight:700;color:var(--g900);}
+
+/* ── AI를 쓰는 방식 ────────────────────────────────────────────────────── */
+.ai{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);}
+.aiw{background:var(--g50);border-radius:var(--r);padding:var(--s6);}
+.aiw b{display:block;font-size:16px;font-weight:700;letter-spacing:-.03em;margin-bottom:var(--s2);}
+.aiw p{font-size:14.5px;line-height:1.75;color:var(--g700);}
+.aiw .n{font-weight:700;color:var(--blue);}
+
+.more{display:inline-flex;align-items:center;gap:var(--s2);margin-top:var(--s5);
+  font-size:15px;font-weight:700;color:var(--blue);letter-spacing:-.02em;
+  transition:transform .2s var(--ease);}
+.more:hover{transform:translateX(3px);}
+
+/* ── 프로젝트 카드 ─────────────────────────────────────────────────────── */
+.grp{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s4);margin:0 0 var(--s5);}
+.grp:not(:first-of-type){margin-top:var(--s10);}
+.grp .lab{margin:0;}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);}
+.cards.c1{grid-template-columns:1fr;}
+.card{
+  position:relative;overflow:hidden;display:flex;flex-direction:column;text-align:left;width:100%;
+  background:var(--w);border:1px solid var(--g200);border-radius:var(--r);padding:var(--s8) var(--s6) var(--s6);
+  --mx:50%;--my:50%;--dx:0px;--dy:0px;
+  transform:translate3d(var(--dx),var(--dy),0);
+  transition:transform .45s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
+}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:var(--r);
+  background:radial-gradient(220px circle at var(--mx) var(--my),color-mix(in srgb,var(--ac) 12%,transparent),transparent 70%);
+  opacity:0;transition:opacity .3s ease;}
+.card > *{position:relative;}
+.card.pull{transition:transform .12s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);}
+.card:hover{box-shadow:0 12px 32px rgb(25 31 40 / 10%);border-color:var(--g300);}
+.card:hover::before{opacity:1;}
+
+.card .kk{display:inline-flex;align-items:center;gap:var(--s2);font-size:12.5px;font-weight:700;color:var(--ac);letter-spacing:-.01em;}
+.card .kk i{width:7px;height:7px;border-radius:999px;background:var(--ac);flex:none;}
+.card h3{font-size:21px;font-weight:700;letter-spacing:-.035em;margin:var(--s3) 0 var(--s2);line-height:1.35;}
+.card p{font-size:14.5px;color:var(--g700);line-height:1.7;}
+.cmet{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);margin-top:auto;padding-top:var(--s5);}
+.cmet span{font-size:13px;color:var(--g500);}
+.cmet b{display:block;font-size:19px;font-weight:700;color:var(--g900);letter-spacing:-.04em;line-height:1.3;}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:auto;padding-top:var(--s5);}
+.chips span{font-size:12.5px;font-weight:600;color:var(--g600);background:var(--g100);
+  padding:5px 11px;border-radius:999px;}
+.card .go{font-size:14px;font-weight:700;color:var(--ac);margin-top:var(--s5);display:inline-flex;align-items:center;gap:var(--s2);}
+
+/* ── 표 ────────────────────────────────────────────────────────────────── */
+.tw{overflow-x:auto;border:1px solid var(--g200);border-radius:var(--r);background:var(--w);}
+table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.7;min-width:520px;}
+th,td{border-bottom:1px solid var(--g100);padding:var(--s4) var(--s5);text-align:left;vertical-align:top;}
+tr:last-child td{border-bottom:0;}
+td.k{font-weight:700;white-space:nowrap;color:var(--g900);letter-spacing:-.02em;}
+th{font-size:13px;color:var(--g600);font-weight:700;background:var(--g50);}
+td{color:var(--g700);}
+
+footer{border-top:1px solid var(--g200);padding:var(--s8) 0 var(--s20);font-size:14px;color:var(--g500);}
+body[data-view="game"] footer{border-top-color:var(--ink-500);color:var(--paper-300);}
+body[data-view="codex"] footer{border-top-color:#26262a;color:#7d7a74;}
+body[data-view="tools"] footer{border-top-color:#d5e4e4;}
+
+/* ══ 서브 공통 ══════════════════════════════════════════════════════════ */
+.sv{padding-top:var(--s16);}   /* 축약형을 쓰면 .wrap의 좌우 패딩을 0으로 덮어쓴다 */
+.sv .kk{display:inline-flex;align-items:center;gap:var(--s2);font-size:13px;font-weight:700;color:var(--ac);}
+.sv .kk i{width:7px;height:7px;border-radius:999px;background:var(--ac);}
+.sv h2{font-size:34px;font-weight:700;letter-spacing:-.045em;margin:var(--s4) 0 var(--s6);line-height:1.25;}
+.sv .intro{font-size:17px;line-height:1.8;max-width:56ch;}
+.item{padding:var(--s8) 0;border-bottom:1px solid var(--g100);}
+.item:last-child{border-bottom:0;}
+.item h4{font-size:18px;font-weight:700;margin:0 0 var(--s3);letter-spacing:-.03em;}
+.item p{font-size:15.5px;line-height:1.85;color:var(--g700);}
+.meta{font-size:14px;color:var(--g600);margin-top:var(--s4);background:var(--g50);border-radius:14px;padding:var(--s4) var(--s5);}
+.meta div{margin-bottom:var(--s1);}
+.meta div:last-child{margin-bottom:0;}
+
+.btns{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s6);}
+.btns a{font-size:14px;font-weight:700;padding:12px 20px;border-radius:999px;
+  border:1px solid currentColor;display:inline-flex;align-items:center;gap:var(--s2);
+  transition:transform .18s var(--ease);}
+.btns a:hover{transform:translateY(-3px);}
+
+/* ══ 서브: 경력 ═════════════════════════════════════════════════════════ */
+.cv2 .kk{color:var(--blue);} .cv2 .kk i{background:var(--blue);}
+
+/* ══ 서브: 게임 ═════════════════════════════════════════════════════════ */
+.gv{position:relative;}
+.gv .plate{position:absolute;left:0;right:0;top:0;height:440px;background-image:url("assets/title.png");
+  background-size:cover;background-position:center 30%;opacity:.15;}
+.gv .plate::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgb(0 0 0 / 42%) 0 2px,transparent 2px 4px);}
+.gv .fade{position:absolute;left:0;right:0;top:0;height:440px;background:linear-gradient(180deg,rgb(23 19 15 / 25%),var(--ink-900));}
+.gv .wrap{position:relative;}
+.gv h2{font-family:var(--pix);font-size:33px;color:var(--c-game);font-weight:400;letter-spacing:0;line-height:1.3;}
+.gv .intro,.gv p{color:var(--paper-200);}
+.gv strong{color:#fff;}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s8) 0;}
+.tile{background:var(--ink-700);border:1px solid var(--gold-line);padding:var(--s4) var(--s3);text-align:center;}
+.tile b{font-family:var(--pix);font-size:22px;color:var(--c-game);display:block;font-weight:400;line-height:1.2;}
+.tile span{display:block;font-size:11.5px;color:var(--paper-300);margin-top:var(--s2);line-height:1.45;}
+.gv .tw{border-color:var(--gold-line);background:var(--ink-700);border-radius:0;}
+.gv table{color:var(--paper-200);}
+.gv th{background:var(--ink-900);color:var(--c-game);border-bottom-color:var(--ink-500);font-family:var(--pix);font-size:11px;font-weight:400;}
+.gv td{border-bottom-color:var(--ink-500);color:var(--paper-200);}
+.gv td.k{color:var(--paper-100);font-family:var(--pix);font-size:11px;font-weight:400;}
+.gv td b{color:#fff;}
+.gv blockquote{margin:var(--s6) 0 0;padding:var(--s6);background:var(--ink-800);border-left:3px solid var(--c-game);
+  font-size:15.5px;line-height:1.8;color:var(--paper-200);}
+.gv blockquote em{font-style:normal;font-family:var(--pix);font-size:11px;color:var(--c-game);display:block;margin-bottom:var(--s2);}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s6);}
+.shots figure{margin:0;}
+.shots img{width:100%;display:block;border:1px solid var(--gold-line);image-rendering:pixelated;}
+.shots figcaption{font-size:11.5px;color:var(--paper-300);margin-top:var(--s2);line-height:1.45;}
+.gv .btns a{color:var(--c-game);border-radius:0;font-family:var(--pix);font-size:11px;}
+.gv .btns a.key{background:var(--c-game);color:var(--ink-900);}
+
+/* 게임 서브 안의 소개서 부품 */
+.gframe{background:var(--ink-700);border:1px solid var(--gold-line);padding:var(--s5) var(--s6);margin-top:var(--s6);}
+.gframe .ft{font-family:var(--pix);font-size:11px;color:var(--c-game);margin-bottom:var(--s3);
+  padding-bottom:var(--s2);border-bottom:1px solid var(--ink-500);}
+.gframe p{color:var(--paper-200);margin:0;}
+.gsteps{display:grid;gap:var(--s2);margin-top:var(--s6);}
+.gsteps > div{display:flex;gap:var(--s4);align-items:baseline;background:var(--ink-700);
+  border-left:3px solid var(--c-game);padding:var(--s4) var(--s5);}
+.gsteps .n{font-family:var(--pix);font-size:11px;color:var(--c-game);min-width:14px;flex:none;}
+.gsteps p{margin:0;font-size:14.5px;line-height:1.7;color:var(--paper-200);}
+.gsteps b{color:#fff;}
+.gsplit{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s6);}
+.gsplit .gframe{margin-top:0;}
+.gsplit .gframe.hi{border-color:var(--c-game);}
+
+/* ══ 서브: 도구와 인트라넷. 둘 다 실제 화면이 어두워서 지면도 어둡게 간다 ══ */
+.tv{--ac2:#3bbfcf;--bg2:#171b1e;--bd2:#242c30;--tx2:#d6dee1;--dim2:#8c989d;}
+.nv{--ac2:#a685d4;--bg2:#1b1725;--bd2:#2c2438;--tx2:#ded8e8;--dim2:#948aa8;}
+.tv .kk,.nv .kk{color:var(--ac2);} .tv .kk i,.nv .kk i{background:var(--ac2);}
+.tv h2,.nv h2{color:#fff;}
+.tv .intro,.nv .intro,.tv p,.nv p{color:var(--tx2);}
+.tv strong,.nv strong{color:#fff;}
+.tv .item,.nv .item{border-bottom-color:var(--bd2);}
+.tv .item h4,.nv .item h4{color:#fff;}
+.tv .tw,.nv .tw{border-color:var(--bd2);background:var(--bg2);}
+.tv table,.nv table{color:var(--tx2);}
+.tv th,.nv th{background:rgb(0 0 0 / 24%);color:var(--ac2);border-bottom-color:var(--bd2);}
+.tv td,.nv td{border-bottom-color:var(--bd2);color:var(--tx2);}
+.tv td.k,.nv td.k{color:#fff;}
+.tv .meta,.nv .meta{background:var(--bg2);color:var(--dim2);border:1px solid var(--bd2);}
+.tv .abr .n{color:var(--dim2);}
+.tv .abr .t{background:#20282b;}
+.tv .abr .t i{background:var(--ac2);}
+.tv .abr .v{color:var(--ac2);}
+.tv figure,.nv figure{margin:var(--s6) 0 0;}
+.tv figure img{width:100%;display:block;border:1px solid var(--bd2);border-radius:12px;}
+.tv figcaption,.nv figcaption{font-size:13px;color:var(--dim2);margin-top:var(--s3);line-height:1.6;}
+
+/* 인트라넷 화면 지도. 실제 라우트를 그대로 옮긴 구조도다 */
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2);margin-top:var(--s6);}
+.map > div{background:var(--bg2);border:1px solid var(--bd2);border-radius:12px;padding:var(--s4) var(--s5);}
+.map b{display:block;font-size:14.5px;font-weight:700;color:#fff;letter-spacing:-.02em;}
+.map span{display:block;font-size:12.5px;color:var(--dim2);margin-top:3px;line-height:1.5;}
+.map code{font-size:11px;color:var(--ac2);font-family:var(--mono);}
+.figs2{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin-top:var(--s8);}
+.figs2 > div{background:var(--bg2);border:1px solid var(--bd2);border-radius:12px;padding:var(--s5);}
+.figs2 b{display:block;font-size:28px;font-weight:700;color:var(--ac2);letter-spacing:-.045em;line-height:1.15;}
+.figs2 span{display:block;font-size:12.5px;color:var(--dim2);margin-top:var(--s1);}
+.xv .item h4 code{font-family:var(--mono);font-size:17px;color:var(--c-codex);background:none;}
+.xv .item h4 em{font-style:normal;font-size:13px;font-weight:500;color:#8b857c;margin-left:var(--s3);
+  font-family:var(--body);letter-spacing:0;}
+.gframe2{background:#141416;border:1px solid #2a2a2e;border-radius:14px;padding:var(--s5) var(--s6);margin-top:var(--s8);}
+.gframe2 p{margin:0;font-size:14.5px;line-height:1.8;}
+
+/* 파이프라인 구조도. 실제로 매주 도는 단계를 그대로 옮겼다 */
+.flow{display:grid;gap:var(--s2);margin-top:var(--s6);}
+.fl{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:var(--s4);
+  background:var(--bg2);border:1px solid var(--bd2);border-radius:12px;padding:var(--s4) var(--s5);}
+.fl .no{font-family:var(--mono);font-size:12px;color:var(--ac2);}
+.fl b{font-size:14.5px;font-weight:700;color:#fff;letter-spacing:-.02em;}
+.fl span{display:block;font-size:12.5px;color:var(--dim2);margin-top:2px;line-height:1.5;}
+.fl .st{font-size:11.5px;font-weight:700;color:var(--ac2);white-space:nowrap;}
+.fl.fail{border-color:#5a2c2c;}
+.fl.fail .st{color:#d9645f;}
+.ab{display:grid;gap:var(--s3);margin-top:var(--s6);}
+.abr{display:grid;grid-template-columns:140px 1fr 72px;align-items:center;gap:var(--s4);font-size:14.5px;}
+.abr .n{color:var(--g600);}
+.abr .t{height:10px;background:#dcebeb;border-radius:999px;position:relative;overflow:hidden;}
+.abr .t i{position:absolute;inset:0 auto 0 0;background:var(--c-tool);border-radius:999px;
+  transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.16,.84,.32,1);}
+.on .abr .t i{transform:scaleX(1);}
+.abr .v{font-weight:700;color:var(--c-tool);text-align:right;letter-spacing:-.02em;}
+
+/* ══ 서브: Codex ════════════════════════════════════════════════════════ */
+.xv h2{color:#f0ece5;}
+.xv .intro,.xv p{color:#b3aea6;}
+.xv strong{color:#f0ece5;}
+.xv .item{border-bottom-color:#26262a;}
+.xv .item h4{color:#f0ece5;}
+.term{background:#141416;border:1px solid #2a2a2e;border-radius:14px;padding:var(--s6);margin-top:var(--s5);overflow-x:auto;}
+.term .ln{white-space:pre;font-family:var(--mono);font-size:13px;line-height:1.95;color:#b3aea6;}
+.term .ln .pr{color:var(--c-codex);} .term .ln .ok{color:#5f9e6a;}
+.term .ln .no{color:var(--c-codex);} .term .ln .dim{color:#6a6660;}
+.xv .tw{border-color:#2a2a2e;background:#141416;}
+.xv table{color:#b3aea6;}
+.xv th{background:#0d0d0e;color:var(--c-codex);border-bottom-color:#2a2a2e;}
+.xv td{border-bottom-color:#2a2a2e;color:#b3aea6;}
+.xv td.k{color:#f0ece5;}
+.xv .btns a{color:var(--c-codex);}
+.tags{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5);}
+.tg{font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid currentColor;}
+
+/* ── 진입 연출 ─────────────────────────────────────────────────────────── */
+.rise{opacity:0;transform:translateY(14px);}
+.rise.on{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease);}
+/* 나란히 놓인 것들은 순서대로 올라온다 */
+.cards .card:nth-child(2).on,.sum .sm:nth-child(2).on,.ai .aiw:nth-child(2).on{transition-delay:.09s;}
+.sum .sm:nth-child(3).on,.ai .aiw:nth-child(3).on{transition-delay:.18s;}
+.sum .sm:nth-child(4).on,.ai .aiw:nth-child(4).on{transition-delay:.27s;}
+.figs > div{opacity:0;transform:translateY(14px);}
+.figs.on > div{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease);}
+.figs.on > div:nth-child(2){transition-delay:.08s;}
+.figs.on > div:nth-child(3){transition-delay:.16s;}
+.figs.on > div:nth-child(4){transition-delay:.24s;}
+.figs2 > div{opacity:0;transform:translateY(14px);}
+.figs2.on > div{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease);}
+.figs2.on > div:nth-child(2){transition-delay:.08s;}
+.figs2.on > div:nth-child(3){transition-delay:.16s;}
+.figs2.on > div:nth-child(4){transition-delay:.24s;}
+.tiles .tile{opacity:0;transform:translateY(10px);}
+.tiles.on .tile{opacity:1;transform:none;transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.tiles.on .tile:nth-child(2){transition-delay:.05s;}
+.tiles.on .tile:nth-child(3){transition-delay:.1s;}
+.tiles.on .tile:nth-child(4){transition-delay:.15s;}
+.tiles.on .tile:nth-child(5){transition-delay:.2s;}
+.tiles.on .tile:nth-child(6){transition-delay:.25s;}
+.tiles.on .tile:nth-child(7){transition-delay:.3s;}
+.tiles.on .tile:nth-child(8){transition-delay:.35s;}
+/* 수치가 멈추는 순간 한 번 눌렸다 펴진다 */
+.pop{animation:pop .32s var(--ease);}
+@keyframes pop{0%{transform:scale(1);}38%{transform:scale(1.06);}100%{transform:scale(1);}}
+.figs b,.tile b{display:block;transform-origin:left center;}
+.tile b{transform-origin:center;}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .hero > *{opacity:1;transform:none;animation:none;}
+  .rise,.rise.on{opacity:1;transform:none;transition:none;}
+  .view.on{animation:none;}
+  .bar .fill,.abr .t i{transform:scaleX(1);transition:none;}
+  .lg{opacity:1;transform:none;transition:none;}
+  .card,.card.pull{transform:none;transition:none;}
+  .card::before{display:none;}
+  #prog{display:none;}
+  #wipe,#wipe.go{display:none;animation:none;}
+  .axis span,.figs > div,.figs2 > div,.tiles .tile{opacity:1;transform:none;transition:none;}
+  .pop{animation:none;}
+  .btns a:hover,.more:hover,.hero .mail a:hover{transform:none;}
+  body{transition:none;}
+}
+
+@media (max-width:820px){
+  .cards,.sum,.ai{grid-template-columns:1fr;}
+  .figs{grid-template-columns:repeat(2,1fr);}
+  .tiles{grid-template-columns:repeat(2,1fr);}
+  .shots{grid-template-columns:1fr;}
+  .gsplit{grid-template-columns:1fr;}
+  .map,.figs2{grid-template-columns:repeat(2,1fr);}
+  .hero{padding:var(--s12) 0 var(--s10);}
+  .hero .nm{font-size:38px;}
+  .hero .lede{font-size:22px;}
+  .panel{padding:var(--s6);}
+  .abr{grid-template-columns:104px 1fr 62px;gap:var(--s3);font-size:13.5px;}
+}
+@media (max-width:520px){
+  .figs{grid-template-columns:1fr;}
+  .hero .nm{display:block;}
+  .hero .nm em{display:block;margin:var(--s2) 0 0;}
+  .mailbtn{margin:var(--s4) 0 0;display:inline-block;}
+  .gv h2{font-size:22px;}
+  .sv h2{font-size:26px;}
+}
+</style>
+
+<div id="prog" aria-hidden="true"></div>
+<div id="wipe" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#/">전동현<em>Jeon Donghyeon</em></a>
+    <a class="back" href="#/" data-back hidden>&larr; 메인</a>
+  </div>
+</div>
+
+<!-- ══════════════ 메인 ══════════════ -->
+<div class="view" id="v-home" data-route="/" data-tone="home" data-ac="var(--blue)">
+  <div class="wrap">
+
+    <div class="hero">
+      <p class="nm">전동현<em>Jeon Donghyeon</em><a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a></p>
+      <p class="role">Marketing / Crypto, Web3, Brand IP / 4년차</p>
+      <p class="lede">숫자가 안 보이면, 볼 도구를 만듭니다.</p>
+      <p class="sub">무엇을 측정할지 직접 정하고, 없는 도구는 AI로 만들어 사용합니다. 직전엔 가상자산 마케팅 책임자로 4년간 일했습니다.</p>
+    </div>
+
+    <div class="sec">
+      <span class="lab">경력<em>2020.08 ~ 2026.06</em></span>
+      <div class="panel" id="chart">
+        <div class="axis"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
+        <div class="bars">
+          <div class="bar b3"><div class="fill" style="left:9.72%;width:37.5%;"></div></div>
+          <div class="bar b2"><div class="fill" style="left:30.56%;width:16.67%;"></div></div>
+          <div class="bar b1"><div class="fill" style="left:47.22%;right:0;"></div></div>
+        </div>
+        <div class="legend">
+          <div class="lg l3"><i></i><b>바이애틱</b><span class="dt">2020.08 ~ 2022.11</span><span class="rr">생명공학연구소 대리</span></div>
+          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2022.11</span><span class="rr">NFT 서비스 기획과 마케팅, 프리랜서 리서처</span></div>
+          <div class="lg"><i></i><b>CRIPCO</b><span class="dt">2022.11 ~ 2026.06</span><span class="rr">LINE FRIENDS 자회사, 블록체인 마케팅 책임자</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sec">
+      <span class="lab">CRIPCO<em>블록체인 마케팅 책임자</em></span>
+      <div class="figs">
+        <div><b data-count="653">0</b><span>ETH 유치, 약 $3.46M</span></div>
+        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 블록체인 유저의 지갑이 등록된 숫자</span></div>
+        <div><b data-count="94" data-suffix="%">0</b><span>코드 사용률, 17,691명이 이벤트 참여형 코드를 입력</span></div>
+        <div><b data-count="350" data-suffix="K">0</b><span>운영한 커뮤니티의 합산 규모</span></div>
+      </div>
+
+      <div class="sum">
+        <div class="sm rise"><h4>마케팅 캠페인</h4><p>다회차(14회)에 나눠 돌리며, 매 회차 어떤 KOL이 실제 참여를 만들었는지 보고 다음 회차의 대상과 보상을 다시 짰습니다. 한 번에 터뜨리는 대신 매번 배우는 방식입니다.</p></div>
+        <div class="sm rise"><h4>FOMO 세일즈</h4><p>가격만 붙여서는 팔리지 않는 시점이었습니다. 프라이빗 경매로 값을 먼저 세우고, 참여한 기업들의 면면을 공개해 일반 구매를 끌었습니다.</p></div>
+        <div class="sm rise"><h4>오프라인 이벤트</h4><p>KBW 사이드 행사를 3년 연속 직접 기획했습니다. 행사로 끝내지 않고 참여자 데이터를 받아 다음 캠페인으로 넘겼습니다.</p></div>
+        <div class="sm rise"><h4>KOL 마케팅</h4><p>다섯 권역은 채널과 언어가 다릅니다. 300명 이상을 규모별로 나눠 접근을 달리했고, 에이전시 3사는 직접 골라 운영했습니다.</p></div>
+      </div>
+      <a class="more" href="#/career">경력 더 자세히 보기 &rarr;</a>
+    </div>
+
+    <div class="sec">
+      <span class="lab">AI를 쓰는 방식<em>코드는 AI가 씁니다. 문제는 그다음입니다</em></span>
+      <div class="cards">
+        <button class="card rise" style="--ac:var(--c-game);" data-go="game">
+          <span class="kk"><i></i>NHN NAN 2026 해커톤</span>
+          <h3>히스토리 판타지 리그</h3>
+          <p>세계사 인물로 근대 내각을 짜서 집권 연수를 겨루는 웹게임. 기획부터 배포까지 혼자 만들었습니다.</p>
+          <div class="chips"><span>웹게임</span><span>픽셀 아트</span><span>리더보드</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise" style="--ac:var(--c-tool);" data-go="tools">
+          <span class="kk"><i></i>CRIPCO, 2024 ~</span>
+          <h3>마케팅 데이터 도구</h3>
+          <p>트윗 수집 봇과 대시보드를 직접 만들었습니다. 무엇을 측정할지 정하고 A/B 테스트를 일상으로 돌렸습니다.</p>
+          <div class="chips"><span>Python</span><span>Google Sheets</span><span>Notion</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise" style="--ac:var(--c-net);" data-go="net">
+          <span class="kk"><i></i>사이드 프로젝트</span>
+          <h3>팀 운영 인트라넷</h3>
+          <p>팀이 함께 쓰는 운영 도구를 직접 만들었습니다. 발행 캘린더부터 계정 권한 관리까지 한 곳에 넣었습니다.</p>
+          <div class="chips"><span>Next.js</span><span>Supabase</span><span>Cloudflare</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise" style="--ac:var(--c-codex);" data-go="codex">
+          <span class="kk"><i></i>AX 인재전쟁 2026 해커톤</span>
+          <h3>Codex 플러그인 3종</h3>
+          <p>공개 자료만으로 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 떨어진 뒤 자기 결함을 찾아 고쳤습니다.</p>
+          <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="lab">이력 요약</span>
+      <div class="tw rise">
+        <table><tbody>
+          <tr><td class="k">2022.11 ~ 2026.06</td><td><strong>CRIPCO</strong> (LINE FRIENDS 자회사)</td><td>블록체인 마케팅 책임자</td></tr>
+          <tr><td class="k">2021.11 ~ 2022.11</td><td><strong>블록체인 SNS / 커뮤니티 운영</strong></td><td>NFT 서비스 기획과 마케팅, 프리랜서 리서처</td></tr>
+          <tr><td class="k">2020.08 ~ 2022.11</td><td><strong>바이애틱</strong></td><td>생명공학연구소 대리, 진단키트 QC와 공정관리</td></tr>
+          <tr><td class="k">2015.03 ~ 2020.02</td><td><strong>명지전문대학교</strong></td><td>세무회계과</td></tr>
+          <tr><td class="k">2016.08 ~ 2018.05</td><td><strong>병역</strong></td><td>육군 병장 만기전역</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- ══════════════ 서브: 경력 ══════════════ -->
+<div class="view cv2" id="v-career" data-route="/career" data-tone="home" data-ac="var(--blue)">
+  <div class="wrap sv">
+    <span class="kk"><i></i>CRIPCO, 2022.11 ~ 2026.06</span>
+    <h2>블록체인 마케팅 책임자로 한 일</h2>
+    <p class="intro" style="color:var(--g700);">캠페인을 단발 이벤트가 아니라 도달, 참여, 등록, 거래, 재참여로 이어지는 사이클로 설계했습니다. 한 사이클의 결과가 다음 사이클의 입력이 되도록 운영했습니다.</p>
+
+    <div class="item rise">
+      <h4>회차로 쪼갠 KOL 캠페인</h4>
+      <p>한 번 크게 터뜨리고 끝내는 대신, 작게 여러 번 돌리며 매번 배우는 방식으로 운영했습니다. 라운드마다 KOL에게 참여 코드를 직접 나눠주고, 라운드가 끝나면 어떤 KOL이 실제 참여를 만들었는지, 어떤 보상과 타이밍이 먹혔는지를 보고 다음 라운드를 다시 설계했습니다. <strong>14번</strong>을 거치며 KOL 구성과 보상 구조를 계속 다듬었습니다.</p>
+      <div class="meta">
+        <div>게임 연계: 게임으로 들어온 유저가 코드를 받고 지갑까지 연결되도록 설계. 코드 분배와 등록 안내, 사후 관리를 담당</div>
+        <div>결과: 코드 사용률 94%. 게임 누적 유저 500만 명 이상 중 50만 명 이상이 지갑 연결로 이어짐</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>침체기에 FOMO를 만든 NFT 런칭 경매</h4>
+      <p>앞선 프로젝트들은 무료나 저가 중심이었고, 이번에는 처음으로 의미 있는 가격에 팔아 실제 매출을 만들어야 했습니다. 하필 NFT가 트렌드에서 빠르게 식던 시점이라 가격만 붙여서는 팔리지 않았습니다. 그래서 <strong>잉글리시 옥션 방식의 프라이빗 경매로 가격을 먼저 끌어올린 뒤, 참여한 B2B 면면을 공개해 일반 구매자의 구매를 가속</strong>하는 구조로 갔습니다. 경매 구조는 외부 어드바이저와 공동으로 설계했고, 마케팅과 KOL, 커뮤니티 동원은 직접 맡았습니다.</p>
+      <div class="meta">
+        <div>티저: 24시간 만에 팔로워 25K 성장. 티저 트윗 299,353 노출, 14,561 좋아요</div>
+        <div>퍼널: 사전 신청 16,355명, 지갑 등록 91,118개</div>
+        <div>결과: 경매 6일간 입찰 2,749건, 653.99 ETH 유치. 동시 런칭한 경쟁 프로젝트 중 1위</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>KBW 3년 연속 오프라인 사이드 행사</h4>
+      <p>코리아 블록체인 위크는 매년 여러 프로젝트가 더 나은 행사로 경쟁하는 시기입니다. 3년 동안 매년 다른 콘셉트와 채널로 사이드 행사를 직접 기획하고 운영했습니다.</p>
+      <p>행사를 단발로 끝내지 않으려고 <strong>앱 기반 보유자 인증을 행사에 연동</strong>했습니다. 입장과 참여를 인증으로 받으면 누가 왔는지가 데이터로 남고, 그 명단이 곧 사후 캠페인의 대상이 됩니다. 행사장에서 쓰고 버리는 이벤트가 아니라 다음 캠페인의 입력으로 만든 겁니다.</p>
+      <div class="meta">
+        <div>2023 성수동: 1,000명 이상 규모의 VIP 사이드 이벤트</div>
+        <div>2024 워커힐 호텔: 본 행사장 구조물에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 지갑 16K 등록</div>
+        <div>2025 강남: 파트너 공동 500명 이상 DJ 파티, 명동 LINE FRIENDS 매장 전시</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>글로벌 KOL을 권역별로 다르게</h4>
+      <p>한국, 일본, 베트남, 대만 / 태국, CIS / 서구권. <strong>5개 권역 300명 이상</strong>을 에이전시 3사와 함께 운영했습니다. 팔로워 규모로 소형, 중형, 대형을 나눠 접근을 달리했고, 소형은 텔레그램으로 직접 소통하며 관계를 쌓았습니다. 규모별 운영 기준을 직접 가이드로 정리해 일관되게 적용했습니다. 에이전시는 후보를 비교해 직접 선정하고 역할 분담을 협의한 뒤 운영까지 관리했습니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>토큰 운영과 상장 대응</h4>
+      <p>런칭만 하고 끝나는 자리가 아니었습니다. 토큰이 살아 있는 동안 벌어지는 일을 마케팅 쪽에서 받아냈습니다.</p>
+      <p><strong>체인을 옮길 때</strong>는 보유자가 자산을 잃지 않는 것이 전부였습니다. 무엇을 언제까지 해야 하는지를 채널마다 다른 형태로 반복해 알렸고, 기한이 다가올수록 안내 밀도를 올렸습니다. <strong>거래 지원이 끊길 위험이 불거졌을 때</strong>는 추측이 커뮤니티에서 먼저 돌지 않도록 확인된 사실만 빠르게, 같은 문장으로 내보냈습니다. 그리고 <strong>새로 상장을 준비할 때</strong>는 마케팅 쪽 전략을 세워 퇴사 시점까지 끌고 갔습니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>콘텐츠 총괄과 영상 디렉팅</h4>
+      <p>채널에 올라가는 콘텐츠를 총괄했습니다. 채널마다 톤 가이드를 만들고 그에 맞춰 기획과 검수를 했습니다.</p>
+      <p>LINE FRIENDS 매장 콜라보에서는 <strong>콘셉트 기획부터 사내 제작자와의 협업, 최종 컷 결정과 업로드까지</strong> 맡았습니다. 영상은 직접 만들지 않았습니다. 무엇을 보여줄지 정하고, 제작팀과 주고받으며 최종 컷을 결정하는 자리였습니다. 만드는 일과 정하는 일은 다르고, 제 몫은 정하는 쪽이었습니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>위기에는 메시지를 하나로</h4>
+      <p>해킹, 거래소 상장폐지, 체인 마이그레이션, 연예인 이슈 등 <strong>9건 이상</strong>의 상황에서 여러 채널에 일관된 외부 메시지를 빠르게 운영해 커뮤니티 신뢰가 끊기지 않도록 관리했습니다.</p>
+      <p>X 5개 계정 합산 200K 이상, Discord 66K 이상, Telegram 83K 이상을 직접 운영했습니다. 채널마다 사용자 행동과 기대치가 달라 톤 가이드를 따로 만들었습니다. 한 토큰 프로젝트의 X 계정은 13개월간 끊김 없이 직접 운영했습니다.</p>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- ══════════════ 서브: 게임 ══════════════ -->
+<div class="view gv" id="v-game" data-route="/game" data-tone="game" data-ac="var(--c-game)" style="--ac:var(--c-game);">
+  <div class="plate" aria-hidden="true"></div>
+  <div class="fade" aria-hidden="true"></div>
+  <div class="wrap sv">
+    <span class="kk"><i></i>NHN NAN 2026, 게임 x AI 해커톤</span>
+    <h2>히스토리 판타지 리그</h2>
+    <p class="intro">세계사 인물로 근대 내각을 짜서 집권 연수를 겨루는 웹게임입니다. 설치도 로그인도 없이 바로 돌아갑니다.</p>
+    <p style="margin-top:var(--s4);max-width:56ch;">게임을 만들어 본 적이 없습니다. 코드도, 그림도, 소리도 만들지 못합니다. <strong>무엇을 만들 것인가만 정하고 나머지는 전부 시켰습니다.</strong></p>
+
+    <div class="btns">
+      <a class="key" href="https://ethmikel.github.io/hfl/" target="_blank" rel="noopener">한 판 해보기 &rsaquo;</a>
+      <a href="https://www.youtube.com/watch?v=RPli51Q1rAs" target="_blank" rel="noopener">59초 영상 &rsaquo;</a>
+      <a href="https://ethmikel.github.io/hfl/credits.html" target="_blank" rel="noopener">크레딧 &rsaquo;</a>
+    </div>
+
+    <div class="gframe rise">
+      <div class="ft">30초 요약</div>
+      <p>임기 중 위기 <strong>8건</strong>이 닥치고 그중 5건은 미리 예고됩니다. 셋을 골라 반드시 막겠다고 공언한 뒤, 주사위를 굴려 뜬 세계사 인물로 <strong>8석의 내각</strong>을 채웁니다. 위기를 막을 때마다 집권 연수가 붙습니다.</p>
+    </div>
+
+    <div class="gsteps rise">
+      <div><span class="n">1</span><p><b>위기 예고를 읽습니다.</b> 8건 중 5건은 제목과 시기, 난이도가 보입니다. 나머지 셋은 예고 없이 터집니다.</p></div>
+      <div><span class="n">2</span><p><b>공약 3건을 걸고 정세를 판단합니다.</b> 이걸 끝내야 주사위가 열립니다. 누가 뽑힐지 보고 목표를 정하면 긴장이 사라지기 때문입니다.</p></div>
+      <div><span class="n">3</span><p><b>주사위를 굴려 임명합니다.</b> 굴릴 때마다 무작위 문명과 시대에서 후보 다섯이 뜹니다. 8석을 채웁니다.</p></div>
+      <div><span class="n">4</span><p><b>집권을 관전합니다.</b> 위기가 하나씩 닥치고 지지율 그래프가 그려집니다. 매 위기마다 주사위와 성공률이 눈앞에서 굴러갑니다.</p></div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><b data-count="611">0</b><span>능력치를 매긴 인물</span></div>
+      <div class="tile"><b data-count="106">0</b><span>위기 시나리오</span></div>
+      <div class="tile"><b data-count="13604">0</b><span>코드와 스타일 줄 수</span></div>
+      <div class="tile"><b data-count="53">0</b><span>검사기</span></div>
+      <div class="tile"><b data-count="610">0</b><span>변환한 초상</span></div>
+      <div class="tile"><b data-count="2000">0</b><span>봇 러너 판 수, 6개 정책</span></div>
+      <div class="tile"><b data-count="194">0</b><span>모델 표기 커밋, 248개 중</span></div>
+      <div class="tile"><b data-count="0">0</b><span>오디오 파일, 게임 엔진, 유료 에셋</span></div>
+    </div>
+
+    <div class="tw rise">
+      <table>
+        <thead><tr><th>영역</th><th>AI가 만든 것</th><th>사람이 정한 것</th></tr></thead>
+        <tbody>
+          <tr><td class="k">게임 시스템</td><td>규칙, 판정 공식, 확률 모델, 시드 고정 시뮬레이션</td><td><b>단판 승부로 간다</b></td></tr>
+          <tr><td class="k">밸런스</td><td>상수 전부, 봇 2,000판으로 분포 검증</td><td><b>목표 구간과 합격선</b></td></tr>
+          <tr><td class="k">인터페이스</td><td>전 화면 UI 8파일 3,070줄</td><td><b>어디서 막히는지 판정</b></td></tr>
+          <tr><td class="k">사운드</td><td>효과음 11종, 배경음악 4곡을 전부 코드로 합성</td><td><b>언제든 끌 수 있을 것</b></td></tr>
+          <tr><td class="k">서버</td><td>기록 재검증, 위조 차단, 입력만 받는 API</td><td><b>점수를 클라이언트에서 받지 않는다</b></td></tr>
+          <tr><td class="k">QA</td><td>검사기 53개, 봇 러너</td><td><b>무엇을 검증할지</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="item rise" style="border-bottom:0;padding-bottom:0;">
+      <h4 style="color:var(--c-game);font-family:var(--pix);font-size:11px;font-weight:400;">작업 성격에 따라 모델을 나눠 썼습니다</h4>
+      <p style="color:var(--paper-200);">Claude Code 하나로 기획부터 배포, 문서까지 진행했습니다. 별도의 이미지 생성 모델도 음악 생성 모델도 쓰지 않았습니다. 그림과 소리는 모델이 만든 것이 아니라 <strong>모델이 쓴 코드가 만듭니다.</strong></p>
+    </div>
+
+    <div class="tw rise" style="margin-top:var(--s5);">
+      <table>
+        <thead><tr><th>층</th><th>배분</th></tr></thead>
+        <tbody>
+          <tr><td class="k">세션 모델</td><td><b>Fable</b> 설계, 진단, 판정, 승부처 글쓰기 / <b>Opus</b> 스펙이 명확한 구현과 반복</td></tr>
+          <tr><td class="k">서브에이전트</td><td>판단 <b>Opus</b> / 실행 <b>Sonnet</b> / 탐색 <b>Haiku</b>. 호출할 때 모델을 반드시 지정</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gsplit rise">
+      <div class="gframe">
+        <div class="ft">배분을 커밋에 남겼습니다</div>
+        <p>커밋 <strong>248개 중 194개</strong>에 그 변경을 만든 모델이 적혀 있습니다. 세어보면 Opus 183, Fable 16, Sonnet 2, Haiku 2입니다. Fable의 몫이 작아 보이는 건 설계와 판정이 커밋을 적게 남기기 때문입니다. 한 번의 판정이 수십 개의 구현 커밋을 결정합니다.</p>
+      </div>
+      <div class="gframe hi">
+        <div class="ft">올려야 할 때를 규칙으로 정했습니다</div>
+        <p>Opus로 진행하다 셋 중 하나에 걸리면 Fable로 올립니다. 같은 수정이 세 번 연속 실패할 때, 스펙 해석이 갈릴 때, 밸런스나 재미를 판정해야 할 때.</p>
+        <p style="margin-top:var(--s3);">되돌리기 비용이 비대칭이기 때문입니다. 구현은 다시 짜면 되지만 <strong>잘못된 설계는 그 위에 쌓인 것까지 무너뜨립니다.</strong></p>
+      </div>
+    </div>
+
+    <blockquote class="rise">
+      <em>검증에 대해</em>
+      검사기가 "0건"이라고 말했는데 사실이 아니었던 적이 두 번 있습니다. 그래서 규칙을 하나 두었습니다. <strong>검사기가 무엇을 뱉으면 대상보다 검사기를 먼저 의심한다.</strong> 그리고 검사기를 만들 때 일부러 위반을 주입해서 실제로 잡히는지 확인합니다.
+    </blockquote>
+
+    <div class="shots rise">
+      <figure><img src="assets/draft.png" alt="내각 드래프트 화면"><figcaption><b>앉히기 전에 확률이 보입니다.</b> 같은 사람도 어디에 앉히냐에 따라 5%와 95%를 오갑니다. 운으로 뽑고 실력으로 배치합니다</figcaption></figure>
+      <figure><img src="assets/sim.png" alt="집권 시뮬레이션 화면"><figcaption><b>눈앞에서 굴러갑니다.</b> 위기마다 주사위 눈과 성공률이 나란히 뜹니다. 왜 막았고 왜 못 막았는지를 숨기지 않습니다</figcaption></figure>
+      <figure><img src="assets/result.png" alt="결과 화면"><figcaption><b>몇 년 버텼는가.</b> 집권 연수와 등급, 명예의 전당에서 내 자리가 나옵니다. 무엇이 정권을 무너뜨렸는지도 함께 적힙니다</figcaption></figure>
+    </div>
+    <div class="item rise" style="border-bottom:0;padding-top:var(--s10);">
+      <h4 style="color:var(--c-game);font-family:var(--pix);font-size:11px;font-weight:400;">게임은 A 곱하기 B입니다. AI는 A를 만듭니다</h4>
+      <p style="color:var(--paper-200);">게임 하나는 <strong>시스템(A)</strong>과 <strong>IP, 콘텐츠(B)</strong>의 곱입니다. 지금까지 병목은 늘 A였습니다. A 하나를 세우는 데 몇 달이 걸리니 붙여볼 A가 부족해서 B가 기다렸습니다. AI가 바꾸는 쪽은 A입니다.</p>
+      <p style="color:var(--paper-200);margin-top:var(--s3);">이번 판의 A는 개발 경험 없는 1인이 세웠고, B는 라이선스가 0원인 퍼블릭 도메인 인물 611명이었습니다. 소재를 통째로 바꿔도 규칙은 건드리지 않습니다. 실제로 인물 풀을 여섯 번 갈아끼우는 동안 규칙 코드는 한 번도 고치지 않았습니다.</p>
+      <p style="color:var(--paper-200);margin-top:var(--s3);"><strong>A가 싸지는 만큼 경쟁력은 B에서 나옵니다.</strong> AI가 A를 싸게 만들어 주는 세계에서 남는 해자는 가지고 있는 IP입니다. 이 게임은 그 자리를 비워 둔 채로 만들었습니다.</p>
+    </div>
+
+    <div class="item rise" style="border-bottom:0;">
+      <h4 style="color:var(--c-game);font-family:var(--pix);font-size:11px;font-weight:400;">알고 남긴 한계</h4>
+      <div class="tw" style="margin-top:var(--s4);">
+        <table>
+          <thead><tr><th>한계</th><th>왜 그대로 두었나</th></tr></thead>
+          <tbody>
+            <tr><td class="k">위기가 아직 코어에 묶여 있음</td><td>인물은 인자로 분리됐지만 위기는 코어가 직접 부릅니다. 검사기가 매번 이 경계를 재서 알려줍니다</td></tr>
+            <tr><td class="k">파이프라인이 그대로 재실행되지 않음</td><td>원본 데이터셋 37MB를 저장소에 넣지 않았습니다. 받는 방법은 문서에 적어 두었습니다</td></tr>
+            <tr><td class="k">초기 기록은 서버 재검증 이전 것</td><td>지우면 명예의 전당이 비어 새로 온 사람에게 겨룰 상대가 없습니다. 경쟁의 기준선으로 남기고 검증된 기록과 구분해서 다룹니다</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="rise" style="margin-top:var(--s8);font-size:13.5px;color:var(--paper-300);">여기 적은 내용은 제출한 게임 소개 문서 6쪽과 AI 활용 기술 문서 9쪽에서 추린 것입니다. 두 문서 전문은 요청하시면 PDF로 보내드립니다.</p>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- ══════════════ 서브: 마케팅 도구 ══════════════ -->
+<div class="view tv" id="v-tools" data-route="/tools" data-tone="tools" data-ac="var(--c-tool)" style="--ac:var(--c-tool);">
+  <div class="wrap sv">
+    <span class="kk"><i></i>2024 ~</span>
+    <h2>필요한 도구가 없으면 만들었습니다</h2>
+    <p class="intro" style="color:var(--g700);">무엇을 측정할지 마케터가 직접 정하면 가설과 검증 사이의 거리가 짧아집니다. 만들 수 있는 것은 직접 만들고, 팀과 함께 만드는 데이터 환경은 지표를 직접 정의해 그 데이터로 결정했습니다.</p>
+
+    <div class="tw rise" style="margin-top:var(--s8);">
+      <table>
+        <thead><tr><th>만든 것</th><th>기능</th></tr></thead>
+        <tbody>
+          <tr><td class="k">X 마케팅 운영 툴</td><td>트윗 데이터 자동 수집, A/B 테스트 그룹 태깅, 댓글과 반응 감성 분석, Google Sheets 및 Notion 자동 동기화, 데이터 검증 파이프라인 (Python)</td></tr>
+          <tr><td class="k">마케팅 데이터 대시보드</td><td>채널 통합 모니터링, 캠페인 성과 추적</td></tr>
+          <tr><td class="k">콘텐츠 수집 자동화</td><td>영상 자동 수집, 외부 콘텐츠 리서치 효율화</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:var(--s8);font-size:13.5px;color:var(--dim2);">매주 한 번, 아래 일곱 단계가 순서대로 자동으로 돕니다. 하나가 실패하면 그 자리에 표시가 남고 다음 단계로 넘어가지 않습니다.</p>
+    <div class="flow rise">
+      <div class="fl"><span class="no">01</span><div><b>트윗 데이터 수집</b><span>대상 계정의 게시물과 반응을 긁어옵니다</span></div><span class="st">자동</span></div>
+      <div class="fl"><span class="no">02</span><div><b>Google Sheets 업로드</b><span>원본을 시트에 그대로 쌓습니다</span></div><span class="st">자동</span></div>
+      <div class="fl"><span class="no">03</span><div><b>A/B 테스트 그룹 태깅</b><span>어떤 실험의 어느 그룹인지 표시합니다</span></div><span class="st">자동</span></div>
+      <div class="fl"><span class="no">04</span><div><b>A/B 테스트 진행률 갱신</b><span>실험이 얼마나 찼는지 계산합니다</span></div><span class="st">자동</span></div>
+      <div class="fl"><span class="no">05</span><div><b>노션 서식 적용</b><span>사람이 읽을 수 있게 정리합니다</span></div><span class="st">자동</span></div>
+      <div class="fl"><span class="no">06</span><div><b>데이터 검증</b><span>빠진 값과 이상한 값을 잡습니다</span></div><span class="st">자동</span></div>
+      <div class="fl fail"><span class="no">07</span><div><b>대시보드 동기화</b><span>실패하면 여기에 빨간 표시가 남습니다. 조용히 넘어가지 않게 만든 자리입니다</span></div><span class="st">실패 표시</span></div>
+    </div>
+
+    <figure class="rise">
+      <img src="assets/tool.png" alt="트윗 수집 파이프라인 상태와 A/B 테스트를 보여주는 대시보드 화면">
+      <figcaption>직접 만든 대시보드입니다. 수집부터 검증까지 일곱 단계가 매주 자동으로 돌고, 하나라도 실패하면 그 자리에 빨간 표시가 남습니다. 실패를 숨기지 않는 게 요점입니다. 계정명과 절대 수치는 가렸습니다.</figcaption>
+    </figure>
+
+    <div class="item rise">
+      <h4>변수를 하나씩만 바꿔 발행 기준을 잡았습니다</h4>
+      <p>트윗 성과는 내용뿐 아니라 언제 어떤 형식으로 올리느냐에 크게 좌우됩니다. 한 번에 모든 것을 바꾸지 않고 변수를 하나씩만 다르게 해서 비교했습니다. 가설을 세우고, 변수만 바꿔 발행하고, 대시보드에서 비교하고, 결과를 다음 발행 기준으로 굳히는 순서입니다.</p>
+      <div class="ab" id="ab">
+        <div class="abr"><span class="n">발행 시간, 조회</span><span class="t"><i style="width:33%;"></i></span><span class="v">+13%</span></div>
+        <div class="abr"><span class="n">발행 시간, 좋아요</span><span class="t"><i style="width:43%;"></i></span><span class="v">+17%</span></div>
+        <div class="abr"><span class="n">평일, 조회</span><span class="t"><i style="width:50%;"></i></span><span class="v">+20.1%</span></div>
+        <div class="abr"><span class="n">영상, 조회</span><span class="t"><i style="width:21%;"></i></span><span class="v">+8.4%</span></div>
+        <div class="abr"><span class="n">영상, 좋아요</span><span class="t"><i style="width:10%;"></i></span><span class="v">+4.0%</span></div>
+        <div class="abr"><span class="n">영상, 댓글</span><span class="t"><i style="width:94%;"></i></span><span class="v">+37.8%</span></div>
+      </div>
+      <div class="meta">
+        <div>각 변수의 최적값을 합쳐 발행 가이드를 만들고 이후 캠페인의 기본값으로 삼았습니다. 캠페인이 바뀔 때마다 같은 방식으로 다시 검증했습니다.</div>
+        <div>검증 사례: KBW 2024 단일 트윗 549,339 노출, 16,251 좋아요, 14,897 리트윗</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>측정 환경을 직접 설계했습니다</h4>
+      <p>글로벌 게임 마케팅에서 무엇을 측정할지 마케터 관점에서 정의하고 Redash와 Google Analytics 추적 환경을 구축했습니다. <strong>도구 설치는 PM이, 추적 지표 설계와 데이터 활용은 제가</strong> 담당했습니다. 이벤트마다 다른 UTM 링크를 발행해 어떤 캠페인이 유입을 만들었는지 채널별로 나눠 봤습니다. 절대 수치보다 추세와 상대 변화를 봤습니다.</p>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- ══════════════ 서브: 인트라넷 ══════════════ -->
+<div class="view nv" id="v-net" data-route="/net" data-tone="net" data-ac="var(--c-net)" style="--ac:var(--c-net);">
+  <div class="wrap sv">
+    <span class="kk"><i></i>사이드 프로젝트</span>
+    <h2>팀이 함께 쓰는 운영 도구를 만들었습니다</h2>
+    <p class="intro" style="color:var(--g700);">쓰던 도구가 흩어져 있어서 상태를 보려면 매번 여러 곳을 열어야 했습니다. 한 곳에서 보고 한 곳에서 처리하도록 직접 만들었습니다. 소수 인원이 실제로 쓰는 도구입니다.</p>
+
+    <p style="margin-top:var(--s8);font-size:13.5px;color:var(--dim2);">아래는 실제로 배포된 화면을 그대로 옮긴 구조도입니다. 캡처가 아닙니다. 화면 13개 중 사업 내용이 드러나는 하나는 뺐습니다.</p>
+    <div class="map rise">
+      <div><b>홈</b><span>오늘 볼 것만 모은 첫 화면</span><code>/home</code></div>
+      <div><b>발행 캘린더</b><span>타임존을 고려한 멀티채널 일정</span><code>/calendar</code></div>
+      <div><b>채널</b><span>계정 상태와 노출 제한 감시</span><code>/channels</code></div>
+      <div><b>스토리보드</b><span>기획부터 리뷰까지의 제작 흐름</span><code>/storyboard</code></div>
+      <div><b>스테이지</b><span>제작 단계별 진행 상황</span><code>/stage</code></div>
+      <div><b>인벤토리</b><span>산출물 보관과 검색</span><code>/inventory</code></div>
+      <div><b>레퍼런스</b><span>벤치마크 수집과 분석</span><code>/references</code></div>
+      <div><b>실험</b><span>가설과 결과 기록</span><code>/experiments</code></div>
+      <div><b>리포트</b><span>주기별 성과 리포트</span><code>/report</code></div>
+      <div><b>매출</b><span>수익 추적</span><code>/revenue</code></div>
+      <div><b>컴플라이언스</b><span>금지 항목 점검</span><code>/compliance</code></div>
+      <div><b>팀</b><span>계정 생성과 권한</span><code>/team</code></div>
+    </div>
+
+    <div class="tw rise" style="margin-top:var(--s6);">
+      <table>
+        <thead><tr><th>구성</th><th>쓴 것</th></tr></thead>
+        <tbody>
+          <tr><td class="k">프레임워크</td><td>Next.js 16, Tailwind v4, shadcn/ui</td></tr>
+          <tr><td class="k">데이터와 인증</td><td>Supabase (Postgres, Auth, Row Level Security)</td></tr>
+          <tr><td class="k">배치</td><td>정기 실행으로 수집과 리포트 자동 생성</td></tr>
+          <tr><td class="k">외부 연동</td><td>Slack 알림, 파일 스토리지 업로드, 이미지 처리 API</td></tr>
+          <tr><td class="k">접근 제어</td><td>Cloudflare Tunnel과 Access. 초대된 이메일만 통과</td></tr>
+          <tr><td class="k">운영</td><td>사무실 없이 상시 켜둔 맥에서 구동. 월 고정비는 전기료 수준</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="figs2 rise">
+      <div><b data-count="13">0</b><span>화면</span></div>
+      <div><b data-count="20">0</b><span>데이터 테이블</span></div>
+      <div><b data-count="84">0</b><span>접근 정책</span></div>
+      <div><b data-count="32">0</b><span>스키마 변경</span></div>
+    </div>
+
+    <div class="item rise">
+      <h4>로그인과 세션</h4>
+      <p>이메일로 로그인합니다. 모든 요청이 지나가는 자리에 세션 검사를 걸어서, 로그인이 풀린 채로 화면이 열리는 일이 없게 했습니다. 여기에 더해 <strong>초대한 이메일만 통과시키는 문을 서버 앞단에 한 겹 더</strong> 뒀습니다. 주소를 알아도 초대받지 않았으면 로그인 화면조차 보이지 않습니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>권한을 화면이 아니라 데이터베이스에 박았습니다</h4>
+      <p>버튼을 숨기는 방식은 권한이 아닙니다. 주소창을 직접 치거나 요청을 흉내 내면 그대로 뚫립니다. 그래서 <strong>데이터베이스가 직접 판단하게</strong> 했습니다. 테이블 <strong>20개</strong>에 접근 정책 <strong>84개</strong>를 걸었고, 역할은 총괄, 운영, 제작 <strong>세 가지</strong>입니다.</p>
+      <p>같은 표라도 동작마다 허용 대상이 다릅니다. 예를 들어 산출물은 누구나 볼 수 있지만, 올리는 건 제작과 운영만, 고치는 건 본인이 올린 것이거나 운영 위쪽만, 지우는 건 총괄만입니다. 파일 저장소에도 같은 규칙을 따로 걸었습니다.</p>
+      <div class="meta">
+        <div>여기서 잘못하면 남의 데이터가 보입니다. 그래서 이 부분만은 기능이 되는지가 아니라 <strong>안 되는 경우를 먼저</strong> 시험했습니다</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>사람이 안 눌러도 도는 것들</h4>
+      <p>정기 실행을 걸어 두 가지가 알아서 돕니다. 저장해 둔 참고 자료를 주기적으로 다시 긁어 갱신하고, 지켜보는 계정들의 최신 상태를 받아옵니다. 파일은 외부 저장소로 업로드되고, 참고 이미지는 서버에서 한 번 처리한 뒤 저장됩니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>쓰면서 서른두 번 고쳤습니다</h4>
+      <p>스키마 변경 기록이 <strong>32번</strong> 남아 있습니다. 처음에 다 설계하고 시작한 게 아니라, 쓰다가 불편한 지점이 나오면 그때 표를 바꿨다는 뜻입니다. 리뷰 단계를 추가하고, 참고 자료에 평점과 사용 이력을 붙이고, 회의 일정을 캘린더에 합치고, 권한 규칙을 두 번 다시 짰습니다.</p>
+      <div class="meta">
+        <div>사업 분야와 서비스 내용은 공개하지 않습니다. 화면 구성과 기술 구성만 적습니다</div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- ══════════════ 서브: Codex ══════════════ -->
+<div class="view xv" id="v-codex" data-route="/codex" data-tone="codex" data-ac="var(--c-codex)" style="--ac:var(--c-codex);">
+  <div class="wrap sv">
+    <span class="kk"><i></i>AX 인재전쟁 2026, OpenAI 협업</span>
+    <h2>Codex 플러그인 3종</h2>
+    <p class="intro">기업이 과제를 주지 않는 해커톤이었습니다. 공개 자료만 보고 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 판단 재료는 기계가 검증하고 판단은 사람이 하도록 설계했습니다.</p>
+
+    <div class="item rise" style="border-bottom:0;padding-bottom:0;">
+      <h4>판단은 넘기지 않습니다</h4>
+      <p>LLM은 맥락과 언어를 맡고, 검증된 숫자는 결정론 코드가 냅니다. <strong>판단 재료는 기계가 검증하고 판단은 사람이</strong> 합니다. 세 개를 전부 이 원칙으로 설계했습니다.</p>
+    </div>
+
+    <div class="gframe2 rise">
+      <p>세 개 모두 <strong>Codex 안에서 명령 한 줄로 부르는 플러그인</strong>입니다. 결과는 터미널과 파일 하나짜리 HTML 리포트로 같이 나옵니다. 대상 기업이 공개 인터뷰에서 직접 말한 문제를 그대로 받아, 각 회사의 실무자가 바로 쓸 수 있는 형태로 만들었습니다.</p>
+      <p style="margin-top:var(--s3);color:#5f9e6a;">셋 다 2026년 8월 8일 기준으로 다시 실행해 동작을 확인했습니다. 아래는 그때 나온 실제 출력입니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4><code>brand-demand-radar</code><em>무신사, 브랜드 발굴 담당자</em></h4>
+      <p><strong>아이디어.</strong> 검색량과 SNS 언급은 돈으로 만들 수 있습니다. 그런데 웃돈을 주고 되파는 가격은 조작하기 어렵습니다. 실제로 돈을 더 낸 사람이 있어야 생기는 숫자니까요. 그 신호로 아직 안 들어온 브랜드를 먼저 찾자는 게 출발이었습니다.</p>
+      <p><strong>구현.</strong> 리셀 시세를 실측해 웃돈을 계산하고, 이미 입점한 브랜드와 교차검증해 걸러냈습니다. 과거 데이터로 되돌려 확인했더니 리셀 신호가 실적보다 앞서는 구간이 있었습니다.</p>
+      <p><strong>실무 효과.</strong> 브랜드 발굴 담당자가 감이나 소문 대신 <strong>순위가 매겨진 후보 목록</strong>을 받습니다. 왜 그 순위인지가 숫자로 따라오니 회의에서 설득할 근거가 같이 옵니다.</p>
+      <div class="term">
+        <div class="ln"><span class="pr">$</span> python3 scripts/radar.py --top 5 --skip-live</div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="no">[신선도 경고]</span> 수집 시각이 3일 이상 지난 스냅샷이 포함돼 있습니다</div>
+        <div class="ln"><span class="dim">             가장 오래된 수집 2026-07-10. 리셀 시세는 빠르게 변합니다</span></div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="dim">  #  브랜드           스코어   중앙값 프리미엄   증거</span></div>
+        <div class="ln">  1  ZARA             151.5     <span class="ok">+182.1%</span>       1건</div>
+        <div class="ln">  2  IAB Studio        95.3     <span class="ok">+114.5%</span>       1건</div>
+        <div class="ln">  3  Peaceminusone     57.9      <span class="ok">+44.7%</span>       3건</div>
+        <div class="ln">  4  Casio             48.2      <span class="ok">+58.0%</span>       1건</div>
+        <div class="ln">  5  COVERNAT          30.5      <span class="ok">+44.1%</span>       1건</div>
+      </div>
+      <p style="margin-top:var(--s4);font-size:13.5px;color:#8b857c;">낡은 데이터로 조용히 답하지 않게, 스냅샷이 오래되면 도구가 먼저 알립니다. 아래 마이리얼트립에서 데었던 실수의 반대 설계입니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4><code>trade-plan-diary</code><em>카카오페이증권, 서비스 기획자</em></h4>
+      <p><strong>아이디어.</strong> 초보 투자자에게 종목을 추천하면 규제에 걸리고 책임도 넘어옵니다. 그래서 답을 주지 않고 <strong>스스로 기준을 세우게 하는 쪽</strong>으로 뒤집었습니다. 추천하지 않으니 규제 안에서 바로 낼 수 있습니다.</p>
+      <p><strong>구현.</strong> 매수와 매도 전에 질문으로 계획을 받아 적고, 매매마다 논리와 계획, 그때의 감정, 계획을 얼마나 지켰는지, 결과를 기록으로 쌓습니다. 퀀트가 전략을 되돌려 검증하듯 <strong>초보가 자기 매매를 되돌려 보게</strong> 만드는 구조입니다.</p>
+      <p><strong>실무 효과.</strong> 기획자는 규제 검토를 다시 하지 않고도 붙일 수 있는 형태를 얻습니다. 사용자는 손실의 원인이 판단이었는지 실행이었는지를 기록으로 구분하게 됩니다.</p>
+      <div class="term">
+        <div class="ln"><span class="pr">$</span> python3 scripts/plan.py stats</div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="dim">완결 매매 10건</span></div>
+        <div class="ln">  규율 점수   <span class="ok">90.8 / 100</span>     승률 70%     평균 +0.12R</div>
+        <div class="ln">  테제 적중률 57%</div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="dim">감정별 성과 (좋다 나쁘다는 데이터가 말한다)</span></div>
+        <div class="ln">  확신      <span class="ok">+2.05R</span>      복수매매   <span class="no">-2.83R</span></div>
+        <div class="ln">  불안      <span class="ok">+0.27R</span>      FOMO       <span class="no">-0.93R</span></div>
+        <div class="ln"> </div>
+        <div class="ln">  계획을 지킨 매매 5건   <span class="ok">평균 +1.68R</span></div>
+        <div class="ln">  계획을 어긴 매매 5건   <span class="no">평균 -1.45R</span></div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="dim">본 도구는 투자 자문이 아니며 계획 구조화 도구입니다</span></div>
+      </div>
+      <p style="margin-top:var(--s4);font-size:13.5px;color:#8b857c;">지킨 매매와 어긴 매매를 갈라 보여줍니다. 손실이 판단 탓인지 실행 탓인지를 사용자가 스스로 알게 되는 지점입니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4><code>fx-timing-sheet</code><em>마이리얼트립, 마케터와 기획자</em></h4>
+      <p><strong>아이디어.</strong> 환율 조회는 이미 어디서나 됩니다. 마케터가 막히는 지점은 그다음입니다. 이 움직임이 캠페인을 켤 만한 신호인가, 그리고 카피에 쓸 숫자가 맞는가. 그래서 조회 도구가 아니라 <strong>켤지 말지를 판정하는 도구</strong>로 잡았습니다.</p>
+      <p><strong>구현.</strong> 목적지 통화가 원화 대비 얼마나 절하됐는지 하나만 보고 켬, 중립, 끔으로 판정합니다. 판정이 서면 캠페인에 필요한 사실만 담은 한 장을 만듭니다. 환율은 공개 API로 실시간, 물가와 체감 지표는 재현되도록 스냅샷으로 고정했습니다.</p>
+      <p><strong>실무 효과.</strong> 언어 모델에게 카피를 시키면 그럴듯한 숫자를 지어냅니다. 마케터는 그걸 다시 검증해야 합니다. 이 도구는 <strong>검증된 숫자만 넘겨주고 판단은 사람에게</strong> 남깁니다. 과장 광고로 넘어가지 않게 표현 가이드도 같이 나옵니다.</p>
+      <div class="term">
+        <div class="ln"><span class="pr">$</span> python3 scripts/radar.py factsheet --destination JP</div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="dim">[fx] JPY 시계열 1,281건 수신 (2021-08-09 ~ 2026-08-07)</span></div>
+        <div class="ln"> </div>
+        <div class="ln">지금이 일본 환율 마케팅 타이밍인가?</div>
+        <div class="ln">  <span class="ok">ON</span>   3M 절하율 +4.4%   <span class="dim">임계값 ON 3% 이상 / OFF -3% 이하</span></div>
+        <div class="ln">  현재 100JPY = 894.27원, 최근 5년 내 하위 11% 수준</div>
+        <div class="ln">  빅맥 4,292원 vs 서울 5,500원 (-22%)</div>
+        <div class="ln">  다음 연휴 D-7. 예약 피크 지남, 임박 특가 소구로 전환 권장</div>
+        <div class="ln"> </div>
+        <div class="ln"><span class="no">[역풍 경고]</span> 최근 2주 +0.3% 반등. 3M이 1.4%p 더 반등하면 ON 소멸</div>
+      </div>
+      <p style="margin-top:var(--s4);font-size:13.5px;color:#8b857c;">마지막 줄이 예선에서 틀렸던 자리입니다. 그때는 에러도 경고도 없이 2주 절하율을 -10.55%로 냈습니다. 지금은 실제 값과 함께 신호가 사라지는 조건까지 같이 냅니다.</p>
+    </div>
+
+    
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 화면을 하나 더 붙이려면 아래 셋만 하면 된다.
+     ① 메인에 카드 <button class="card" data-go="새이름">를 넣는다
+     ② <div class="view 클래스" id="v-새이름" data-route="/새이름" data-tone="테마" data-ac="색"> 화면을 만든다
+     ③ 그 테마의 CSS 한 덩어리를 쓴다 (body[data-view="테마"] 와 .클래스)
+     라우트 표도 와이프 색도 여기서 자동으로 읽는다. 스크립트는 고칠 일이 없다. */
+  var VIEWS = {}, THEME = {}, WIPE = {};
+  document.querySelectorAll('.view[data-route]').forEach(function(v){
+    var r = v.getAttribute('data-route');
+    VIEWS[r] = v.id;
+    THEME[r] = v.getAttribute('data-tone') || 'home';
+    WIPE[r]  = v.getAttribute('data-ac') || 'var(--blue)';
+  });
+  var back = document.querySelector('[data-back]');
+  var io;
+
+  function fmt(n){ return n.toLocaleString('en-US'); }
+  function countUp(el){
+    var target = parseInt(el.getAttribute('data-count'),10);
+    var sfx = el.getAttribute('data-suffix') || '';
+    if (reduce || target === 0){ el.textContent = fmt(target) + sfx; return; }
+    var dur = 1000, t0 = null;
+    function step(ts){
+      if (t0===null) t0=ts;
+      var p = Math.min((ts-t0)/dur,1), e = 1-Math.pow(1-p,3);
+      el.textContent = fmt(Math.round(target*e)) + sfx;
+      if (p<1){ requestAnimationFrame(step); }
+      else { el.classList.add('pop'); setTimeout(function(){ el.classList.remove('pop'); }, 340); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function observe(root){
+    if (io) io.disconnect();
+    var targets = root.querySelectorAll('.rise,#chart,#ab,.figs,.figs2,.tiles');
+    if (!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('on'); });
+      root.querySelectorAll('[data-count]').forEach(countUp);
+      return;
+    }
+    io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (!en.isIntersecting) return;
+        en.target.classList.add('on');
+        en.target.querySelectorAll('[data-count]').forEach(countUp);
+        io.unobserve(en.target);
+      });
+    }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+    targets.forEach(function(el){ el.classList.remove('on'); io.observe(el); });
+  }
+
+  function route(){
+    var key = (location.hash || '#/').slice(1);
+    if (!VIEWS[key]) key = '/';
+    document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('on'); });
+    var el = document.getElementById(VIEWS[key]);
+    el.classList.add('on');
+    document.body.setAttribute('data-view', THEME[key]);
+    back.hidden = (key === '/');
+    window.scrollTo(0,0);
+    observe(el);
+  }
+
+  /* 화면을 훑고 지나가는 색으로 세계를 바꾼다. 색은 목적지의 색이다. */
+  var wipe = document.getElementById('wipe');
+  var wiping = false;
+
+  function go(hash){
+    if (reduce){ location.hash = hash; return; }
+    var key = hash.slice(1);
+    wipe.style.background = WIPE[key] || 'var(--blue)';
+    wipe.classList.remove('go');
+    void wipe.offsetWidth;
+    wipe.classList.add('go');
+    wiping = true;
+    setTimeout(function(){ location.hash = hash; }, 330);
+    setTimeout(function(){ wipe.classList.remove('go'); wiping = false; }, 800);
+  }
+
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    var target = '#/' + b.getAttribute('data-go');
+    if (!VIEWS[target.slice(1)]){ b.hidden = true; return; }   /* 화면이 아직 없으면 카드를 숨긴다 */
+    b.addEventListener('click', function(){ go(target); });
+  });
+  document.querySelectorAll('a[href^="#/"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var h = a.getAttribute('href');
+      if (h === location.hash || (h === '#/' && !location.hash)) return;
+      e.preventDefault();
+      go(h);
+    });
+  });
+
+  /* 읽은 만큼 차오르는 선 */
+  var prog = document.getElementById('prog'), praf = null;
+  function drawProg(){
+    praf = null;
+    var h = document.documentElement.scrollHeight - innerHeight;
+    var p = h > 0 ? Math.min(scrollY / h, 1) : 0;
+    prog.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+  }
+  if (!reduce){
+    addEventListener('scroll', function(){ if (!praf) praf = requestAnimationFrame(drawProg); }, {passive:true});
+    addEventListener('resize', function(){ if (!praf) praf = requestAnimationFrame(drawProg); });
+  }
+
+  addEventListener('hashchange', function(){ route(); if (!reduce) drawProg(); });
+  route();
+  if (!reduce) drawProg();
+
+  /* Lithos spotlight + Magnet. 포인터가 있는 기기에서만. */
+  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches){
+    document.querySelectorAll('.card').forEach(function(c){
+      var raf = null, pull = 8;
+      function move(e){
+        if (raf) return;
+        raf = requestAnimationFrame(function(){
+          raf = null;
+          var r = c.getBoundingClientRect();
+          var x = e.clientX - r.left, y = e.clientY - r.top;
+          c.style.setProperty('--mx', x + 'px');
+          c.style.setProperty('--my', y + 'px');
+          c.style.setProperty('--dx', ((x / r.width - 0.5) * pull).toFixed(2) + 'px');
+          c.style.setProperty('--dy', (((y / r.height - 0.5) * pull) - 4).toFixed(2) + 'px');
+        });
+      }
+      c.addEventListener('pointerenter', function(){ c.classList.add('pull'); });
+      c.addEventListener('pointermove', move);
+      c.addEventListener('pointerleave', function(){
+        c.classList.remove('pull');
+        c.style.setProperty('--dx','0px'); c.style.setProperty('--dy','0px');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
