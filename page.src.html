@@ -136,6 +136,14 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
   transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
 .mailbtn:hover{background:var(--blue50);color:var(--blue700);transform:translateY(-2px);}
 
+.skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s6) 0 0;}
+.skills span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--g700);
+  background:var(--g100);padding:8px 14px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:7px;}
+.skills span::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--g400);flex:none;}
+.skills span.key{color:var(--blue700);background:var(--blue50);}
+.skills span.key::before{background:var(--blue);}
+
 .lab{font-size:14px;font-weight:700;color:var(--g900);display:block;margin-bottom:var(--s5);letter-spacing:-.02em;}
 .lab em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s3);font-size:13.5px;}
 
@@ -474,6 +482,16 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
       <p class="role">Marketing / Crypto, Web3, Brand IP / 4년차</p>
       <p class="lede">숫자가 안 보이면, 볼 도구를 만듭니다.</p>
       <p class="sub">무엇을 측정할지 직접 정하고, 없는 도구는 AI로 만들어 사용합니다. 직전엔 가상자산 마케팅 책임자로 4년간 일했습니다.</p>
+      <div class="skills">
+        <span class="key">AI 활용</span>
+        <span>퍼널 설계</span>
+        <span>세그먼트 운영</span>
+        <span>A/B 테스트</span>
+        <span>데이터 분석</span>
+        <span>글로벌 KOL</span>
+        <span>커뮤니티 운영</span>
+        <span>위기 대응</span>
+      </div>
     </div>
 
     <div class="sec">
