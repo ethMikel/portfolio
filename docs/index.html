@@ -523,6 +523,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   /* 코덱스 장의 항목은 터미널 블록까지 묶으면 한 항목이 한 페이지를 통째로 밀어낸다.
      본문은 문서처럼 흐르게 두고 터미널 블록만 안 갈라지게 한다 */
   .xv .item{break-inside:auto;}
+  .pdiv{display:block!important;break-before:page;}
+  .pdiv-note{font-size:13.5px;color:var(--g600);max-width:60ch;margin:0 0 var(--s6);}
+  .pdiv-note a{font-weight:700;color:var(--blue);}
+  .pdiv .card{border-top:3px solid var(--ac);}
   .card .go{display:none;}
 }
 
@@ -731,6 +735,17 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<!-- 인쇄 전용 간지: 포트폴리오 시작. 카드 장표는 printPrep이 메인에서 복제해 채운다 -->
+<div class="pdiv" id="print-divider" hidden>
+  <div class="wrap">
+    <span class="lab">AI 활용 포트폴리오<em>코드는 AI가 씁니다. 문제는 그다음입니다</em></span>
+    <p class="pdiv-note">여기서부터는 직접 만든 것들입니다. 네 개 프로젝트를 차례로 싣습니다.
+    실제로 눌러보고 실행해볼 수 있는 웹 버전이 보기 더 편합니다.
+    <a href="https://ethmikel.github.io/portfolio/">ethmikel.github.io/portfolio</a></p>
+    <div class="pdiv-cards"></div>
+  </div>
 </div>
 
 <!-- ══════════════ 서브: 게임 ══════════════ -->
@@ -1218,6 +1233,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       var t = parseInt(el.getAttribute('data-count'),10);
       el.textContent = fmt(t) + (el.getAttribute('data-suffix') || '');
     });
+    var pd = document.getElementById('print-divider');
+    if (pd && !pd.dataset.filled){
+      var src = document.querySelector('.sec-cards .cards');
+      if (src) pd.querySelector('.pdiv-cards').innerHTML = src.outerHTML;
+      pd.dataset.filled = '1';
+      pd.hidden = false;
+    }
   }
   if (new URLSearchParams(location.search).has('print')) printPrep();
   addEventListener('beforeprint', printPrep);
