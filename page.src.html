@@ -152,7 +152,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .hstats{display:flex;flex-wrap:wrap;gap:var(--s10);margin-top:var(--s8);}
 .hs{text-align:left;transition:transform .2s var(--ease);}
 .hs:hover{transform:translateY(-2px);}
-.hs b{display:block;font-size:28px;font-weight:800;letter-spacing:-.04em;color:var(--blue);font-variant-numeric:tabular-nums;}
+.hs b{display:block;font-size:30px;font-weight:800;letter-spacing:-.045em;color:var(--blue);font-variant-numeric:tabular-nums;}
 .hs span{font-size:12.5px;color:var(--g500);font-weight:600;}
 .go-work{font-size:15px;font-weight:700;color:#fff;background:var(--blue);
   padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:var(--s2);
@@ -172,13 +172,13 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
   transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
 .mailbtn:hover{background:var(--blue50);color:var(--blue700);transform:translateY(-2px);}
 
-.traits{display:flex;flex-direction:column;border-top:2px solid var(--g900);}
-.tr{display:grid;grid-template-columns:52px 220px 1fr;gap:var(--s4);align-items:baseline;
-  padding:var(--s5) var(--s2);border-bottom:1px solid var(--g200);}
-.tno{font-size:13px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;}
+.traits{display:flex;flex-direction:column;}
+.tr{display:grid;grid-template-columns:200px 1fr;gap:var(--s4);align-items:baseline;
+  padding:var(--s5) 0;border-bottom:1px solid var(--g100);}
+.tr:first-child{padding-top:0;}
 .tr b{display:block;font-size:17px;font-weight:800;letter-spacing:-.03em;}
-.tr p{font-size:14.5px;line-height:1.7;color:var(--g700);margin:0;}
-@media (max-width:720px){.tr{grid-template-columns:44px 1fr;}.tr p{grid-column:2;}}
+.tr p{font-size:15px;line-height:1.7;color:var(--g700);margin:0;}
+@media (max-width:720px){.tr{grid-template-columns:1fr;gap:var(--s1);}}
 .skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s5) 0 0;}
 .skills span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--g700);
   background:var(--g100);padding:8px 14px;border-radius:999px;
@@ -192,16 +192,17 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 /* 메인 섹션 헤더: 번호 킥커 → 큰 제목 → 설명의 3단 위계 */
 #v-home{counter-reset:secn;}
 #v-home .sec{counter-increment:secn;}
-#v-home .sec > .lab{font-size:25px;font-weight:800;letter-spacing:-.035em;margin-bottom:var(--s7);}
+#v-home .sec > .lab{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-bottom:var(--s10);}
 #v-home .sec > .lab::before{content:counter(secn,decimal-leading-zero);
   display:block;font-size:13px;font-weight:800;color:var(--blue);
   letter-spacing:.04em;margin-bottom:var(--s2);font-variant-numeric:tabular-nums;}
-#v-home .sec > .lab em{display:block;margin:var(--s2) 0 0;font-size:15px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
+#v-home .sec > .lab em{display:block;margin:var(--s3) 0 0;font-size:16px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
 
 .sec{padding:0 0 var(--s20);}
-/* 메인 섹션 리듬 통일: 헤어라인 + 상하 여백 고정 */
-#v-home .sec{border-top:1px solid var(--g200);padding:var(--s10) 0 var(--s14);}
-#v-home .hero{padding-bottom:var(--s12);}
+/* 메인 섹션 리듬: 섹션 상하 80px, 제목 아래 40px 한 가지 규칙만 */
+#v-home .sec{border-top:1px solid var(--g200);padding:var(--s20) 0;}
+#v-home .hero{padding-bottom:var(--s20);}
+#v-home .skills{margin-top:var(--s8);}
 
 /* ── 경력 그래프 ───────────────────────────────────────────────────────── */
 .panel{background:var(--g50);border-radius:var(--r);padding:var(--s8);}
@@ -231,7 +232,9 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 
 .figs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);margin:0 0 var(--s10);}
 .figs > div{background:var(--g50);border-radius:var(--r);padding:var(--s6) var(--s5);}
-.figs b{display:block;font-size:30px;font-weight:700;letter-spacing:-.045em;line-height:1.15;}
+.figs b{display:block;font-size:38px;font-weight:800;letter-spacing:-.05em;line-height:1.15;}
+#v-home .figs > div{text-align:center;padding:var(--s8) var(--s5);}
+#v-home .figs > div span{font-size:13.5px;}
 .figs span{display:block;font-size:13px;color:var(--g600);margin-top:var(--s1);line-height:1.5;}
 
 /* ── 경력 요약 ─────────────────────────────────────────────────────────── */
@@ -651,9 +654,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec" id="about">
       <span class="lab">일하는 방식</span>
       <div class="traits">
-        <div class="tr rise"><span class="tno">01</span><b>결과 지향</b><p>노출이 아니라 매출을 셉니다. 한 캠페인을 단일 매출 46억까지 따라갔습니다.</p></div>
-        <div class="tr rise"><span class="tno">02</span><b>AI 실행력</b><p>쓸 도구가 없으면 직접 만듭니다. 봇, 대시보드, 인트라넷, 웹게임까지 혼자 완주했습니다.</p></div>
-        <div class="tr rise"><span class="tno">03</span><b>위기 대응력</b><p>해킹, 상장폐지 등 9건의 위기에서 전 채널의 메시지를 하나로 지켰습니다.</p></div>
+        <div class="tr rise"><b>결과 지향</b><p>노출이 아니라 매출을 셉니다. 한 캠페인을 단일 매출 46억까지 따라갔습니다.</p></div>
+        <div class="tr rise"><b>AI 실행력</b><p>쓸 도구가 없으면 직접 만듭니다. 봇, 대시보드, 인트라넷, 웹게임까지 혼자 완주했습니다.</p></div>
+        <div class="tr rise"><b>위기 대응력</b><p>해킹, 상장폐지 등 9건의 위기에서 전 채널의 메시지를 하나로 지켰습니다.</p></div>
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
