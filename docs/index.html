@@ -151,8 +151,24 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .hero > *:nth-child(3){animation-delay:.22s;}
 .hero > *:nth-child(4){animation-delay:.31s;}
 .hero > *:nth-child(5){animation-delay:.40s;}
+.hero > *:nth-child(6){animation-delay:.49s;}
 @keyframes heroin{to{opacity:1;transform:none;}}
 
+.hero .hi{font-size:19px;color:var(--g600);margin:0 0 var(--s3);}
+.hero .big{font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1.32;margin:0;}
+.hero .big em{font-style:normal;color:var(--blue);}
+.big .hline{display:block;opacity:0;transform:translateY(14px);animation:heroin .6s var(--ease) both;}
+.big .hline:nth-of-type(1){animation-delay:.15s;}
+.big .hline:nth-of-type(2){animation-delay:.55s;}
+.big .hline:nth-of-type(3){animation-delay:.95s;}
+.big .hline:nth-of-type(4){animation-delay:1.35s;}
+.hnum{font-variant-numeric:tabular-nums;}
+.cta2{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin-top:var(--s6);}
+.go-work{font-size:15px;font-weight:700;color:#fff;background:var(--blue);
+  padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:var(--s2);
+  transition:transform .2s var(--ease),background-color .2s var(--ease);}
+.go-work:hover{transform:translateY(-2px);background:var(--blue700);color:#fff;}
+.cta2 .mailbtn{margin-left:0;}
 .hero .nm{font-size:52px;font-weight:700;letter-spacing:-.045em;line-height:1.15;margin:0;
   display:flex;align-items:baseline;flex-wrap:wrap;gap:0 var(--s2);}
 .hero .nm em{font-style:normal;font-size:19px;font-weight:500;color:var(--g400);letter-spacing:-.01em;margin-left:var(--s4);}
@@ -454,7 +470,7 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .hero > *{opacity:1;transform:none;animation:none;}
+  .hero > *,.big .hline{opacity:1;transform:none;animation:none;}
   .rise,.rise.on{opacity:1;transform:none;transition:none;}
   .view.on{animation:none;}
   .bar .fill,.abr .t i{transform:scaleX(1);transition:none;}
@@ -539,8 +555,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   .gsplit{grid-template-columns:1fr;}
   .map,.figs2{grid-template-columns:repeat(2,1fr);}
   .hero{padding:var(--s12) 0 var(--s10);}
-  .hero .nm{font-size:38px;}
-  .hero .lede{font-size:22px;}
+  .hero .big{font-size:30px;}
   .panel{padding:var(--s6);}
   .abr{grid-template-columns:104px 1fr 62px;gap:var(--s3);font-size:13.5px;}
 }
@@ -571,10 +586,18 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <div class="wrap">
 
     <div class="hero">
-      <p class="nm">전동현<em>Jeon Donghyeon</em><a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a></p>
-      <p class="role">Marketing / Crypto, Brand IP / 4년차</p>
-      <p class="lede">숫자가 안 보이면, 볼 도구를 만듭니다.</p>
+      <p class="hi">안녕하세요,</p>
+      <h1 class="big">
+        <span class="hline">단일 매출 <b class="hnum" data-count="46" data-suffix="억">0억</b>을 만들고,</span>
+        <span class="hline">글로벌 <b class="hnum" data-count="500" data-suffix="만">0만</b> 유저를 모으고,</span>
+        <span class="hline">숫자가 안 보이면 볼 도구를 만드는</span>
+        <span class="hline">마케터 <em>전동현</em>입니다.</span>
+      </h1>
       <p class="sub">무엇을 측정할지 직접 정하고, 없는 도구는 AI로 만들어 사용합니다. 직전엔 가상자산 마케팅 책임자로 4년간 일했습니다.</p>
+      <div class="cta2">
+        <a class="go-work" href="#work" data-scroll="work">프로젝트 보러가기 <span class="arw">&darr;</span></a>
+        <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
+      </div>
       <div class="skills">
         <span class="key">AI 활용</span>
         <span>크립토</span>
@@ -599,7 +622,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         </div>
         <div class="legend">
           <div class="lg l3"><i></i><b>바이애틱</b><span class="dt">2020.08 ~ 2022.11</span><span class="rr">생명공학연구소 대리</span></div>
-          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2023.02</span><span class="rr">NFT 서비스 기획과 마케팅, 프리랜서 리서처</span></div>
+          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2023.02</span><span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span></div>
           <div class="lg"><i></i><b>CRIPCO</b><span class="dt">2022.11 ~ 2026.06</span><span class="rr">LINE FRIENDS 자회사, 블록체인 마케팅 책임자</span></div>
         </div>
       </div>
@@ -624,7 +647,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <a class="more" href="#/career">경력 더 자세히 보기 &rarr;</a>
     </div>
 
-    <div class="sec sec-cards">
+    <div class="sec sec-cards" id="work">
       <span class="lab">AI를 쓰는 방식<em>코드는 AI가 씁니다. 문제는 그다음입니다</em></span>
       <div class="cards">
         <button class="card rise" style="--ac:var(--c-game);" data-go="game">
@@ -663,7 +686,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="tw rise">
         <table><tbody>
           <tr><td class="k">2022.11 ~ 2026.06</td><td><strong>CRIPCO</strong> (LINE FRIENDS 자회사)</td><td>블록체인 마케팅 책임자</td></tr>
-          <tr><td class="k">2021.11 ~ 2023.02</td><td><strong>블록체인 SNS / 커뮤니티 운영</strong></td><td>NFT 서비스 기획과 마케팅, 프리랜서 리서처</td></tr>
+          <tr><td class="k">2021.11 ~ 2023.02</td><td><strong>블록체인 SNS / 커뮤니티 운영</strong></td><td>크립토 서비스 기획과 마케팅, 프리랜서 리서처</td></tr>
           <tr><td class="k">2020.08 ~ 2022.11</td><td><strong>바이애틱</strong></td><td>생명공학연구소 대리, 진단키트 QC와 공정관리</td></tr>
           <tr><td class="k">2015.03 ~ 2020.02</td><td><strong>명지전문대학교</strong></td><td>세무회계과</td></tr>
           <tr><td class="k">2016.08 ~ 2018.05</td><td><strong>병역</strong></td><td>육군 병장 만기전역</td></tr>
@@ -691,8 +714,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
 
     <div class="item rise">
-      <h4>침체기에 FOMO를 만든 NFT 런칭 경매</h4>
-      <p>앞선 프로젝트들은 무료나 저가 중심이었고, 이번에는 처음으로 의미 있는 가격에 팔아 실제 매출을 만들어야 했습니다. 하필 NFT가 트렌드에서 빠르게 식던 시점이라 가격만 붙여서는 팔리지 않았습니다. 그래서 <strong>잉글리시 옥션 방식의 프라이빗 경매로 가격을 먼저 끌어올린 뒤, 참여한 B2B 면면을 공개해 일반 구매자의 구매를 가속</strong>하는 구조로 갔습니다. 경매 구조는 외부 어드바이저와 공동으로 설계했고, 마케팅과 KOL, 커뮤니티 동원은 직접 맡았습니다.</p>
+      <h4>침체기에 FOMO를 만든 런칭 경매</h4>
+      <p>앞선 프로젝트들은 무료나 저가 중심이었고, 이번에는 처음으로 의미 있는 가격에 팔아 실제 매출을 만들어야 했습니다. 하필 시장이 빠르게 식던 시점이라 가격만 붙여서는 팔리지 않았습니다. 그래서 <strong>잉글리시 옥션 방식의 프라이빗 경매로 가격을 먼저 끌어올린 뒤, 참여한 B2B 면면을 공개해 일반 구매자의 구매를 가속</strong>하는 구조로 갔습니다. 경매 구조는 외부 어드바이저와 공동으로 설계했고, 마케팅과 KOL, 커뮤니티 동원은 직접 맡았습니다.</p>
       <div class="meta">
         <div>티저: 24시간 만에 팔로워 25K 성장. 티저 트윗 299,353 노출, 14,561 좋아요</div>
         <div>퍼널: 사전 신청 16,355명, 지갑 등록 91,118개</div>
@@ -1193,6 +1216,21 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     addEventListener('scroll', function(){ if (!praf) praf = requestAnimationFrame(drawProg); }, {passive:true});
     addEventListener('resize', function(){ if (!praf) praf = requestAnimationFrame(drawProg); });
   }
+
+  /* 히어로 숫자는 줄이 올라오는 타이밍에 맞춰 차오른다 */
+  document.querySelectorAll('.hnum').forEach(function(el, i){
+    if (reduce){ countUp(el); return; }
+    setTimeout(function(){ countUp(el); }, 250 + i * 400);
+  });
+
+  /* 섹션 앵커는 해시 라우터와 충돌하므로 스크롤로 직접 이동 */
+  document.querySelectorAll('[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var t = document.getElementById(a.getAttribute('data-scroll'));
+      if (t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    });
+  });
 
   addEventListener('hashchange', function(){ route(); if (!reduce) drawProg(); });
   route();
