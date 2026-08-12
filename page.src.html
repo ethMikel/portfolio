@@ -189,13 +189,19 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 
 .lab{font-size:14px;font-weight:700;color:var(--g900);display:block;margin-bottom:var(--s5);letter-spacing:-.02em;}
 .lab em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s3);font-size:13.5px;}
-/* 리포트식 섹션 번호: 메인의 각 장에 01, 02 순번 */
+/* 메인 섹션 헤더: 번호 킥커 → 큰 제목 → 설명의 3단 위계 */
 #v-home{counter-reset:secn;}
 #v-home .sec{counter-increment:secn;}
+#v-home .sec > .lab{font-size:25px;font-weight:800;letter-spacing:-.035em;margin-bottom:var(--s7);}
 #v-home .sec > .lab::before{content:counter(secn,decimal-leading-zero);
-  color:var(--blue);margin-right:10px;font-variant-numeric:tabular-nums;}
+  display:block;font-size:13px;font-weight:800;color:var(--blue);
+  letter-spacing:.04em;margin-bottom:var(--s2);font-variant-numeric:tabular-nums;}
+#v-home .sec > .lab em{display:block;margin:var(--s2) 0 0;font-size:15px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
 
 .sec{padding:0 0 var(--s20);}
+/* 메인 섹션 리듬 통일: 헤어라인 + 상하 여백 고정 */
+#v-home .sec{border-top:1px solid var(--g200);padding:var(--s10) 0 var(--s14);}
+#v-home .hero{padding-bottom:var(--s12);}
 
 /* ── 경력 그래프 ───────────────────────────────────────────────────────── */
 .panel{background:var(--g50);border-radius:var(--r);padding:var(--s8);}
@@ -210,17 +216,18 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .on .bar .fill{transform:scaleX(1);}
 
 .legend{display:grid;gap:var(--s3);margin-top:var(--s6);}
-.lg{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s3);font-size:15px;
+.lg{display:block;font-size:15px;
   opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s var(--ease);}
 .on .lg{opacity:1;transform:none;}
 .on .lg:nth-child(2){transition-delay:.08s;}
 .on .lg:nth-child(3){transition-delay:.16s;}
-.lg i{width:9px;height:9px;border-radius:999px;flex:none;background:var(--g900);align-self:center;}
+.lg i{display:inline-block;width:9px;height:9px;border-radius:999px;background:var(--g900);margin-right:9px;vertical-align:1px;}
 .lg.l2 i{background:var(--g600);} .lg.l3 i{background:var(--g400);}
-.lg b{font-weight:700;letter-spacing:-.02em;}
-.lg .dt{color:var(--g600);font-size:14px;}
-.lg .rr{color:var(--g500);font-size:14px;}
-.lg .ds{flex-basis:100%;font-size:13.5px;color:var(--g600);padding-left:21px;margin-top:1px;}
+.lg .dt{display:block;font-size:13.5px;font-weight:700;color:var(--g500);font-variant-numeric:tabular-nums;}
+.lg b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em;margin-top:4px;padding-left:18px;}
+.lg .rr{font-size:14px;font-weight:500;color:var(--g500);margin-left:10px;letter-spacing:-.01em;}
+.lg .ds{display:block;font-size:14px;color:var(--g600);margin-top:3px;padding-left:18px;}
+.legend{gap:var(--s5);}
 
 .figs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);margin:0 0 var(--s10);}
 .figs > div{background:var(--g50);border-radius:var(--r);padding:var(--s6) var(--s5);}
@@ -572,6 +579,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   /* 코덱스 장의 항목은 터미널 블록까지 묶으면 한 항목이 한 페이지를 통째로 밀어낸다.
      본문은 문서처럼 흐르게 두고 터미널 블록만 안 갈라지게 한다 */
   .xv .item{break-inside:auto;}
+  .impact{break-inside:avoid;}
   .pdiv{display:block!important;break-before:page;}
   .pdiv-note{font-size:13.5px;color:var(--g600);max-width:60ch;margin:0 0 var(--s6);}
   .pdiv-note a{font-weight:700;color:var(--blue);}
@@ -636,16 +644,16 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="hstats">
         <button class="hs" data-go="case-auction"><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></button>
         <button class="hs" data-go="case-minini"><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></button>
-        <button class="hs" data-go="case-leaderboard"><b data-count="20" data-suffix="배">0배</b><span>거래량 성장</span></button>
+        <button class="hs" data-go="case-social"><b data-count="20" data-suffix="만">0만</b><span>X 팔로워 증가</span></button>
       </div>
     </div>
 
     <div class="sec" id="about">
       <span class="lab">일하는 방식</span>
       <div class="traits">
-        <div class="tr rise"><span class="tno">01</span><b>결과까지 따라갑니다</b><p>노출과 클릭에서 멈추지 않습니다. 신청, 등록, 매출까지 따라갑니다.</p></div>
-        <div class="tr rise"><span class="tno">02</span><b>없는 도구는 만듭니다</b><p>필요한 도구는 직접 만듭니다. 봇, 대시보드, 인트라넷, 게임까지.</p></div>
-        <div class="tr rise"><span class="tno">03</span><b>다섯 권역을 직접 굴립니다</b><p>5개 권역의 KOL과 커뮤니티를 직접 운영하고, 위기의 메시지를 지켰습니다.</p></div>
+        <div class="tr rise"><span class="tno">01</span><b>결과 지향</b><p>노출이 아니라 매출을 셉니다. 한 캠페인을 단일 매출 46억까지 따라갔습니다.</p></div>
+        <div class="tr rise"><span class="tno">02</span><b>AI 실행력</b><p>쓸 도구가 없으면 직접 만듭니다. 봇, 대시보드, 인트라넷, 웹게임까지 혼자 완주했습니다.</p></div>
+        <div class="tr rise"><span class="tno">03</span><b>위기 대응력</b><p>해킹, 상장폐지 등 9건의 위기에서 전 채널의 메시지를 하나로 지켰습니다.</p></div>
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
@@ -665,35 +673,17 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="panel" id="chart">
         <div class="axis"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
         <div class="bars">
-          <div class="bar b3"><div class="fill" style="left:9.72%;width:37.5%;"></div></div>
-          <div class="bar b2"><div class="fill" style="left:30.56%;width:22.22%;"></div></div>
           <div class="bar b1"><div class="fill" style="left:47.22%;right:0;"></div></div>
+          <div class="bar b2"><div class="fill" style="left:30.56%;width:22.22%;"></div></div>
+          <div class="bar b3"><div class="fill" style="left:9.72%;width:37.5%;"></div></div>
         </div>
         <div class="legend">
-          <div class="lg l3"><i></i><b>바이애틱</b><span class="dt">2020.08 ~ 2022.11</span><span class="rr">생명공학연구소 대리</span><span class="ds">수의용 진단키트 QC와 공정관리</span></div>
-          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2023.02</span><span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span><span class="ds">블로그와 텔레그램 커뮤니티를 직접 만들어 운영했습니다</span></div>
-          <div class="lg"><i></i><b>CRIPCO</b><span class="dt">2022.11 ~ 2026.06</span><span class="rr">LINE FRIENDS 자회사, 블록체인 마케팅 책임자</span><span class="ds">크립토 프로덕트 런칭부터 토큰 운영, 상장 대응까지. 마케팅, KOL, 커뮤니티, 캠페인 총괄</span></div>
+          <div class="lg"><span class="dt"><i></i>2022.11 ~ 2026.06</span><b>CRIPCO<span class="rr">블록체인 마케팅 책임자, LINE FRIENDS 자회사</span></b><span class="ds">크립토 프로덕트 런칭부터 토큰 운영, 상장 대응까지. 마케팅, KOL, 커뮤니티, 캠페인 총괄</span></div>
+          <div class="lg l2"><span class="dt"><i></i>2021.11 ~ 2023.02</span><b>블록체인 SNS / 커뮤니티 운영<span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span></b><span class="ds">블로그와 텔레그램 커뮤니티를 직접 만들어 운영했습니다</span></div>
+          <div class="lg l3"><span class="dt"><i></i>2020.08 ~ 2022.11</span><b>바이애틱<span class="rr">생명공학연구소 대리</span></b><span class="ds">수의용 진단키트 QC와 공정관리</span></div>
         </div>
       </div>
 
-    </div>
-
-    <div class="sec">
-      <span class="lab">CRIPCO<em>블록체인 마케팅 책임자</em></span>
-      <div class="figs">
-        <div><b data-count="20" data-suffix="만">0만</b><span>직접 운영한 X 계정에서 늘린 팔로워</span></div>
-        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 만든 구매 등록</span></div>
-        <div><b data-count="94" data-suffix="%">0</b><span>코드 사용률, 17,691명이 이벤트 참여형 코드를 입력</span></div>
-        <div><b data-count="350" data-suffix="K">0</b><span>운영한 커뮤니티의 합산 규모</span></div>
-      </div>
-
-      <div class="sum">
-        <div class="sm rise"><h4>마케팅 캠페인</h4><p>다회차(14회)에 나눠 돌리며, 매 회차 어떤 KOL이 실제 참여를 만들었는지 보고 다음 회차의 대상과 보상을 다시 짰습니다. 한 번에 터뜨리는 대신 매번 배우는 방식입니다.</p></div>
-        <div class="sm rise"><h4>위기 커뮤니케이션</h4><p>해킹, 상장폐지 등 9건 이상의 상황에서 전 채널 메시지를 하나로 유지했습니다. 한 계정은 13개월을 끊김 없이 운영했습니다.</p></div>
-        <div class="sm rise"><h4>오프라인 이벤트</h4><p>KBW 사이드 행사를 3년 연속 직접 기획했습니다. 행사로 끝내지 않고 참여자 데이터를 받아 다음 캠페인으로 넘겼습니다.</p></div>
-        <div class="sm rise"><h4>KOL 마케팅</h4><p>다섯 권역은 채널과 언어가 다릅니다. 300명 이상을 규모별로 나눠 접근을 달리했고, 에이전시 3사는 직접 골라 운영했습니다.</p></div>
-      </div>
-      <a class="more" href="#/career">경력 더 자세히 보기 &rarr;</a>
     </div>
 
     <div class="sec" id="results">
@@ -713,11 +703,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <p>LINE 미니게임으로 들어온 유저를 가입 전환까지 데려갔습니다.</p>
           <span class="go">자세히 &rarr;</span>
         </button>
-        <button class="kc rise" data-go="case-leaderboard">
-          <b class="kn" data-count="20" data-suffix="배">0배</b>
-          <span class="kt">거래량 성장</span>
-          <span class="kk2">거래 리더보드 이벤트</span>
-          <p>남의 보상 이벤트에 얹히는 확산 설계로 판을 키웠습니다.</p>
+        <button class="kc rise" data-go="case-social">
+          <b class="kn" data-count="20" data-suffix="만">0만</b>
+          <span class="kt">X 팔로워 증가</span>
+          <span class="kk2">계정 직접 운영</span>
+          <p>다섯 계정을 직접 운영해 캠페인의 관심을 팔로워로 남겼습니다.</p>
           <span class="go">자세히 &rarr;</span>
         </button>
       </div>
@@ -726,9 +716,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec" id="projects">
       <span class="lab">전체 프로젝트<em>마케팅부터 직접 만든 도구까지</em></span>
       <div class="flt" role="tablist">
-        <button class="on" data-cat="all">전체 (15)</button>
-        <button data-cat="mkt">Marketing (5)</button>
-        <button data-cat="evt">Event (3)</button>
+        <button class="on" data-cat="all">전체 (14)</button>
+        <button data-cat="mkt">Marketing (6)</button>
+        <button data-cat="evt">Event (1)</button>
         <button data-cat="ai">AI (7)</button>
       </div>
       <div class="tw rise">
@@ -739,10 +729,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="mkt" data-link="#/career"><td class="k">토큰 KOL 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>14회차 학습 운영, 참여 코드 사용률 94%</td></tr>
             <tr data-cat="mkt" data-link="#/case-minini"><td class="k">minini 연계 코드 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>글로벌 500만 유저, 가입 전환 50만</td></tr>
             <tr data-cat="mkt" data-link="#/case-leaderboard"><td class="k">거래 리더보드 이벤트</td><td><span class="pc mkt">Marketing</span></td><td>보상 이벤트 기획과 확산 마케팅, 거래량 20배</td></tr>
+            <tr data-cat="mkt" data-link="#/case-social"><td class="k">X 계정 운영</td><td><span class="pc mkt">Marketing</span></td><td>5개 계정 합산 200K 직접 운영, 캠페인 기간 팔로워 20만 증가</td></tr>
             <tr data-cat="mkt" data-link="#/career"><td class="k">위기 커뮤니케이션</td><td><span class="pc mkt">Marketing</span></td><td>해킹, 상장폐지 등 9건, 전 채널 메시지 통일</td></tr>
-            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2023 성수동</td><td><span class="pc evt">Event</span></td><td>1,000명 이상 VIP 사이드 행사</td></tr>
-            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2024 워커힐</td><td><span class="pc evt">Event</span></td><td>IP 그래픽 랩핑과 QR 인증, 현장 참여 16K</td></tr>
-            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2025 강남</td><td><span class="pc evt">Event</span></td><td>500명 이상 DJ 파티, 명동 LINE FRIENDS 전시</td></tr>
+            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 사이드 행사 3년 연속</td><td><span class="pc evt">Event</span></td><td>1,000명 VIP 행사부터 현장 인증 16K, DJ 파티까지 매년 직접 기획</td></tr>
             <tr data-cat="ai" data-link="#/game"><td class="k">History Fantasy League</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
             <tr data-cat="ai" data-link="#/tools"><td class="k">X 마케팅 운영 툴</td><td><span class="pc ai">AI</span></td><td>트윗 수집, A/B 태깅, 감성 분석 자동화</td></tr>
             <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 대시보드</td><td><span class="pc ai">AI</span></td><td>주간 파이프라인 7단계 자동 운영</td></tr>
@@ -753,6 +742,24 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           </tbody>
         </table>
       </div>
+    </div>
+
+    <div class="sec">
+      <span class="lab">CRIPCO<em>블록체인 마케팅 책임자</em></span>
+      <div class="figs">
+        <div><b data-count="20" data-suffix="만">0만</b><span>직접 운영한 X 계정에서 늘린 팔로워</span></div>
+        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 만든 구매 등록</span></div>
+        <div><b data-count="94" data-suffix="%">0</b><span>코드 사용률, 17,691명이 이벤트 참여형 코드를 입력</span></div>
+        <div><b data-count="350" data-suffix="K">0</b><span>운영한 커뮤니티의 합산 규모</span></div>
+      </div>
+
+      <div class="sum">
+        <div class="sm rise"><h4>마케팅 캠페인</h4><p>다회차(14회)에 나눠 돌리며, 매 회차 어떤 KOL이 실제 참여를 만들었는지 보고 다음 회차의 대상과 보상을 다시 짰습니다. 한 번에 터뜨리는 대신 매번 배우는 방식입니다.</p></div>
+        <div class="sm rise"><h4>위기 커뮤니케이션</h4><p>해킹, 상장폐지 등 9건 이상의 상황에서 전 채널 메시지를 하나로 유지했습니다. 한 계정은 13개월을 끊김 없이 운영했습니다.</p></div>
+        <div class="sm rise"><h4>오프라인 이벤트</h4><p>KBW 사이드 행사를 3년 연속 직접 기획했습니다. 행사로 끝내지 않고 참여자 데이터를 받아 다음 캠페인으로 넘겼습니다.</p></div>
+        <div class="sm rise"><h4>KOL 마케팅</h4><p>다섯 권역은 채널과 언어가 다릅니다. 300명 이상을 규모별로 나눠 접근을 달리했고, 에이전시 3사는 직접 골라 운영했습니다.</p></div>
+      </div>
+      <a class="more" href="#/career">경력 더 자세히 보기 &rarr;</a>
     </div>
 
     <div class="sec sec-cards" id="work">
@@ -786,6 +793,16 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
+      </div>
+    </div>
+
+    <div class="sec impact">
+      <span class="lab">숫자로 남았습니다<em>위 이야기의 결과만 모으면 이렇습니다</em></span>
+      <div class="figs">
+        <div><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></div>
+        <div><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></div>
+        <div><b data-count="20" data-suffix="만">0만</b><span>X 팔로워 증가</span></div>
+        <div><b data-count="20" data-suffix="배">0배</b><span>전년 대비 거래량</span></div>
       </div>
     </div>
 
@@ -832,7 +849,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="meta">
         <div>티저: 24시간 만에 팔로워 25K 성장. 티저 트윗 299,353 노출, 14,561 좋아요</div>
         <div>퍼널: 사전 신청 16,355명, 구매 등록 91,118개</div>
-        <div>결과: 경매 6일간 입찰 2,749건, 653.99 ETH 유치. 동시 런칭한 경쟁 프로젝트 중 1위</div>
+        <div>결과: 경매 6일간 입찰 2,749건, 653.99 ETH 유치. 경쟁 런칭 10곳 중 4곳이 완판 실패한 달, 그중 1위</div>
       </div>
     </div>
 
@@ -840,6 +857,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <h4>KBW 3년 연속 오프라인 사이드 행사</h4>
       <p>코리아 블록체인 위크는 매년 여러 프로젝트가 더 나은 행사로 경쟁하는 시기입니다. 3년 동안 매년 다른 콘셉트와 채널로 사이드 행사를 직접 기획하고 운영했습니다.</p>
       <p>행사를 단발로 끝내지 않으려고 <strong>앱 기반 참석자 인증을 행사에 연동</strong>했습니다. 입장과 참여를 인증으로 받으면 누가 왔는지가 데이터로 남고, 그 명단이 곧 사후 캠페인의 대상이 됩니다. 행사장에서 쓰고 버리는 이벤트가 아니라 다음 캠페인의 입력으로 만든 겁니다.</p>
+      <p>KBW 밖까지 합치면 <strong>4년간 13회의 오프라인 행사</strong>를 만들었습니다. 서울, 부산, 뉴욕, 싱가포르, 도쿄에서 열었고, 뉴욕 타임스스퀘어 전광판 캠페인도 두 차례 집행했습니다.</p>
       <div class="meta">
         <div>2023 성수동: 1,000명 이상 규모의 VIP 사이드 이벤트</div>
         <div>2024 워커힐 호텔: 본 행사장 구조물에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 현장 인증 16K</div>
@@ -849,7 +867,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
     <div class="item rise">
       <h4>글로벌 KOL을 권역별로 다르게</h4>
-      <p>한국, 일본, 베트남, 대만 / 태국, CIS / 서구권. <strong>5개 권역 300명 이상</strong>을 에이전시 3사와 함께 운영했습니다. 팔로워 규모로 소형, 중형, 대형을 나눠 접근을 달리했고, 소형은 텔레그램으로 직접 소통하며 관계를 쌓았습니다. 규모별 운영 기준을 직접 가이드로 정리해 일관되게 적용했습니다. 에이전시는 후보를 비교해 직접 선정하고 역할 분담을 협의한 뒤 운영까지 관리했습니다.</p>
+      <p>한국, 일본, 베트남, 대만 / 태국, CIS / 서구권. <strong>5개 권역 300명 이상</strong>을 에이전시 3사와 함께 운영했습니다. 팔로워 규모로 소형, 중형, 대형을 나눠 접근을 달리했고, 소형은 텔레그램으로 직접 소통하며 관계를 쌓았습니다. 규모별 운영 기준을 직접 가이드로 정리해 일관되게 적용했습니다. 에이전시는 후보를 비교해 직접 선정하고 역할 분담을 협의한 뒤 운영까지 관리했습니다. 함께 움직인 커뮤니티 스태프 12명은 채용부터 계약 종료까지 직접 관리했습니다.</p>
     </div>
 
     <div class="item rise">
@@ -866,7 +884,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
     <div class="item rise">
       <h4>위기에는 메시지를 하나로</h4>
-      <p>해킹, 거래소 상장폐지, 체인 마이그레이션, 연예인 이슈 등 <strong>9건 이상</strong>의 상황에서 여러 채널에 일관된 외부 메시지를 빠르게 운영해 커뮤니티 신뢰가 끊기지 않도록 관리했습니다.</p>
+      <p>해킹, 거래소 상장폐지, 체인 마이그레이션, 연예인 이슈 등 <strong>9건 이상</strong>의 상황에서 여러 채널에 일관된 외부 메시지를 빠르게 운영해 커뮤니티 신뢰가 끊기지 않도록 관리했습니다. 해킹 때는 개별 피해 신고 35건을 거래 기록과 하나씩 대조해 검증하고, 세 차례에 걸쳐 보상까지 끝냈습니다.</p>
       <p>X 5개 계정 합산 200K 이상, Discord 66K 이상, Telegram 83K 이상을 직접 운영했습니다. 채널마다 사용자 행동과 기대치가 달라 톤 가이드를 따로 만들었습니다. 한 토큰 프로젝트의 X 계정은 13개월간 끊김 없이 직접 운영했습니다.</p>
     </div>
   </div>
@@ -888,11 +906,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
     <div class="item rise">
       <h4>실행</h4>
-      <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 구매 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다.</p>
+      <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 구매 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다. 본 경매가 끝난 뒤에도 43주 동안 공개 경매를 이어가며 가격을 관리했습니다.</p>
       <div class="meta">
         <div>사전 신청 16,355명, 구매 등록 91,118개</div>
         <div>경매 6일간 입찰 2,749건, 최종 653.99 ETH (약 46억 원)</div>
-        <div>동시 런칭한 경쟁 프로젝트 중 1위</div>
+        <div>동시 런칭한 경쟁 프로젝트 중 1위. 10곳 중 4곳이 완판에 실패한 달이었습니다</div>
       </div>
     </div>
     <p class="talk rise">안 팔리던 시장에서 46억이 나온 가격 설계의 뒷순서는, 만나서 이어 말씀드리겠습니다.</p>
@@ -942,12 +960,40 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
     <div class="item rise">
       <h4>실행</h4>
-      <p>이벤트 구조 기획과 확산을 맡았습니다. 리더보드로 참여자들의 경쟁 심리를 자극하고, 커뮤니티와 KOL 채널로 참여를 끌어올렸습니다. 별도 광고 예산 없이 기존 채널과 보상 설계만으로 진행했습니다.</p>
+      <p>이벤트 구조 기획과 확산을 맡았습니다. 리더보드로 참여자들의 경쟁 심리를 자극하고, 커뮤니티와 KOL 채널로 참여를 끌어올렸습니다. 별도 광고 예산 없이 기존 채널과 보상 설계만으로 진행했고, 확산에는 평소 관리하던 국내 KOL 텔레그램 채널망을 동원했습니다.</p>
       <div class="meta">
         <div>전년 대비 거래량 20배</div>
+        <div>확산 채널: 국내 KOL 텔레그램 392개, 합산 구독 280만</div>
+        <div>광고 예산 0원, 기존 채널과 보상 설계만으로 진행</div>
       </div>
     </div>
     <p class="talk rise">예산 없이 거래량을 20배로 만든 설계는, 만나서 이어 말씀드리겠습니다.</p>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<div class="view cv2" id="v-case-social" data-route="/case-social" data-tone="home" data-ac="var(--blue)">
+  <div class="wrap sv">
+    <span class="kk"><i></i>CRIPCO, Marketing</span>
+    <h2>직접 운영한 계정으로, 팔로워 20만</h2>
+    <div class="item rise">
+      <h4>문제 정의</h4>
+      <p>크립토 시장의 관심은 캠페인과 함께 사라집니다. 반짝 유입을 계정에 남는 자산으로 바꾸지 못하면, 다음 캠페인을 매번 처음부터 시작해야 했습니다.</p>
+    </div>
+    <div class="item rise">
+      <h4>가설</h4>
+      <p>계정을 공지판이 아니라 <strong>미디어처럼 운영하면, 캠페인이 몰고 온 관심이 팔로워로 남는다</strong>고 봤습니다. 채널마다 사용자와 기대치가 달라서 톤 가이드를 계정별로 따로 만들었습니다.</p>
+    </div>
+    <div class="item rise">
+      <h4>실행</h4>
+      <p>X 다섯 계정을 직접 운영했습니다. 티저, 캠페인, 행사의 트래픽을 계정으로 모으고, 발행할 때마다 변수를 하나씩 바꿔 보며 발행 기준을 다듬었습니다. 한 계정은 13개월을 끊김 없이 운영했습니다.</p>
+      <div class="meta">
+        <div>캠페인 기간 X 팔로워 20만 증가</div>
+        <div>런칭 티저 24시간 만에 팔로워 25K</div>
+        <div>직접 운영 계정 합산 200K 이상</div>
+      </div>
+    </div>
+    <p class="talk rise">반짝 유입을 남는 팔로워로 바꾼 발행 기준은, 만나서 이어 말씀드리겠습니다.</p>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
