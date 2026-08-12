@@ -199,13 +199,20 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .tr b{display:block;font-size:17px;font-weight:800;letter-spacing:-.03em;}
 .tr p{font-size:15px;line-height:1.7;color:var(--g700);margin:0;}
 @media (max-width:720px){.tr{grid-template-columns:1fr;gap:var(--s1);}}
-.skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s5) 0 0;}
-.skills span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--g700);
-  background:var(--g100);padding:8px 14px;border-radius:999px;
-  display:inline-flex;align-items:center;gap:7px;}
+.skills{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;margin:var(--s5) 0 0;}
+.skills span{font-size:12.5px;font-weight:600;letter-spacing:-.015em;color:var(--g700);
+  background:var(--g100);padding:7px 11px;border-radius:999px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;}
 .skills span::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--g400);flex:none;}
 .skills span.key{color:var(--blue700);background:var(--blue50);}
 .skills span.key::before{background:var(--blue);}
+/* 성향 그룹 색: 도메인(보라) / 사고(청록) / 사람과 운영(주황) */
+.skills span.gd{color:var(--c-net);background:color-mix(in srgb, var(--c-net) 9%, white);}
+.skills span.gd::before{background:var(--c-net);}
+.skills span.gt{color:var(--c-tool);background:color-mix(in srgb, var(--c-tool) 9%, white);}
+.skills span.gt::before{background:var(--c-tool);}
+.skills span.go2{color:#a06a1a;background:color-mix(in srgb, var(--c-game) 14%, white);}
+.skills span.go2::before{background:var(--c-game);}
 
 .lab{font-size:14px;font-weight:700;color:var(--g900);display:block;margin-bottom:var(--s5);letter-spacing:-.02em;}
 .lab em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s3);font-size:13.5px;}
@@ -214,8 +221,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 #v-home .sec{counter-increment:secn;}
 #v-home .sec > .lab{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-bottom:var(--s10);}
 #v-home .sec > .lab::before{content:counter(secn,decimal-leading-zero);
-  display:block;font-size:13px;font-weight:800;color:var(--blue);
-  letter-spacing:.04em;margin-bottom:var(--s2);font-variant-numeric:tabular-nums;}
+  font-weight:800;color:var(--blue);margin-right:14px;font-variant-numeric:tabular-nums;}
 #v-home .sec > .lab em{display:block;margin:var(--s3) 0 0;font-size:16px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
 
 .sec{padding:0 0 var(--s20);}
@@ -350,7 +356,7 @@ body[data-view="codex"] footer{border-top-color:#26262a;color:#7d7a74;}
 body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 
 /* ══ 서브 공통 ══════════════════════════════════════════════════════════ */
-.sv{padding-top:var(--s16);}   /* 축약형을 쓰면 .wrap의 좌우 패딩을 0으로 덮어쓴다 */
+.sv{padding-top:var(--s16);padding-bottom:var(--s20);}   /* 축약형을 쓰면 .wrap의 좌우 패딩을 0으로 덮어쓴다 */
 .sv .kk{display:inline-flex;align-items:center;gap:var(--s2);font-size:13px;font-weight:700;color:var(--ac);}
 .sv .kk i{width:7px;height:7px;border-radius:999px;background:var(--ac);}
 .sv h2{font-size:34px;font-weight:700;letter-spacing:-.045em;margin:var(--s4) 0 var(--s6);line-height:1.25;}
@@ -603,6 +609,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
      본문은 문서처럼 흐르게 두고 터미널 블록만 안 갈라지게 한다 */
   .xv .item{break-inside:auto;}
   .impact{break-inside:avoid;}
+  .skills{flex-wrap:wrap;overflow:visible;}   /* 문서에선 한 줄 스크롤이 없다 */
   .pdiv{display:block!important;break-before:page;}
   .pdiv-note{font-size:13.5px;color:var(--g600);max-width:60ch;margin:0 0 var(--s6);}
   .pdiv-note a{font-weight:700;color:var(--blue);}
@@ -659,7 +666,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         <span class="hline">숫자가 안 보이면 볼 도구를 만드는</span>
         <span class="hline">마케터 <em>전동현</em>입니다.</span>
       </h1>
-      <p class="sub"><strong>무엇을 측정할지</strong> 직접 정하고, 없는 도구는 <strong>AI로 만들어</strong> 씁니다.<br>직전엔 <strong>가상자산 마케팅 책임자</strong>로 4년간 일했습니다.</p>
+      <p class="sub">무엇을 <strong>측정</strong>할지 직접 정하고, 없는 도구는 <strong>AI</strong>로 만들어 씁니다.</p>
       <div class="cta2">
         <a class="go-work" href="#results" data-scroll="results">성과부터 보기 <span class="arw">&darr;</span></a>
         <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
@@ -680,14 +687,14 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
-        <span>크립토</span>
-        <span>블록체인</span>
-        <span>문제 정의</span>
-        <span>파트너 협상</span>
-        <span>데이터 분석</span>
-        <span>글로벌 KOL</span>
-        <span>커뮤니티 운영</span>
-        <span>위기 대응</span>
+        <span class="gd">크립토</span>
+        <span class="gd">블록체인</span>
+        <span class="gt">문제 정의</span>
+        <span class="gt">데이터 분석</span>
+        <span class="go2">파트너 협상</span>
+        <span class="go2">글로벌 KOL</span>
+        <span class="go2">커뮤니티 운영</span>
+        <span class="go2">위기 대응</span>
       </div>
     </div>
 
