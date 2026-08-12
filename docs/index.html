@@ -86,7 +86,12 @@ body[data-view="tools"] .brand em,body[data-view="tools"] .back{color:#7d8a8e;}
 body[data-view="codex"] .topbar{background:rgb(13 13 14 / 86%);border-bottom-color:#26262a;}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);height:56px;}
 .brand{font-size:17px;font-weight:700;letter-spacing:-.03em;}
-.brand em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s2);font-size:13px;letter-spacing:0;}
+.brand em{font-style:normal;font-weight:800;color:var(--blue);margin-left:var(--s2);font-size:15px;letter-spacing:.02em;}
+.topnav{display:flex;gap:var(--s6);}
+.topnav a{font-size:14px;font-weight:600;color:var(--g600);transition:color .2s var(--ease);}
+.topnav a:hover{color:var(--blue);}
+body:not([data-view="home"]) .topnav{display:none;}
+@media (max-width:720px){.topnav{display:none;}}
 .back{font-size:14px;font-weight:600;color:var(--g600);display:inline-flex;align-items:center;gap:var(--s2);}
 .back[hidden]{display:none;}
 .tbr{display:flex;align-items:center;gap:var(--s3);}
@@ -181,7 +186,12 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
   transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
 .mailbtn:hover{background:var(--blue50);color:var(--blue700);transform:translateY(-2px);}
 
-.skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s6) 0 0;}
+.traits{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);}
+.tr{background:var(--g50);border-radius:var(--r);padding:var(--s6);}
+.tr i{display:block;width:10px;height:10px;border-radius:999px;margin-bottom:var(--s4);}
+.tr b{display:block;font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:var(--s2);}
+.tr p{font-size:14.5px;line-height:1.7;color:var(--g700);margin:0;}
+.skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s5) 0 0;}
 .skills span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--g700);
   background:var(--g100);padding:8px 14px;border-radius:999px;
   display:inline-flex;align-items:center;gap:7px;}
@@ -217,6 +227,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .lg b{font-weight:700;letter-spacing:-.02em;}
 .lg .dt{color:var(--g600);font-size:14px;}
 .lg .rr{color:var(--g500);font-size:14px;}
+.lg .ds{flex-basis:100%;font-size:13.5px;color:var(--g600);padding-left:21px;margin-top:1px;}
 
 .figs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3);margin:0 0 var(--s10);}
 .figs > div{background:var(--g50);border-radius:var(--r);padding:var(--s6) var(--s5);}
@@ -286,6 +297,16 @@ td.k{font-weight:700;white-space:nowrap;color:var(--g900);letter-spacing:-.02em;
 th{font-size:13px;color:var(--g600);font-weight:700;background:var(--g50);}
 td{color:var(--g700);}
 
+.flt{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s4);}
+.flt button{font-size:13.5px;font-weight:600;color:var(--g600);background:var(--g100);
+  padding:8px 15px;border-radius:999px;transition:background-color .2s var(--ease),color .2s var(--ease);}
+.flt button.on{background:var(--g900);color:#fff;}
+.plist tbody tr{cursor:pointer;transition:background-color .15s ease;}
+.plist tbody tr:hover{background:var(--g50);}
+.pc{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+.pc.mkt{background:var(--blue50);color:var(--blue700);}
+.pc.evt{background:#fdf0e2;color:#9a5b17;}
+.pc.ai{background:#e9f4ee;color:#1f6b45;}
 footer{border-top:1px solid var(--g200);padding:var(--s8) 0 var(--s20);font-size:14px;color:var(--g500);}
 body[data-view="game"] footer{border-top-color:var(--ink-500);color:var(--paper-300);}
 body[data-view="codex"] footer{border-top-color:#26262a;color:#7d7a74;}
@@ -507,7 +528,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
   /* 화면 전용 부품은 문서에 없다 */
   .topbar,#prog,#wipe,.pdfbtn,.back,footer{display:none!important;}
-  .sec-cards,.more{display:none!important;}
+  .sec-cards,.more,.flt,.topnav{display:none!important;}
+  .traits,.tr{break-inside:avoid;}
   .gv .plate,.gv .fade{display:none!important;}   /* 장식 배경. 문서에선 글자를 가리는 유령이 된다 */
 
   /* 하위페이지 = 장. 각 장은 새 페이지에서 시작한다 */
@@ -574,7 +596,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
 <div class="topbar">
   <div class="wrap">
-    <a class="brand" href="#/">전동현<em>Jeon Donghyeon</em></a>
+    <a class="brand" href="#/">전동현<em>PORTFOLIO</em></a>
+    <nav class="topnav">
+      <a href="#about" data-scroll="about">About</a>
+      <a href="#career" data-scroll="career">Career</a>
+      <a href="#work" data-scroll="work">Work</a>
+      <a href="#contact" data-scroll="contact">Contact</a>
+    </nav>
     <div class="tbr">
       <a class="back" href="#/" data-back hidden>&larr; 메인</a>
     </div>
@@ -588,8 +616,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="hero">
       <p class="hi">안녕하세요,</p>
       <h1 class="big">
-        <span class="hline">단일 매출 <b class="hnum" data-count="46" data-suffix="억">0억</b>을 만들고,</span>
-        <span class="hline">글로벌 <b class="hnum" data-count="500" data-suffix="만">0만</b> 유저를 모으고,</span>
         <span class="hline">숫자가 안 보이면 볼 도구를 만드는</span>
         <span class="hline">마케터 <em>전동현</em>입니다.</span>
       </h1>
@@ -597,6 +623,15 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="cta2">
         <a class="go-work" href="#work" data-scroll="work">프로젝트 보러가기 <span class="arw">&darr;</span></a>
         <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
+      </div>
+    </div>
+
+    <div class="sec" id="about">
+      <span class="lab">이런 사람입니다</span>
+      <div class="traits">
+        <div class="tr rise"><i style="background:var(--blue);"></i><b>결과 지향</b><p>노출과 클릭에서 멈추지 않습니다. 신청, 등록, 매출까지 따라갑니다.</p></div>
+        <div class="tr rise"><i style="background:var(--c-tool);"></i><b>AI 실행력</b><p>필요한 도구는 직접 만듭니다. 봇, 대시보드, 인트라넷, 게임까지.</p></div>
+        <div class="tr rise"><i style="background:var(--c-net);"></i><b>글로벌 운영력</b><p>5개 권역의 KOL과 커뮤니티를 직접 운영하고, 위기의 메시지를 지켰습니다.</p></div>
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
@@ -611,7 +646,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
 
-    <div class="sec">
+    <div class="sec" id="career">
       <span class="lab">경력<em>2020.08 ~ 2026.06</em></span>
       <div class="panel" id="chart">
         <div class="axis"><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
@@ -621,9 +656,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <div class="bar b1"><div class="fill" style="left:47.22%;right:0;"></div></div>
         </div>
         <div class="legend">
-          <div class="lg l3"><i></i><b>바이애틱</b><span class="dt">2020.08 ~ 2022.11</span><span class="rr">생명공학연구소 대리</span></div>
-          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2023.02</span><span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span></div>
-          <div class="lg"><i></i><b>CRIPCO</b><span class="dt">2022.11 ~ 2026.06</span><span class="rr">LINE FRIENDS 자회사, 블록체인 마케팅 책임자</span></div>
+          <div class="lg l3"><i></i><b>바이애틱</b><span class="dt">2020.08 ~ 2022.11</span><span class="rr">생명공학연구소 대리</span><span class="ds">수의용 진단키트 QC와 공정관리</span></div>
+          <div class="lg l2"><i></i><b>블록체인 SNS / 커뮤니티 운영</b><span class="dt">2021.11 ~ 2023.02</span><span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span><span class="ds">블로그와 텔레그램 커뮤니티를 직접 만들어 운영했습니다</span></div>
+          <div class="lg"><i></i><b>CRIPCO</b><span class="dt">2022.11 ~ 2026.06</span><span class="rr">LINE FRIENDS 자회사, 블록체인 마케팅 책임자</span><span class="ds">크립토 프로덕트 런칭부터 토큰 운영, 상장 대응까지. 마케팅, KOL, 커뮤니티, 캠페인 총괄</span></div>
         </div>
       </div>
 
@@ -681,6 +716,38 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
 
+    <div class="sec" id="projects">
+      <span class="lab">전체 프로젝트<em>마케팅부터 직접 만든 도구까지</em></span>
+      <div class="flt" role="tablist">
+        <button class="on" data-cat="all">전체 (15)</button>
+        <button data-cat="mkt">Marketing (5)</button>
+        <button data-cat="evt">Event (3)</button>
+        <button data-cat="ai">AI (7)</button>
+      </div>
+      <div class="tw rise">
+        <table class="plist">
+          <thead><tr><th>프로젝트</th><th>분류</th><th>요약</th></tr></thead>
+          <tbody>
+            <tr data-cat="mkt" data-link="#/career"><td class="k">런칭 경매 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>프라이빗 경매로 가격을 세우고 FOMO 설계, 단일 매출 46억</td></tr>
+            <tr data-cat="mkt" data-link="#/career"><td class="k">토큰 KOL 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>14회차 학습 운영, 참여 코드 사용률 94%</td></tr>
+            <tr data-cat="mkt" data-link="#/career"><td class="k">minini 연계 코드 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>글로벌 500만 유저, 50만 지갑 연결</td></tr>
+            <tr data-cat="mkt" data-link="#/career"><td class="k">거래 리더보드 이벤트</td><td><span class="pc mkt">Marketing</span></td><td>보상 이벤트 기획과 확산 마케팅, 거래량 20배</td></tr>
+            <tr data-cat="mkt" data-link="#/career"><td class="k">위기 커뮤니케이션</td><td><span class="pc mkt">Marketing</span></td><td>해킹, 상장폐지 등 9건, 전 채널 메시지 통일</td></tr>
+            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2023 성수동</td><td><span class="pc evt">Event</span></td><td>1,000명 이상 VIP 사이드 행사</td></tr>
+            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2024 워커힐</td><td><span class="pc evt">Event</span></td><td>IP 그래픽 랩핑과 QR 인증, 지갑 16K 등록</td></tr>
+            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2025 강남</td><td><span class="pc evt">Event</span></td><td>500명 이상 DJ 파티, 명동 LINE FRIENDS 전시</td></tr>
+            <tr data-cat="ai" data-link="#/game"><td class="k">History Fantasy League</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
+            <tr data-cat="ai" data-link="#/tools"><td class="k">X 마케팅 운영 툴</td><td><span class="pc ai">AI</span></td><td>트윗 수집, A/B 태깅, 감성 분석 자동화</td></tr>
+            <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 대시보드</td><td><span class="pc ai">AI</span></td><td>주간 파이프라인 7단계 자동 운영</td></tr>
+            <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
+            <tr data-cat="ai" data-link="#/codex"><td class="k">brand-demand-radar</td><td><span class="pc ai">AI</span></td><td>리셀 웃돈 신호로 브랜드 발굴, 무신사 과제</td></tr>
+            <tr data-cat="ai" data-link="#/codex"><td class="k">trade-plan-diary</td><td><span class="pc ai">AI</span></td><td>추천 없이 매매 계획을 코치, 카카오페이증권 과제</td></tr>
+            <tr data-cat="ai" data-link="#/codex"><td class="k">fx-timing-sheet</td><td><span class="pc ai">AI</span></td><td>환율 마케팅 타이밍 판정, 마이리얼트립 과제</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="sec">
       <span class="lab">이력 요약</span>
       <div class="tw rise">
@@ -694,7 +761,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
   </div>
-  <footer><div class="wrap foot-row"><span>전동현 / eastboy_12@naver.com</span><button class="pdfbtn" type="button" data-pdf>이 페이지를 PDF로 저장</button></div></footer>
+  <footer id="contact"><div class="wrap foot-row"><span>전동현 / eastboy_12@naver.com</span><button class="pdfbtn" type="button" data-pdf>이 페이지를 PDF로 저장</button></div></footer>
 </div>
 
 <!-- ══════════════ 서브: 경력 ══════════════ -->
@@ -1217,12 +1284,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     addEventListener('resize', function(){ if (!praf) praf = requestAnimationFrame(drawProg); });
   }
 
-  /* 히어로 숫자는 줄이 올라오는 타이밍에 맞춰 차오른다 */
-  document.querySelectorAll('.hnum').forEach(function(el, i){
-    if (reduce){ countUp(el); return; }
-    setTimeout(function(){ countUp(el); }, 250 + i * 400);
-  });
-
   /* 섹션 앵커는 해시 라우터와 충돌하므로 스크롤로 직접 이동 */
   document.querySelectorAll('[data-scroll]').forEach(function(a){
     a.addEventListener('click', function(e){
@@ -1230,6 +1291,23 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       var t = document.getElementById(a.getAttribute('data-scroll'));
       if (t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
     });
+  });
+
+  /* 전체 프로젝트 필터 */
+  var flt = document.querySelector('.flt');
+  if (flt){
+    flt.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      flt.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var cat = b.getAttribute('data-cat');
+      document.querySelectorAll('.plist tbody tr').forEach(function(tr){
+        tr.style.display = (cat === 'all' || tr.getAttribute('data-cat') === cat) ? '' : 'none';
+      });
+    });
+  }
+  document.querySelectorAll('.plist tbody tr[data-link]').forEach(function(tr){
+    tr.addEventListener('click', function(){ go(tr.getAttribute('data-link')); });
   });
 
   addEventListener('hashchange', function(){ route(); if (!reduce) drawProg(); });
