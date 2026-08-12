@@ -169,6 +169,11 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .big .hline:nth-of-type(4){animation-delay:1.35s;}
 .hnum{font-variant-numeric:tabular-nums;}
 .cta2{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin-top:var(--s6);}
+.hstats{display:flex;flex-wrap:wrap;gap:var(--s10);margin-top:var(--s8);}
+.hs{text-align:left;transition:transform .2s var(--ease);}
+.hs:hover{transform:translateY(-2px);}
+.hs b{display:block;font-size:28px;font-weight:800;letter-spacing:-.04em;color:var(--blue);font-variant-numeric:tabular-nums;}
+.hs span{font-size:12.5px;color:var(--g500);font-weight:600;}
 .go-work{font-size:15px;font-weight:700;color:#fff;background:var(--blue);
   padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:var(--s2);
   transition:transform .2s var(--ease),background-color .2s var(--ease);}
@@ -640,6 +645,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         <a class="go-work" href="#work" data-scroll="work">프로젝트 보러가기 <span class="arw">&darr;</span></a>
         <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
       </div>
+      <div class="hstats">
+        <button class="hs" data-go="case-auction"><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></button>
+        <button class="hs" data-go="case-minini"><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></button>
+        <button class="hs" data-go="case-leaderboard"><b data-count="20" data-suffix="배">0배</b><span>거래량 성장</span></button>
+      </div>
     </div>
 
     <div class="sec" id="about">
@@ -694,7 +704,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <b class="kn" data-count="500" data-suffix="만">0만</b>
           <span class="kt">글로벌 유저</span>
           <span class="kk2">minini 연계 코드 캠페인</span>
-          <p>LINE 미니게임으로 들어온 유저를 지갑 연결까지 데려갔습니다.</p>
+          <p>LINE 미니게임으로 들어온 유저를 가입 전환까지 데려갔습니다.</p>
           <span class="go">자세히 &rarr;</span>
         </button>
         <button class="kc rise" data-go="case-leaderboard">
@@ -711,7 +721,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <span class="lab">CRIPCO<em>블록체인 마케팅 책임자</em></span>
       <div class="figs">
         <div><b data-count="20" data-suffix="만">0만</b><span>캠페인 기간 X 팔로워 증가</span></div>
-        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 블록체인 유저의 지갑이 등록된 숫자</span></div>
+        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 구매 등록까지 온 사람</span></div>
         <div><b data-count="94" data-suffix="%">0</b><span>코드 사용률, 17,691명이 이벤트 참여형 코드를 입력</span></div>
         <div><b data-count="350" data-suffix="K">0</b><span>운영한 커뮤니티의 합산 규모</span></div>
       </div>
@@ -773,11 +783,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <tbody>
             <tr data-cat="mkt" data-link="#/case-auction"><td class="k">런칭 경매 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>프라이빗 경매로 가격을 세우고 FOMO 설계, 단일 매출 46억</td></tr>
             <tr data-cat="mkt" data-link="#/career"><td class="k">토큰 KOL 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>14회차 학습 운영, 참여 코드 사용률 94%</td></tr>
-            <tr data-cat="mkt" data-link="#/case-minini"><td class="k">minini 연계 코드 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>글로벌 500만 유저, 50만 지갑 연결</td></tr>
+            <tr data-cat="mkt" data-link="#/case-minini"><td class="k">minini 연계 코드 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>글로벌 500만 유저, 가입 전환 50만</td></tr>
             <tr data-cat="mkt" data-link="#/case-leaderboard"><td class="k">거래 리더보드 이벤트</td><td><span class="pc mkt">Marketing</span></td><td>보상 이벤트 기획과 확산 마케팅, 거래량 20배</td></tr>
             <tr data-cat="mkt" data-link="#/career"><td class="k">위기 커뮤니케이션</td><td><span class="pc mkt">Marketing</span></td><td>해킹, 상장폐지 등 9건, 전 채널 메시지 통일</td></tr>
             <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2023 성수동</td><td><span class="pc evt">Event</span></td><td>1,000명 이상 VIP 사이드 행사</td></tr>
-            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2024 워커힐</td><td><span class="pc evt">Event</span></td><td>IP 그래픽 랩핑과 QR 인증, 지갑 16K 등록</td></tr>
+            <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2024 워커힐</td><td><span class="pc evt">Event</span></td><td>IP 그래픽 랩핑과 QR 인증, 현장 참여 16K</td></tr>
             <tr data-cat="evt" data-link="#/career"><td class="k">KBW 2025 강남</td><td><span class="pc evt">Event</span></td><td>500명 이상 DJ 파티, 명동 LINE FRIENDS 전시</td></tr>
             <tr data-cat="ai" data-link="#/game"><td class="k">History Fantasy League</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
             <tr data-cat="ai" data-link="#/tools"><td class="k">X 마케팅 운영 툴</td><td><span class="pc ai">AI</span></td><td>트윗 수집, A/B 태깅, 감성 분석 자동화</td></tr>
@@ -823,8 +833,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <h4>회차로 쪼갠 KOL 캠페인</h4>
       <p>한 번 크게 터뜨리고 끝내는 대신, 작게 여러 번 돌리며 매번 배우는 방식으로 운영했습니다. 라운드마다 KOL에게 참여 코드를 직접 나눠주고, 라운드가 끝나면 어떤 KOL이 실제 참여를 만들었는지, 어떤 보상과 타이밍이 먹혔는지를 보고 다음 라운드를 다시 설계했습니다. <strong>14번</strong>을 거치며 KOL 구성과 보상 구조를 계속 다듬었습니다.</p>
       <div class="meta">
-        <div>게임 연계: 게임으로 들어온 유저가 코드를 받고 지갑까지 연결되도록 설계. 코드 분배와 등록 안내, 사후 관리를 담당</div>
-        <div>결과: 코드 사용률 94%. 게임 누적 유저 500만 명 이상 중 50만 명 이상이 지갑 연결로 이어짐</div>
+        <div>게임 연계: 게임으로 들어온 유저가 코드를 받고 가입까지 이어지도록 설계. 코드 분배와 등록 안내, 사후 관리를 담당</div>
+        <div>결과: 코드 사용률 94%. 게임 누적 유저 500만 명 이상 중 50만 명 이상이 가입 전환로 이어짐</div>
       </div>
     </div>
 
@@ -833,7 +843,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p>앞선 프로젝트들은 무료나 저가 중심이었고, 이번에는 처음으로 의미 있는 가격에 팔아 실제 매출을 만들어야 했습니다. 하필 시장이 빠르게 식던 시점이라 가격만 붙여서는 팔리지 않았습니다. 그래서 <strong>잉글리시 옥션 방식의 프라이빗 경매로 가격을 먼저 끌어올린 뒤, 참여한 B2B 면면을 공개해 일반 구매자의 구매를 가속</strong>하는 구조로 갔습니다. 경매 구조는 외부 어드바이저와 공동으로 설계했고, 마케팅과 KOL, 커뮤니티 동원은 직접 맡았습니다.</p>
       <div class="meta">
         <div>티저: 24시간 만에 팔로워 25K 성장. 티저 트윗 299,353 노출, 14,561 좋아요</div>
-        <div>퍼널: 사전 신청 16,355명, 지갑 등록 91,118개</div>
+        <div>퍼널: 사전 신청 16,355명, 구매 등록 91,118개</div>
         <div>결과: 경매 6일간 입찰 2,749건, 653.99 ETH 유치. 동시 런칭한 경쟁 프로젝트 중 1위</div>
       </div>
     </div>
@@ -841,10 +851,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>KBW 3년 연속 오프라인 사이드 행사</h4>
       <p>코리아 블록체인 위크는 매년 여러 프로젝트가 더 나은 행사로 경쟁하는 시기입니다. 3년 동안 매년 다른 콘셉트와 채널로 사이드 행사를 직접 기획하고 운영했습니다.</p>
-      <p>행사를 단발로 끝내지 않으려고 <strong>앱 기반 보유자 인증을 행사에 연동</strong>했습니다. 입장과 참여를 인증으로 받으면 누가 왔는지가 데이터로 남고, 그 명단이 곧 사후 캠페인의 대상이 됩니다. 행사장에서 쓰고 버리는 이벤트가 아니라 다음 캠페인의 입력으로 만든 겁니다.</p>
+      <p>행사를 단발로 끝내지 않으려고 <strong>앱 기반 참석자 인증을 행사에 연동</strong>했습니다. 입장과 참여를 인증으로 받으면 누가 왔는지가 데이터로 남고, 그 명단이 곧 사후 캠페인의 대상이 됩니다. 행사장에서 쓰고 버리는 이벤트가 아니라 다음 캠페인의 입력으로 만든 겁니다.</p>
       <div class="meta">
         <div>2023 성수동: 1,000명 이상 규모의 VIP 사이드 이벤트</div>
-        <div>2024 워커힐 호텔: 본 행사장 구조물에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 지갑 16K 등록</div>
+        <div>2024 워커힐 호텔: 본 행사장 구조물에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 현장 인증 16K</div>
         <div>2025 강남: 파트너 공동 500명 이상 DJ 파티, 명동 LINE FRIENDS 매장 전시</div>
       </div>
     </div>
@@ -857,7 +867,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>토큰 운영과 상장 대응</h4>
       <p>런칭만 하고 끝나는 자리가 아니었습니다. 토큰이 살아 있는 동안 벌어지는 일을 마케팅 쪽에서 받아냈습니다.</p>
-      <p><strong>체인을 옮길 때</strong>는 보유자가 자산을 잃지 않는 것이 전부였습니다. 무엇을 언제까지 해야 하는지를 채널마다 다른 형태로 반복해 알렸고, 기한이 다가올수록 안내 밀도를 올렸습니다. <strong>거래 지원이 끊길 위험이 불거졌을 때</strong>는 추측이 커뮤니티에서 먼저 돌지 않도록 확인된 사실만 빠르게, 같은 문장으로 내보냈습니다. 그리고 <strong>새로 상장을 준비할 때</strong>는 마케팅 쪽 전략을 세워 퇴사 시점까지 끌고 갔습니다.</p>
+      <p><strong>체인을 옮길 때</strong>는 고객이 자산을 잃지 않는 것이 전부였습니다. 무엇을 언제까지 해야 하는지를 채널마다 다른 형태로 반복해 알렸고, 기한이 다가올수록 안내 밀도를 올렸습니다. <strong>거래 지원이 끊길 위험이 불거졌을 때</strong>는 추측이 커뮤니티에서 먼저 돌지 않도록 확인된 사실만 빠르게, 같은 문장으로 내보냈습니다. 그리고 <strong>새로 상장을 준비할 때</strong>는 마케팅 쪽 전략을 세워 퇴사 시점까지 끌고 갔습니다.</p>
     </div>
 
     <div class="item rise">
@@ -890,9 +900,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
     <div class="item rise">
       <h4>실행</h4>
-      <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 지갑 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다.</p>
+      <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 구매 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다.</p>
       <div class="meta">
-        <div>사전 신청 16,355명, 지갑 등록 91,118개</div>
+        <div>사전 신청 16,355명, 구매 등록 91,118개</div>
         <div>경매 6일간 입찰 2,749건, 최종 653.99 ETH (약 46억 원)</div>
         <div>동시 런칭한 경쟁 프로젝트 중 1위</div>
       </div>
@@ -913,14 +923,14 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
     <div class="item rise">
       <h4>가설</h4>
-      <p>LINE 메신저 안에서 도는 초간단 미니게임이라면 기존 유저 기반으로 빠르게 퍼질 수 있다고 봤습니다. 바이럴이 강한 동남아시아를 집중 타깃으로 잡았고, 게임으로 들어온 유저가 참여 코드를 받아 지갑 연결까지 이어지도록 동선을 설계했습니다.</p>
+      <p>LINE 메신저 안에서 도는 초간단 미니게임이라면 기존 유저 기반으로 빠르게 퍼질 수 있다고 봤습니다. 바이럴이 강한 동남아시아를 집중 타깃으로 잡았고, 게임으로 들어온 유저가 참여 코드를 받아 가입 전환까지 이어지도록 동선을 설계했습니다.</p>
     </div>
     <div class="item rise">
       <h4>실행</h4>
       <p>코드 분배와 등록 안내, 사후 관리를 맡았습니다. 국가별 유저 증감을 추적해 반응이 오는 권역에 예산을 집중했고, 이벤트 전후 변화로 효과를 검증했습니다. 인도네시아와 대만에서 폭발적인 반응이 나왔습니다.</p>
       <div class="meta">
         <div>2개월 만에 글로벌 500만 유저</div>
-        <div>50만 명 이상이 지갑 연결까지 이어짐, 참여 코드 사용률 94%</div>
+        <div>50만 명 이상이 가입 전환까지 이어짐, 참여 코드 사용률 94%</div>
         <div>X 팔로워 20만 증가 동반</div>
       </div>
     </div>
@@ -1410,6 +1420,12 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     addEventListener('scroll', function(){ if (!praf) praf = requestAnimationFrame(drawProg); }, {passive:true});
     addEventListener('resize', function(){ if (!praf) praf = requestAnimationFrame(drawProg); });
   }
+
+  /* 히어로 숫자는 로드 직후 차오른다 */
+  document.querySelectorAll('.hstats [data-count]').forEach(function(el, i){
+    if (reduce){ countUp(el); return; }
+    setTimeout(function(){ countUp(el); }, 500 + i * 220);
+  });
 
   /* 섹션 앵커는 해시 라우터와 충돌하므로 스크롤로 직접 이동 */
   document.querySelectorAll('[data-scroll]').forEach(function(a){
