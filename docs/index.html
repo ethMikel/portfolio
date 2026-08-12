@@ -224,6 +224,13 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
   font-weight:800;color:var(--blue);margin-right:14px;font-variant-numeric:tabular-nums;}
 #v-home .sec > .lab em{display:block;margin:var(--s3) 0 0;font-size:16px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
 #v-home .sec > .lab small{font-size:15px;font-weight:600;color:var(--g500);margin-left:12px;letter-spacing:-.01em;}
+/* Contact 버튼: 섹션 제목 자체가 mailto 버튼 */
+#v-home .sec > .cbtn{display:inline-flex;align-items:baseline;margin-bottom:0;
+  padding:16px 32px;border:2px solid var(--g900);border-radius:999px;font-size:28px;
+  transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
+#v-home .sec > .cbtn:hover{background:var(--g900);color:#fff;transform:translateY(-2px);}
+/* 문서 전용 이메일 줄 */
+.printmail{display:none;}
 
 .sec{padding:0 0 var(--s20);}
 /* 메인 섹션 리듬: 섹션 상하 80px, 제목 아래 40px 한 가지 규칙만 */
@@ -611,6 +618,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   .xv .item{break-inside:auto;}
   .impact{break-inside:avoid;}
   .skills{flex-wrap:wrap;overflow:visible;}   /* 문서에선 한 줄 스크롤이 없다 */
+  .printmail{display:block!important;font-size:15px;font-weight:600;color:var(--g700);margin:var(--s4) 0 0;}
   .pdiv{display:block!important;break-before:page;}
   .pdiv-note{font-size:13.5px;color:var(--g600);max-width:60ch;margin:0 0 var(--s6);}
   .pdiv-note a{font-weight:700;color:var(--blue);}
@@ -670,8 +678,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p class="sub">무엇을 <strong>측정</strong>할지 직접 정하고, 없는 도구는 <strong>AI</strong>로 만들어 씁니다.</p>
       <div class="cta2">
         <a class="go-work" href="#results" data-scroll="results">성과부터 보기 <span class="arw">&darr;</span></a>
-        <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
       </div>
+      <p class="printmail" hidden>eastboy_12@naver.com</p>
       <div class="hstats">
         <button class="hs" data-go="case-auction"><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></button>
         <button class="hs" data-go="case-minini"><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></button>
@@ -850,9 +858,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
     <div class="sec" id="contact">
-      <span class="lab">연락</span>
-      <p style="font-size:17px;color:var(--g700);margin:0 0 var(--s5);">궁금한 숫자가 있으면 이메일로 물어봐 주세요. 근거까지 답합니다.</p>
-      <a class="go-work" href="mailto:eastboy_12@naver.com">이메일 보내기</a>
+      <a class="lab cbtn" href="mailto:eastboy_12@naver.com">Contact.</a>
     </div>
   </div>
   <footer><div class="wrap foot-row"><span>전동현 / eastboy_12@naver.com</span><button class="pdfbtn" type="button" data-pdf>이 페이지를 PDF로 저장</button></div></footer>
