@@ -171,11 +171,13 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
   transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);}
 .mailbtn:hover{background:var(--blue50);color:var(--blue700);transform:translateY(-2px);}
 
-.traits{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);}
-.tr{background:var(--g50);border-radius:var(--r);padding:var(--s6);}
-.tr i{display:block;width:10px;height:10px;border-radius:999px;margin-bottom:var(--s4);}
-.tr b{display:block;font-size:19px;font-weight:800;letter-spacing:-.03em;margin-bottom:var(--s2);}
+.traits{display:flex;flex-direction:column;border-top:2px solid var(--g900);}
+.tr{display:grid;grid-template-columns:52px 220px 1fr;gap:var(--s4);align-items:baseline;
+  padding:var(--s5) var(--s2);border-bottom:1px solid var(--g200);}
+.tno{font-size:13px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;}
+.tr b{display:block;font-size:17px;font-weight:800;letter-spacing:-.03em;}
 .tr p{font-size:14.5px;line-height:1.7;color:var(--g700);margin:0;}
+@media (max-width:720px){.tr{grid-template-columns:44px 1fr;}.tr p{grid-column:2;}}
 .skills{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s5) 0 0;}
 .skills span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--g700);
   background:var(--g100);padding:8px 14px;border-radius:999px;
@@ -186,6 +188,11 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 
 .lab{font-size:14px;font-weight:700;color:var(--g900);display:block;margin-bottom:var(--s5);letter-spacing:-.02em;}
 .lab em{font-style:normal;font-weight:500;color:var(--g500);margin-left:var(--s3);font-size:13.5px;}
+/* 리포트식 섹션 번호: 메인의 각 장에 01, 02 순번 */
+#v-home{counter-reset:secn;}
+#v-home .sec{counter-increment:secn;}
+#v-home .sec > .lab::before{content:counter(secn,decimal-leading-zero);
+  color:var(--blue);margin-right:10px;font-variant-numeric:tabular-nums;}
 
 .sec{padding:0 0 var(--s20);}
 
@@ -598,12 +605,12 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
 <div class="topbar">
   <div class="wrap">
-    <a class="brand" href="#/">전동현<em>PORTFOLIO</em></a>
+    <a class="brand" href="#/">전동현</a>
     <nav class="topnav">
-      <a href="#about" data-scroll="about">About</a>
-      <a href="#career" data-scroll="career">Career</a>
-      <a href="#work" data-scroll="work">Work</a>
-      <a href="#contact" data-scroll="contact">Contact</a>
+      <a href="#about" data-scroll="about">일하는 방식</a>
+      <a href="#career" data-scroll="career">경력</a>
+      <a href="#results" data-scroll="results">케이스</a>
+      <a href="#contact" data-scroll="contact">연락</a>
     </nav>
     <div class="tbr">
       <a class="back" href="#/" data-back hidden>&larr; 메인</a>
@@ -616,14 +623,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <div class="wrap">
 
     <div class="hero">
-      <p class="hi">안녕하세요,</p>
       <h1 class="big">
         <span class="hline">숫자가 안 보이면 볼 도구를 만드는</span>
         <span class="hline">마케터 <em>전동현</em>입니다.</span>
       </h1>
       <p class="sub">무엇을 측정할지 직접 정하고, 없는 도구는 AI로 만들어 사용합니다. 직전엔 가상자산 마케팅 책임자로 4년간 일했습니다.</p>
       <div class="cta2">
-        <a class="go-work" href="#work" data-scroll="work">프로젝트 보러가기 <span class="arw">&darr;</span></a>
+        <a class="go-work" href="#results" data-scroll="results">성과부터 보기 <span class="arw">&darr;</span></a>
         <a class="mailbtn" href="mailto:eastboy_12@naver.com">eastboy_12@naver.com</a>
       </div>
       <div class="hstats">
@@ -634,11 +640,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
 
     <div class="sec" id="about">
-      <span class="lab">이런 사람입니다</span>
+      <span class="lab">일하는 방식</span>
       <div class="traits">
-        <div class="tr rise"><i style="background:var(--blue);"></i><b>결과 지향</b><p>노출과 클릭에서 멈추지 않습니다. 신청, 등록, 매출까지 따라갑니다.</p></div>
-        <div class="tr rise"><i style="background:var(--c-tool);"></i><b>AI 실행력</b><p>필요한 도구는 직접 만듭니다. 봇, 대시보드, 인트라넷, 게임까지.</p></div>
-        <div class="tr rise"><i style="background:var(--c-net);"></i><b>글로벌 운영력</b><p>5개 권역의 KOL과 커뮤니티를 직접 운영하고, 위기의 메시지를 지켰습니다.</p></div>
+        <div class="tr rise"><span class="tno">01</span><b>결과까지 따라갑니다</b><p>노출과 클릭에서 멈추지 않습니다. 신청, 등록, 매출까지 따라갑니다.</p></div>
+        <div class="tr rise"><span class="tno">02</span><b>없는 도구는 만듭니다</b><p>필요한 도구는 직접 만듭니다. 봇, 대시보드, 인트라넷, 게임까지.</p></div>
+        <div class="tr rise"><span class="tno">03</span><b>다섯 권역을 직접 굴립니다</b><p>5개 권역의 KOL과 커뮤니티를 직접 운영하고, 위기의 메시지를 지켰습니다.</p></div>
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
@@ -690,7 +696,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
 
     <div class="sec" id="results">
-      <span class="lab">이런 문제를 풀었습니다<em>숫자부터 보여드립니다</em></span>
+      <span class="lab">케이스<em>숫자부터 보여드립니다. 과정은 눌러서 확인하세요</em></span>
       <div class="kcards">
         <button class="kc rise" data-go="case-auction">
           <b class="kn" data-count="46" data-suffix="억">0억</b>
@@ -795,8 +801,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
     <div class="sec" id="contact">
-      <span class="lab">함께 일하고 싶으시다면</span>
-      <p style="font-size:17px;color:var(--g700);margin:0 0 var(--s5);">가볍게 커피챗도 환영합니다.</p>
+      <span class="lab">연락</span>
+      <p style="font-size:17px;color:var(--g700);margin:0 0 var(--s5);">궁금한 숫자가 있으면 이메일로 물어봐 주세요. 근거까지 답합니다.</p>
       <a class="go-work" href="mailto:eastboy_12@naver.com">이메일 보내기</a>
     </div>
   </div>
