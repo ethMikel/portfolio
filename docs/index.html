@@ -90,6 +90,7 @@ body[data-view="codex"] .topbar{background:rgb(13 13 14 / 86%);border-bottom-col
 .back{font-size:14px;font-weight:600;color:var(--g600);display:inline-flex;align-items:center;gap:var(--s2);}
 .back[hidden]{display:none;}
 .tbr{display:flex;align-items:center;gap:var(--s3);}
+.foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s3);}
 .pdfbtn{font-size:13px;font-weight:600;color:var(--g600);border:1px solid var(--g200);
   padding:7px 14px;border-radius:999px;transition:color .2s var(--ease),border-color .2s var(--ease);}
 .pdfbtn:hover{color:var(--blue);border-color:var(--blue);}
@@ -561,7 +562,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <a class="brand" href="#/">전동현<em>Jeon Donghyeon</em></a>
     <div class="tbr">
       <a class="back" href="#/" data-back hidden>&larr; 메인</a>
-      <button class="pdfbtn" type="button" data-pdf>PDF 저장</button>
     </div>
   </div>
 </div>
@@ -671,7 +671,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
     </div>
   </div>
-  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+  <footer><div class="wrap foot-row"><span>전동현 / eastboy_12@naver.com</span><button class="pdfbtn" type="button" data-pdf>이 페이지를 PDF로 저장</button></div></footer>
 </div>
 
 <!-- ══════════════ 서브: 경력 ══════════════ -->
