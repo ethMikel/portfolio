@@ -17,6 +17,7 @@ IMAGES = {
     "__IMG_SIM__":    "sim.png",
     "__IMG_RESULT__": "result.png",
     "__IMG_TOOL__":   "tool.png",
+    "__IMG_MINI__":   "minini.png",
 }
 PLATE = "title.png"
 FONT = "galmuri11.woff2"
