@@ -351,6 +351,7 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 /* 케이스 흐름도: 단계별 숫자와 그 단계에서 본 것 */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s4);margin:var(--s6) 0 var(--s2);}
 .flow > div{background:var(--g50);border-radius:16px;padding:var(--s5);position:relative;}
+.flow.nb > div + div::before{display:none;}
 .flow > div + div::before{content:"";position:absolute;left:calc(var(--s4) * -1 + 3px);top:50%;
   width:10px;height:10px;border-top:2px solid var(--g300);border-right:2px solid var(--g300);
   transform:translateY(-50%) rotate(45deg);}
@@ -704,7 +705,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         </div>
         <div class="legend">
           <div class="lg"><span class="dt"><i></i>2022.11 ~ 2026.06</span><b>CRIPCO<span class="rr">블록체인 마케팅 책임자, LINE FRIENDS 자회사</span></b><span class="ds">크립토 프로덕트 런칭부터 토큰 운영, 상장 대응까지. 마케팅, KOL, 커뮤니티, 캠페인 총괄</span></div>
-          <div class="lg l2"><span class="dt"><i></i>2021.11 ~ 2023.02</span><b>블록체인 SNS / 커뮤니티 운영<span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span></b><span class="ds">블로그와 텔레그램 커뮤니티를 직접 만들어 운영했습니다</span></div>
+          <div class="lg l2"><span class="dt"><i></i>2021.11 ~ 2023.02</span><b>블록체인 SNS / 커뮤니티 운영<span class="rr">크립토 서비스 기획과 마케팅, 프리랜서 리서처</span></b><span class="ds">블로그와 텔레그램 커뮤니티를 직접 만들어 운영했습니다. 외부 프로젝트의 앰배서더와 마케팅 외주를 함께 수행했습니다</span></div>
           <div class="lg l3"><span class="dt"><i></i>2020.08 ~ 2022.11</span><b>바이애틱<span class="rr">생명공학연구소 대리</span></b><span class="ds">수의용 진단키트 QC와 공정관리</span></div>
         </div>
       </div>
@@ -1039,23 +1040,27 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 <div class="view cv2" id="v-case-social" data-route="/case-social" data-tone="home" data-ac="var(--blue)">
   <div class="wrap sv">
     <span class="kk"><i></i>CRIPCO, Marketing</span>
-    <h2>직접 운영한 계정으로, 팔로워 20만</h2>
+    <h2>다섯 계정 30만, 그중 20만을 직접 늘렸습니다</h2>
     <div class="item rise">
       <h4>문제 정의</h4>
-      <p>크립토 시장의 관심은 캠페인과 함께 사라집니다. 반짝 유입을 계정에 남는 자산으로 바꾸지 못하면, 다음 캠페인을 매번 처음부터 시작해야 했습니다.</p>
+      <p>크립토 시장의 관심은 캠페인과 함께 사라집니다. 반짝 유입을 계정에 남는 자산으로 바꾸지 못하면 다음 캠페인을 매번 처음부터 시작해야 했습니다. 게다가 계정이 다섯 개였고 브랜드 성격이 전부 달랐습니다. 하나로 묶어 운영하면 어느 쪽도 자기 사람을 모으지 못합니다.</p>
     </div>
     <div class="item rise">
       <h4>가설</h4>
-      <p>계정을 공지판이 아니라 <strong>미디어처럼 운영하면, 캠페인이 몰고 온 관심이 팔로워로 남는다</strong>고 봤습니다. 채널마다 사용자와 기대치가 달라서 톤 가이드를 계정별로 따로 만들었습니다.</p>
-    </div>
-    <div class="item rise">
-      <h4>실행</h4>
-      <p>X 다섯 계정을 직접 운영했습니다. 티저, 캠페인, 행사의 트래픽을 계정으로 모으고, 발행할 때마다 변수를 하나씩 바꿔 보며 발행 기준을 다듬었습니다. 한 계정은 13개월을 끊김 없이 운영했습니다.</p>
-      <div class="flow rise">
-        <div><b>5개</b><span class="fl-t">직접 운영한 계정</span><span class="fl-d">브랜드마다 사용자가 달라 말투 가이드를 따로 만들었습니다</span></div>
-        <div><b>300K</b><span class="fl-t">합산 규모</span><span class="fl-d">다섯 계정을 동시에 굴린 총 팔로워</span></div>
-        <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 끊기지 않고 직접 발행했습니다</span></div>
+      <p>계정을 공지판이 아니라 <strong>미디어처럼 운영하면 캠페인이 몰고 온 관심이 팔로워로 남는다</strong>고 봤습니다. 대신 계정마다 보는 사람과 기대치가 다르니 말투를 하나로 쓰면 안 된다고 봤습니다.</p>
+      <div class="flow nb rise">
+        <div><b>30만</b><span class="fl-t">다섯 계정 합산</span><span class="fl-d">브랜드 다섯 개를 동시에 운영했습니다</span></div>
+        <div><b>20만</b><span class="fl-t">캠페인 기간 증가</span><span class="fl-d">그중 직접 늘린 몫</span></div>
+        <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비 0원, 4주 뒤 42K</span></div>
+        <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 끊기지 않았습니다</span></div>
       </div>
+    </div>
+
+    <div class="item rise">
+      <h4>계정마다 다른 말투로 굴렸습니다</h4>
+      <p>같은 캠페인도 계정마다 다른 문장으로 나갔습니다. 한 계정은 공식 발표 중심으로 사실과 링크만, 한 계정은 짧은 영어 구어체로, 한 계정은 캐릭터 말투로 갔습니다. <strong>톤 가이드를 계정별로 따로 만들어</strong> 저뿐 아니라 함께 일한 KOL에게도 배포했습니다.</p>
+      <p>발행은 캘린더로 관리했습니다. 다섯 계정 일정을 한 곳에서 짜고, 큰 캠페인의 티저는 <strong>7일 시퀀스</strong>로 나눠 하루에 하나씩 정보를 풀었습니다. 계정끼리 서로 밀어주는 순서도 미리 짜뒀습니다. 한 계정이 올리면 다른 계정이 받아 확산시키는 식입니다.</p>
+      <p>콘텐츠는 영상 중심으로 갔습니다. 최근 발행분 기준 <strong>일곱 중 하나꼴이 아니라 일곱 중 다섯이 영상</strong>이었고, 발행용 트윗 디자인은 한 프로젝트에서만 58종을 기획했습니다.</p>
     </div>
 
     <div class="item rise">
@@ -1070,9 +1075,16 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
       <p style="margin-top:var(--s5);">각 변수의 최적값을 합쳐 발행 가이드를 만들고 이후 캠페인의 기본값으로 삼았습니다. 캠페인이 바뀔 때마다 같은 방식으로 다시 검증했습니다.</p>
       <div class="meta">
-        <div>검증 사례: KBW 2024 단일 트윗 549,339 노출, 16,251 좋아요, 14,897 리트윗</div>
-        <div>런칭 티저는 유료 집행 없이 24시간 만에 팔로워 25K</div>
+        <div>검증 사례: 행사 기간 단일 트윗 549,339 노출, 16,251 좋아요, 14,897 리트윗</div>
+        <div>런칭 티저 트윗 299,353 노출, 14,561 좋아요</div>
       </div>
+    </div>
+
+    <div class="item rise">
+      <h4>계정이 무기가 되는 순간</h4>
+      <p>평소에 계정을 키워두는 진짜 이유는 문제가 터졌을 때 드러납니다.</p>
+      <p>해킹이 났을 때 <strong>14차례에 걸친 공지</strong>를 이 계정들로 내보냈습니다. 거래소에서 거래 지원이 끊겼을 때는 한국어와 영어 공식 성명을 <strong>전 계정에 동시에</strong> 올렸습니다. 브랜드를 통째로 바꿀 때는 네 계정의 소개글과 헤더, 고정 글을 <strong>하루 만에 함께</strong> 교체해 사용자가 헤매지 않게 했습니다.</p>
+      <p>광고는 돈을 내면 다시 살 수 있습니다. 급할 때 바로 말할 수 있는 창구는 미리 만들어두지 않으면 없습니다.</p>
     </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
