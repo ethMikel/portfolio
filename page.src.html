@@ -341,7 +341,7 @@ td{color:var(--g700);}
 .flt button.on{background:var(--g900);color:#fff;}
 .plist tbody tr{cursor:pointer;transition:background-color .15s ease;}
 .plist tbody tr:hover{background:var(--g50);}
-.pc{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+.pc{display:inline-block;width:auto;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
 .pc.mkt{background:var(--blue50);color:var(--blue700);}
 .pc.evt{background:#fdf0e2;color:#9a5b17;}
 .pc.ai{background:#e9f4ee;color:#1f6b45;}
@@ -362,7 +362,7 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .item p{font-size:15.5px;line-height:1.85;color:var(--g700);}
 /* 케이스 제품 이미지: 세로 아트를 왼쪽, 설명을 오른쪽 */
 .pshot{display:grid;grid-template-columns:220px 1fr;gap:var(--s8);align-items:center;
-  background:var(--g50);border-radius:20px;padding:var(--s6);margin:var(--s6) 0 var(--s2);}
+  background:var(--g50);border-radius:20px;padding:var(--s6);margin:var(--s8) 0 0;}
 .pshot img{width:100%;display:block;border-radius:14px;}
 .pshot .ps-t{font-size:17px;font-weight:800;letter-spacing:-.03em;margin:0 0 var(--s3);}
 .pshot p{font-size:14.5px;line-height:1.75;color:var(--g700);margin:0 0 var(--s3);}
@@ -926,10 +926,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p>코리아 블록체인 위크는 매년 여러 프로젝트가 더 나은 행사로 경쟁하는 시기입니다. 3년 동안 매년 다른 콘셉트와 채널로 사이드 행사를 직접 기획하고 운영했습니다.</p>
       <p>행사를 단발로 끝내지 않으려고 <strong>앱 기반 참석자 인증을 행사에 연동</strong>했습니다. 입장과 참여를 인증으로 받으면 누가 왔는지가 데이터로 남고, 그 명단이 곧 사후 캠페인의 대상이 됩니다. 행사장에서 쓰고 버리는 이벤트가 아니라 다음 캠페인의 입력으로 만든 겁니다.</p>
       <p>KBW 밖까지 합치면 <strong>4년간 13회의 오프라인 행사</strong>를 만들었습니다. 서울, 부산, 뉴욕, 싱가포르, 도쿄에서 열었고, 뉴욕 타임스스퀘어 전광판 캠페인도 두 차례 집행했습니다.</p>
-      <div class="meta">
-        <div>2023 성수동: 1,000명 이상 규모의 VIP 사이드 이벤트</div>
-        <div>2024 워커힐 호텔: 본 행사장 구조물에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 현장 인증 16K</div>
-        <div>2025 강남: 파트너 공동 500명 이상 DJ 파티, 명동 LINE FRIENDS 매장 전시</div>
+      <div class="tline rise">
+        <div><b>2023</b><span class="tl-t">성수동</span><span class="tl-d">1,000명 이상 규모의 VIP 사이드 이벤트</span></div>
+        <div><b>2024</b><span class="tl-t">워커힐 호텔</span><span class="tl-d">본 행사장에 캐릭터 IP 그래픽 랩핑, QR 캠페인으로 현장 인증&nbsp;16K</span></div>
+        <div><b>2025</b><span class="tl-t">강남</span><span class="tl-d">파트너 공동 500명 이상 DJ 파티, 명동 LINE&nbsp;FRIENDS 매장 전시</span></div>
       </div>
     </div>
 
@@ -948,6 +948,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>글로벌 KOL을 권역별로 다르게</h4>
       <p>한국, 일본, 베트남, 대만 / 태국, CIS / 서구권. <strong>5개 권역 300명 이상</strong>을 에이전시 3사와 함께 운영했습니다. 팔로워 규모로 소형, 중형, 대형을 나눠 접근을 달리했고, 소형은 텔레그램으로 직접 소통하며 관계를 쌓았습니다. 규모별 운영 기준을 직접 가이드로 정리해 일관되게 적용했습니다. 에이전시는 후보를 비교해 직접 선정하고 역할 분담을 협의한 뒤 운영까지 관리했습니다. 함께 움직인 프리랜서 스태프 12명은 채용부터 계약 종료까지 직접 관리했습니다.</p>
+      <div class="hbar rise">
+        <div><span class="bl">CIS, 서구권</span><div class="bt"><i style="width:100%"></i></div><span class="bv">97명</span></div>
+        <div><span class="bl">대만, 태국</span><div class="bt"><i style="width:60%"></i></div><span class="bv">58명</span></div>
+        <div><span class="bl">한국</span><div class="bt"><i style="width:53%"></i></div><span class="bv">51명</span></div>
+        <div><span class="bl">베트남</span><div class="bt"><i style="width:53%"></i></div><span class="bv">51명</span></div>
+        <div><span class="bl">일본</span><div class="bt"><i style="width:44%"></i></div><span class="bv">43명</span></div>
+      </div>
     </div>
 
     <div class="item rise">
@@ -1027,6 +1034,15 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <div class="wrap sv">
     <span class="kk"><i></i>CRIPCO, Marketing</span>
     <h2>2개월 만에, 글로벌 500만 유저</h2>
+      <div class="pshot rise">
+        <img src="__IMG_MINI__" alt="minini universe TAP TAP 타이틀 화면">
+        <div>
+          <p class="ps-t">설치도 로그인도 없는 미니게임</p>
+          <p>라인 메신저 안에서 바로 열리는 형태로 만들었습니다. 앱을 깔 필요가 없으니 친구에게 보내는 마찰이 거의 없고, 그래서 퍼지는 속도가 빨랐습니다.</p>
+          <p>캐릭터 IP를 그대로 쓴 것도 컸습니다. 크립토를 모르는 사람도 캐릭터는 알아보니까, 게임이 크립토 바깥의 사람을 데려오는 입구가 됐습니다.</p>
+        </div>
+      </div>
+
     <div class="item rise">
       <h4>문제 정의</h4>
       <p>크립토 커뮤니티 안에서만 돌던 관심을 바깥의 대중 유저에게 넓혀야 했습니다. 기존 채널로는 닿지 않는 사람들을 데려오는 것이 과제였습니다.</p>
@@ -1040,15 +1056,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p><strong>게임 밖의 마케팅은 전부 혼자 맡았습니다.</strong> 어느 국가에 얼마를 쓸지, KOL에게 코드를 어떻게 나눌지, 들어온 유저를 어디로 보낼지를 직접 정하고 실행했습니다.</p>
       <p>코드는 한 번에 뿌리지 않고 <strong>회차로 나눴습니다.</strong> KOL 30명에게 회차마다 코드를 직접 배분하고, 회차가 끝나면 누가 실제 입력까지 만들었는지 보고 다음 회차의 대상과 물량을 다시 짰습니다. 노출이 큰 KOL과 실제 사용을 만든 KOL은 자주 달랐습니다. 14회를 거치며 구성이 계속 바뀌었습니다.</p>
       <p>국가별로는 유저 증감을 매일 추적했습니다. <strong>절대 규모가 아니라 증가 속도를 기준으로</strong> 예산을 옮겼고, 인도네시아와 대만에서 반응이 터지자 그쪽으로 집중했습니다. 이벤트 전후 변화로 효과를 검증해 다음 배분의 근거로 삼았습니다.</p>
-      <div class="pshot rise">
-        <img src="__IMG_MINI__" alt="minini universe TAP TAP 타이틀 화면">
-        <div>
-          <p class="ps-t">설치도 로그인도 없는 미니게임</p>
-          <p>메신저 안에서 바로 열리는 형태로 만들었습니다. 앱을 깔 필요가 없으니 친구에게 보내는 마찰이 거의 없고, 그래서 퍼지는 속도가 빨랐습니다.</p>
-          <p>캐릭터 IP를 그대로 쓴 것도 컸습니다. 크립토를 모르는 사람도 캐릭터는 알아보니까, 게임이 크립토 바깥의 사람을 데려오는 입구가 됐습니다.</p>
-        </div>
-      </div>
-
       <div class="fsteps rise">
         <div><b>500만</b><span class="fl-t">게임 유입</span><span class="fl-d">2개월 만에 글로벌 누적 유저. 설치도 로그인도 없는 형태</span></div>
         <div><b>94%</b><span class="fl-t">코드 사용률</span><span class="fl-d">나눠준 참여 코드가 실제로 입력된 비율</span></div>
@@ -1124,19 +1131,18 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         <div><span class="bl">캐릭터 IP 2</span><div class="bt"><i style="width:21%"></i></div><span class="bv">29K</span></div>
         <div><span class="bl">멤버십 프로그램</span><div class="bt"><i style="width:13%"></i></div><span class="bv">18K</span></div>
       </div>
-      <p style="font-size:13.5px;color:var(--g500);margin:var(--s3) 0 0;">브랜드 성격이 전부 달라 각각 다른 사람이 봅니다. 합산 30만.</p>
 
       <div class="fsteps nb rise">
         <div><b>30만</b><span class="fl-t">다섯 계정 합산</span><span class="fl-d">브랜드 다섯 개를 동시 운영</span></div>
         <div><b>20만</b><span class="fl-t">캠페인 기간 증가</span><span class="fl-d">그중 직접 늘린 몫</span></div>
-        <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비 0원, 4주 뒤 42K까지</span></div>
+        <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비&nbsp;0원, 4주 뒤&nbsp;42K</span></div>
         <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 안 끊겼습니다</span></div>
       </div>
     </div>
 
     <div class="item rise">
-      <h4>계정마다 다른 말투로 굴렸습니다</h4>
-      <p>같은 캠페인도 계정마다 다른 문장으로 나갔습니다. 한 계정은 공식 발표 중심으로 사실과 링크만, 한 계정은 짧은 영어 구어체로, 한 계정은 캐릭터 말투로 갔습니다. <strong>톤 가이드를 계정별로 따로 만들어</strong> 저뿐 아니라 함께 일한 KOL에게도 배포했습니다.</p>
+      <h4>계정별 브랜드 보이스를 따로 설계했습니다</h4>
+      <p>다섯 브랜드는 타깃도 기대치도 달랐습니다. 그래서 계정마다 <strong>톤앤매너를 따로 정의하고 커뮤니케이션 가이드를 문서로 만들었습니다.</strong> 한 계정은 공식 발표 중심으로 사실과 링크만, 한 계정은 짧은 영어 구어체로, 한 계정은 캐릭터 화법으로 갔습니다. 이 가이드는 저뿐 아니라 함께 일한 KOL에게도 배포해 외부 발화까지 톤을 맞췄습니다.</p>
       <p>발행은 캘린더로 관리했습니다. 다섯 계정 일정을 한 곳에서 짜고, 큰 캠페인의 티저는 <strong>7일 시퀀스</strong>로 나눠 하루에 하나씩 정보를 풀었습니다. 계정끼리 서로 밀어주는 순서도 미리 짜뒀습니다. 한 계정이 올리면 다른 계정이 받아 확산시키는 식입니다.</p>
       <p>콘텐츠는 영상 중심으로 갔습니다. 최근 발행분 기준 <strong>열에 일곱이 영상</strong>이었고, 발행용 트윗 디자인은 한 프로젝트에서만 58종을 기획했습니다.</p>
     </div>
@@ -1547,7 +1553,16 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       var p = Math.min((ts-t0)/dur,1), e = 1-Math.pow(1-p,3);
       el.textContent = fmt(Math.round(target*e)) + sfx;
       if (p<1){ requestAnimationFrame(step); }
-      else { el.classList.add('pop'); setTimeout(function(){ el.classList.remove('pop'); }, 340); }
+      else {
+        var pops = 0;
+        (function doPop(){
+          el.classList.add('pop');
+          setTimeout(function(){
+            el.classList.remove('pop');
+            if (++pops < 2) setTimeout(doPop, 70);
+          }, 340);
+        })();
+      }
     }
     requestAnimationFrame(step);
   }
