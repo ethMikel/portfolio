@@ -430,7 +430,12 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .fsteps .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;text-wrap:balance;word-break:keep-all;}
 .fsteps .fl-t{text-wrap:balance;word-break:keep-all;}
 @media (max-width:720px){.fsteps{grid-template-columns:1fr;}.fsteps > div + div::before{display:none;}}
-.meta{font-size:14px;color:var(--g600);margin-top:var(--s4);background:var(--g50);border-radius:14px;padding:var(--s4) var(--s5);}
+.meta{font-size:15px;line-height:1.7;color:var(--g800);margin-top:var(--s6);background:var(--blue50);
+  border-left:3px solid var(--blue);border-radius:0 14px 14px 0;padding:var(--s5) var(--s6);}
+.meta > div{position:relative;padding-left:15px;}
+.meta > div + div{margin-top:9px;}
+.meta > div::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;
+  border-radius:999px;background:var(--blue);}
 .meta div{margin-bottom:var(--s1);}
 .meta div:last-child{margin-bottom:0;}
 
@@ -502,7 +507,9 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .tv th,.nv th{background:rgb(0 0 0 / 24%);color:var(--ac2);border-bottom-color:var(--bd2);}
 .tv td,.nv td{border-bottom-color:var(--bd2);color:var(--tx2);}
 .tv td.k,.nv td.k{color:#fff;}
-.tv .meta,.nv .meta{background:var(--bg2);color:var(--dim2);border:1px solid var(--bd2);}
+.tv .meta,.nv .meta{background:var(--bg2);color:var(--dim2);border:1px solid var(--bd2);
+  border-left:3px solid var(--ac);border-radius:0 14px 14px 0;}
+.tv .meta > div::before,.nv .meta > div::before{background:var(--ac);}
 .tv .abr .n{color:var(--dim2);}
 .tv .abr .t{background:#20282b;}
 .tv .abr .t i{background:var(--ac2);}
@@ -1057,9 +1064,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="pshot rise">
         <img src="assets/minini.png" alt="minini universe TAP TAP 타이틀 화면">
         <div>
-          <p class="ps-t">설치도 로그인도 없는 미니게임</p>
+          <p class="ps-t">새 앱을 만드는 대신, 이미 사람이 있는 곳으로 갔습니다</p>
           <p>라인 메신저 안에서 바로 열리는 형태로 만들었습니다. 앱을 깔 필요가 없으니 친구에게 보내는 마찰이 거의 없고, 그래서 퍼지는 속도가 빨랐습니다.</p>
-          <p>캐릭터 IP를 그대로 쓴 것도 컸습니다. 크립토를 모르는 사람도 캐릭터는 알아보니까, 게임이 크립토 바깥의 사람을 데려오는 입구가 됐습니다.</p>
+          <p>캐릭터 IP를 그대로 쓴 것도 컸습니다. 크립토를 모르는 사람도 캐릭터는 알아봅니다. <strong>게임은 재미가 아니라 크립토 밖으로 나가는 입구였습니다.</strong></p>
         </div>
       </div>
 
