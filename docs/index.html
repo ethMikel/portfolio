@@ -875,8 +875,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 데이터 도구</td><td><span class="pc ai">AI</span></td><td>트윗 수집부터 검증까지 주간 7단계 자동화</td></tr>
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
-            <tr data-cat="ai"><td class="k">포트폴리오 사이트</td><td><span class="pc ai">AI</span></td><td>웹 화면과 인쇄 문서를 한 소스로 관리, 직접 제작</td></tr>
-            <tr data-cat="ai"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
+            <tr data-cat="ai" data-link="#/site"><td class="k">포트폴리오 사이트</td><td><span class="pc ai">AI</span></td><td>웹 화면과 인쇄 문서를 한 소스로 관리, 직접 제작</td></tr>
+            <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
           </tbody>
         </table>
       </div>
@@ -906,20 +906,22 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <div class="chips"><span>Next.js</span><span>Supabase</span><span>Cloudflare</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
-        <button class="card rise nolink" style="--ac:var(--blue);" type="button" disabled>
+        <button class="card rise" style="--ac:var(--blue);" data-go="site">
           <span class="kk"><i></i>2026</span>
           <h3>이 포트폴리오 사이트</h3>
           <p>지금 보고 계신 페이지도 직접 만들었습니다. 웹 화면과 인쇄용 문서를 하나의 소스로 관리합니다.</p>
           <div class="chips"><span>HTML</span><span>GitHub Pages</span><span>인쇄 최적화</span></div>
+          <span class="go">들어가기 &rarr;</span>
         </button>
-        <button class="card rise nolink" style="--ac:var(--c-tool);" type="button" disabled>
+        <button class="card rise" style="--ac:var(--c-tool);" data-go="hub">
           <span class="kk"><i></i>개인 프로젝트, 2026 ~</span>
           <h3>AI 작업 관리 대시보드</h3>
           <p>AI로 벌인 작업이 늘면서 기록이 흩어졌습니다. 진행 상황과 다음 할 일을 한 곳에서 보도록 만들어 24시간 자동으로 갱신합니다.</p>
           <div class="chips"><span>Python</span><span>자동 수집</span><span>무인 운영</span></div>
+          <span class="go">들어가기 &rarr;</span>
         </button>
         <button class="card rise" style="--ac:var(--c-codex);" data-go="codex">
-          <span class="kk"><i></i>AX 인재전쟁 2026 해커톤</span>
+          <span class="kk"><i></i>해커톤 출품작, 2026</span>
           <h3>Codex 플러그인 3종</h3>
           <p>공개 자료만으로 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 떨어진 뒤 자기 결함을 찾아 고쳤습니다.</p>
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
@@ -1248,6 +1250,79 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
 
+<div class="view cv2" id="v-site" data-route="/site" data-tone="home" data-ac="var(--blue)">
+  <div class="wrap sv">
+    <span class="kk"><i></i>개인 프로젝트, 2026</span>
+    <h2>웹 화면과 이력서를 하나의 소스로</h2>
+    <div class="item rise">
+      <h4>문제 정의</h4>
+      <p>포트폴리오를 웹으로 만들면 지원할 때 낼 문서가 없고, 문서로 만들면 링크로 보여줄 수가 없습니다. 둘을 따로 관리하면 한쪽만 고치는 날이 반드시 오고, 그때부터 두 개가 다른 말을 합니다.</p>
+    </div>
+    <div class="item rise">
+      <h4>가설</h4>
+      <p><strong>원본을 하나만 두고 거기서 웹과 문서를 각각 뽑아내면</strong> 어긋날 일이 없다고 봤습니다. 문서는 웹을 그대로 인쇄한 것이 아니라, 같은 내용을 문서의 문법으로 다시 조판한 것이어야 합니다.</p>
+      <div class="fsteps rise">
+        <div><b>1개</b><span class="fl-t">원본</span><span class="fl-d">모든 내용이 여기 한 곳에만 있습니다</span></div>
+        <div><b>10개</b><span class="fl-t">웹 화면</span><span class="fl-d">메인과 서브 페이지. 새 화면은 태그만 달면 등록됩니다</span></div>
+        <div><b>40쪽</b><span class="fl-t">인쇄 문서</span><span class="fl-d">이력서와 경력기술서, 포트폴리오가 한 파일로</span></div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>웹을 그대로 인쇄하면 문서가 되지 않습니다</h4>
+      <p>화면에는 있어야 하지만 종이에는 없어야 하는 것이 많습니다. 상단 메뉴, 스크롤 표시, 저장 버튼, 화면 전환 효과가 그렇습니다. 이걸 그냥 두면 <strong>누를 수 없는 버튼이 인쇄된 종이</strong>가 나옵니다.</p>
+      <p>그래서 인쇄용 규칙을 따로 짰습니다. 화면 전용 부품은 빼고, 서브 페이지는 각각 새 장에서 시작하게 하고, 표와 그래프는 페이지 경계에서 잘리지 않게 묶었습니다. 숫자가 올라가는 연출은 <strong>최종값으로 고정</strong>했습니다. 그러지 않으면 인쇄 시점에 따라 0이 찍힙니다.</p>
+      <div class="meta">
+        <div>어두운 배경의 장은 인쇄에서 배경이 날아가므로 요소마다 색을 직접 지정</div>
+        <div>화면 추가는 태그 한 줄로 끝나도록 설계. 스크립트를 고칠 일이 없습니다</div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>눈으로 보면 못 잡는 것이 있습니다</h4>
+      <p>만들면서 같은 이름을 두 곳에서 쓰는 실수를 세 번 했습니다. 화면에서는 멀쩡해 보였지만 실제로는 서로의 설정을 덮어쓰고 있었습니다. 간격이 어긋나고 화살표가 제자리를 벗어났는데, <strong>보기만 해서는 원인을 찾을 수 없었습니다.</strong></p>
+      <p>이름이 겹치는지 기계로 대조하고 나서야 잡혔습니다. 그 뒤로는 고칠 때마다 화면을 다시 그려 확인하고, 인쇄본도 매번 다시 뽑아 쪽수와 잘림을 봅니다. <strong>보이는 것과 맞는 것은 다릅니다.</strong></p>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
+<div class="view cv2" id="v-hub" data-route="/hub" data-tone="home" data-ac="var(--c-tool);">
+  <div class="wrap sv">
+    <span class="kk"><i></i>개인 프로젝트, 2026 ~</span>
+    <h2>흩어진 작업을 한 화면으로</h2>
+    <div class="item rise">
+      <h4>문제 정의</h4>
+      <p>AI로 벌인 일이 늘면서 기록이 흩어졌습니다. 어제 어디까지 했는지, 다음에 뭘 해야 하는지가 대화 기록 안에만 남고 시간이 지나면 사라졌습니다. <strong>매번 어디까지 했지부터 다시 시작</strong>하는 것이 가장 큰 낭비였습니다.</p>
+    </div>
+    <div class="item rise">
+      <h4>가설</h4>
+      <p>기억에 맡기지 말고 <strong>파일로 남기고 자동으로 모으면</strong> 다음 작업이 바로 이어진다고 봤습니다. 프로젝트마다 지금 상태와 다음 할 일을 한 줄로 정해두고, 화면은 그걸 읽어 보여주기만 하게 만들었습니다.</p>
+      <div class="fsteps rise">
+        <div><b>14개</b><span class="fl-t">수집 스크립트</span><span class="fl-d">작업 기록, 프로젝트 상태, 운영 지표를 각각 긁어옵니다</span></div>
+        <div><b>13개</b><span class="fl-t">화면</span><span class="fl-d">프로젝트, 기록, 운영 현황을 목적별로 나눴습니다</span></div>
+        <div><b>4종</b><span class="fl-t">무인 실행</span><span class="fl-d">사람이 켜지 않아도 정해진 시각에 돕니다</span></div>
+      </div>
+    </div>
+
+    <div class="item rise">
+      <h4>다음 사람이 같은 자리에서 다시 시작하지 않게</h4>
+      <p>프로젝트마다 <strong>지금 상태와 다음 액션, 그리고 무엇이 되면 끝인지</strong>를 한 파일에 적어둡니다. 새 작업을 시작할 때 이 파일이 가장 먼저 읽히도록 걸어뒀습니다. 다음 사람이 저 자신이더라도, 어제의 판단을 다시 하지 않아도 됩니다.</p>
+      <p>끝난 것과 접은 것도 남깁니다. 접었다는 사실과 왜 접었는지가 없으면 몇 달 뒤에 같은 걸 또 시작합니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>실패를 숨기지 않는 것이 요점입니다</h4>
+      <p>자동 수집은 조용히 실패합니다. 값이 비면 화면은 그냥 빈칸을 보여주고, 보는 사람은 원래 없는 줄 압니다. 그래서 <strong>수집이 실패하면 그 자리에 표시가 남게</strong> 만들었습니다. 마케팅 대시보드를 만들 때 배운 것을 그대로 옮겼습니다.</p>
+      <div class="meta">
+        <div>사무실도 서버도 없이 상시 켜둔 맥에서 구동. 월 고정비는 전기료 수준</div>
+        <div>수집이 하나 실패해도 나머지는 계속 돕니다. 전체가 멈추지 않게 분리했습니다</div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
+</div>
+
 <!-- 인쇄 전용 간지: 포트폴리오 시작. 카드 장표는 printPrep이 메인에서 복제해 채운다 -->
 <div class="pdiv" id="print-divider" hidden>
   <div class="wrap">
@@ -1513,7 +1588,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 <!-- ══════════════ 서브: Codex ══════════════ -->
 <div class="view xv" id="v-codex" data-route="/codex" data-tone="codex" data-ac="var(--c-codex)" style="--ac:var(--c-codex);">
   <div class="wrap sv">
-    <span class="kk"><i></i>AX 인재전쟁 2026, OpenAI 협업</span>
+    <span class="kk"><i></i>해커톤 출품작, 2026</span>
     <h2>Codex 플러그인 3종</h2>
     <p class="intro">기업이 과제를 주지 않는 해커톤이었습니다. 공개 자료만 보고 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 판단 재료는 기계가 검증하고 판단은 사람이 하도록 설계했습니다.</p>
 
