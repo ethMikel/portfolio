@@ -215,7 +215,9 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 #v-home .sec > .lab::before{content:counter(secn,decimal-leading-zero);
   font-weight:800;color:var(--blue);margin-right:14px;font-variant-numeric:tabular-nums;}
 #v-home .sec > .lab em{display:block;margin:var(--s3) 0 0;font-size:16px;font-weight:500;color:var(--g500);letter-spacing:-.01em;}
-#v-home .sec > .lab small{font-size:15px;font-weight:600;color:var(--g500);margin-left:12px;letter-spacing:-.01em;}
+#v-home .sec > .lab small{display:inline-block;vertical-align:9px;font-size:13.5px;font-weight:800;
+  color:var(--blue700);background:var(--blue50);padding:6px 13px;border-radius:999px;
+  margin-left:14px;letter-spacing:-.01em;}
 /* 문서 전용 이메일 줄 */
 .printmail{display:none;}
 
@@ -826,7 +828,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     </div>
 
     <div class="sec">
-      <span class="lab">CRIPCO<small>IPX(LINE FRIENDS) 자회사</small><em>블록체인 마케팅 책임자</em></span>
+      <span class="lab">CRIPCO<small>LINE FRIENDS 자회사</small><em>블록체인 마케팅 책임자</em></span>
       <div class="figs">
         <div><b data-count="300" data-suffix="K">0</b><span>직접 운영한 X 5개 계정 합산</span></div>
         <div><b data-count="91118">0</b><span>한 캠페인이 만든 구매 등록</span></div>
@@ -874,8 +876,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 데이터 도구</td><td><span class="pc ai">AI</span></td><td>트윗 수집부터 검증까지 주간 7단계 자동화</td></tr>
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
-            <tr data-cat="ai" data-link="#/site"><td class="k">포트폴리오 사이트</td><td><span class="pc ai">AI</span></td><td>웹 화면과 인쇄 문서를 한 소스로 관리, 직접 제작</td></tr>
             <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
+            <tr data-cat="ai" data-link="#/site"><td class="k">포트폴리오 사이트</td><td><span class="pc ai">AI</span></td><td>웹 화면과 인쇄 문서를 한 소스로 관리, 직접 제작</td></tr>
           </tbody>
         </table>
       </div>
@@ -905,13 +907,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <div class="chips"><span>Next.js</span><span>Supabase</span><span>Cloudflare</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
-        <button class="card rise" style="--ac:var(--blue);" data-go="site">
-          <span class="kk"><i></i>2026</span>
-          <h3>이 포트폴리오 사이트</h3>
-          <p>지금 보고 계신 페이지도 직접 만들었습니다. 웹 화면과 인쇄용 문서를 하나의 소스로 관리합니다.</p>
-          <div class="chips"><span>HTML</span><span>GitHub Pages</span><span>인쇄 최적화</span></div>
-          <span class="go">들어가기 &rarr;</span>
-        </button>
         <button class="card rise" style="--ac:var(--c-tool);" data-go="hub">
           <span class="kk"><i></i>개인 프로젝트, 2025 ~</span>
           <h3>AI 작업 관리 대시보드</h3>
@@ -924,6 +919,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <h3>Codex 플러그인 3종</h3>
           <p>공개 자료만으로 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 떨어진 뒤 자기 결함을 찾아 고쳤습니다.</p>
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise" style="--ac:var(--blue);" data-go="site">
+          <span class="kk"><i></i>2026</span>
+          <h3>이 포트폴리오 사이트</h3>
+          <p>지금 보고 계신 페이지도 직접 만들었습니다. 웹 화면과 인쇄용 문서를 하나의 소스로 관리합니다.</p>
+          <div class="chips"><span>HTML</span><span>GitHub Pages</span><span>인쇄 최적화</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
       </div>
