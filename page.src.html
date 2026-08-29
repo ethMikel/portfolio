@@ -348,6 +348,17 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .item:last-child{border-bottom:0;}
 .item h4{font-size:18px;font-weight:700;margin:0 0 var(--s3);letter-spacing:-.03em;}
 .item p{font-size:15.5px;line-height:1.85;color:var(--g700);}
+/* 케이스 흐름도: 단계별 숫자와 그 단계에서 본 것 */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s4);margin:var(--s6) 0 var(--s2);}
+.flow > div{background:var(--g50);border-radius:16px;padding:var(--s5);position:relative;}
+.flow > div + div::before{content:"";position:absolute;left:calc(var(--s4) * -1 + 3px);top:50%;
+  width:10px;height:10px;border-top:2px solid var(--g300);border-right:2px solid var(--g300);
+  transform:translateY(-50%) rotate(45deg);}
+.flow b{display:block;font-size:23px;font-weight:800;letter-spacing:-.045em;color:var(--blue);
+  font-variant-numeric:tabular-nums;line-height:1.2;}
+.flow .fl-t{display:block;font-size:13.5px;font-weight:700;color:var(--g900);margin-top:6px;}
+.flow .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;}
+@media (max-width:720px){.flow{grid-template-columns:1fr;}.flow > div + div::before{display:none;}}
 .meta{font-size:14px;color:var(--g600);margin-top:var(--s4);background:var(--g50);border-radius:14px;padding:var(--s4) var(--s5);}
 .meta div{margin-bottom:var(--s1);}
 .meta div:last-child{margin-bottom:0;}
@@ -585,7 +596,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
   /* 끊김 관리: 제목은 다음 내용과 붙고, 덩어리는 중간에서 안 갈린다 */
   .lab,.kk,h2,h4,.job,.grp{break-after:avoid;}
-  .item,.sm,.aiw,.tw,.tile,.term,blockquote,figure,.frame,.gframe,.gframe2,
+  .item,.sm,.aiw,.tw,.tile,.term,blockquote,figure,.frame,.gframe,.gframe2,.flow > div,
   .map > div,.fl,.figs,.figs2,.sum,.panel,.tiles,.gsteps > div,.gsplit,.btns,.shots figure{
     break-inside:avoid;}
   /* 코덱스 장의 항목은 터미널 블록까지 묶으면 한 항목이 한 페이지를 통째로 밀어낸다.
@@ -665,9 +676,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec" id="about">
       <span class="lab">일하는 방식</span>
       <div class="traits">
-        <div class="tr rise"><b>결과 지향</b><p>노출이 아니라 매출을 셉니다. 한 캠페인을 단일 매출 46억까지 따라갔습니다.</p></div>
+        <div class="tr rise"><b>결과 지향</b><p>한 캠페인에서 시작해 단일 매출 46억 프로젝트까지 이끌었습니다.</p></div>
         <div class="tr rise"><b>AI 실행력</b><p>쓸 도구가 없으면 직접 만듭니다. 봇, 대시보드, 인트라넷, 웹게임까지 혼자 완주했습니다.</p></div>
-        <div class="tr rise"><b>운영 리더십</b><p>KOL 300명, 에이전시 3사, 스태프 12명. 캠페인마다 이 규모를 직접 움직였습니다.</p></div>
+        <div class="tr rise"><b>운영 리더십</b><p>KOL 300명, 에이전시 3사, 스태프 12명. 이 규모를 혼자 운영했습니다.</p></div>
       </div>
       <div class="skills">
         <span class="key">AI 활용</span>
@@ -707,7 +718,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <b class="kn" data-count="46" data-suffix="억">0억</b>
           <span class="kt">단일 매출</span>
           <span class="kk2">런칭 경매 캠페인</span>
-          <p>프라이빗 경매로 가격을 세우고, FOMO가 일반 구매를 끌게 했습니다.</p>
+          <p>비공개 경매로 가격을 먼저 세우고, 그 가격이 일반 구매를 끌게 했습니다.</p>
           <span class="go">자세히 &rarr;</span>
         </button>
         <button class="kc rise" data-go="case-minini">
@@ -720,8 +731,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         <button class="kc rise" data-go="case-social">
           <b class="kn" data-count="20" data-suffix="만">0만</b>
           <span class="kt">X 팔로워 증가</span>
-          <span class="kk2">계정 직접 운영</span>
-          <p>다섯 계정을 직접 운영해 캠페인의 관심을 팔로워로 남겼습니다.</p>
+          <span class="kk2">X 계정 운영</span>
+          <p>다섯 계정을 직접 운영해 반짝 유입을 팔로워로 남겼습니다.</p>
           <span class="go">자세히 &rarr;</span>
         </button>
       </div>
@@ -732,8 +743,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <div class="figs">
         <div><b data-count="20" data-suffix="만">0만</b><span>직접 운영한 X 계정에서 늘린 팔로워</span></div>
         <div><b data-count="91118">0</b><span>한 번의 캠페인으로 만든 구매 등록</span></div>
-        <div><b data-count="94" data-suffix="%">0</b><span>코드 사용률, 17,691명이 이벤트 참여형 코드를 입력</span></div>
-        <div><b data-count="350" data-suffix="K">0</b><span>운영한 커뮤니티의 합산 규모</span></div>
+        <div><b data-count="94" data-suffix="%">0</b><span>17,691명이 입력한 참여 코드 사용률</span></div>
+        <div><b data-count="350" data-suffix="K">0</b><span>X, 디스코드, 텔레그램 합산 운영 규모</span></div>
       </div>
 
       <div class="sum">
@@ -757,7 +768,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         <table class="plist">
           <thead><tr><th>프로젝트</th><th>분류</th><th>요약</th></tr></thead>
           <tbody>
-            <tr data-cat="mkt" data-link="#/case-auction"><td class="k">런칭 경매 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>프라이빗 경매로 가격을 세우고 FOMO 설계, 단일 매출 46억</td></tr>
+            <tr data-cat="mkt" data-link="#/case-auction"><td class="k">런칭 경매 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>비공개 경매로 가격을 먼저 세워 단일 매출 46억</td></tr>
             <tr data-cat="mkt" data-link="#/career"><td class="k">토큰 KOL 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>14회차 학습 운영, 참여 코드 사용률 94%</td></tr>
             <tr data-cat="mkt" data-link="#/case-minini"><td class="k">minini 연계 코드 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>글로벌 500만 유저, 가입 전환 50만</td></tr>
             <tr data-cat="mkt" data-link="#/case-leaderboard"><td class="k">거래 리더보드 이벤트</td><td><span class="pc mkt">Marketing</span></td><td>보상 이벤트 기획과 확산 마케팅, 거래량 20배</td></tr>
@@ -807,16 +818,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
-      </div>
-    </div>
-
-    <div class="sec impact">
-      <span class="lab">숫자로 남았습니다<em>위 이야기의 결과만 모으면 이렇습니다</em></span>
-      <div class="figs">
-        <div><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></div>
-        <div><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></div>
-        <div><b data-count="20" data-suffix="만">0만</b><span>X 팔로워 증가</span></div>
-        <div><b data-count="20" data-suffix="배">0배</b><span>전년 대비 거래량</span></div>
       </div>
     </div>
 
@@ -938,13 +939,24 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 구매 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다. 본 경매가 끝난 뒤에도 43주 동안 공개 경매를 이어가며 가격을 관리했습니다.</p>
-      <div class="meta">
-        <div>사전 신청 16,355명, 구매 등록 91,118개</div>
-        <div>경매 6일간 입찰 2,749건, 최종 653.99 ETH (약 46억 원)</div>
-        <div>동시 런칭한 경쟁 프로젝트 중 1위. 10곳 중 4곳이 완판에 실패한 달이었습니다</div>
+      <div class="flow rise">
+        <div><b>25K</b><span class="fl-t">런칭 티저</span><span class="fl-d">24시간 만에 모은 팔로워. 유료 집행 없음</span></div>
+        <div><b>16,355</b><span class="fl-t">사전 신청</span><span class="fl-d">관심을 명단으로 바꾸는 단계. 도달이 아니라 등록 수를 봤습니다</span></div>
+        <div><b>91,118</b><span class="fl-t">구매 등록</span><span class="fl-d">가장 많이 빠지는 구간. 카피가 아니라 등록 절차를 손봤습니다</span></div>
+        <div><b>2,749</b><span class="fl-t">입찰</span><span class="fl-d">6일간. 최종 653.99 ETH, 약 46억 원</span></div>
       </div>
     </div>
-    <p class="talk rise">안 팔리던 시장에서 46억이 나온 가격 설계의 뒷순서는, 만나서 이어 말씀드리겠습니다.</p>
+
+    <div class="item rise">
+      <h4>순서가 곧 설계였습니다</h4>
+      <p>보통은 가격을 붙이고 파는 순서로 갑니다. 저희는 <strong>가격을 세우는 일과 파는 일을 분리</strong>했습니다. 먼저 기업 단위 참여자만 들어오는 비공개 경매로 값을 끌어올리고, 그 다음에 <strong>누가 그 값에 들어왔는지를 공개</strong>했습니다.</p>
+      <p>그러면 일반 구매자가 보는 화면이 달라집니다. 낯선 가격표가 아니라 이미 검증된 가격이 됩니다. 침체기에 사람들이 사지 않는 이유는 비싸서가 아니라 얼마짜리인지 몰라서인데, 그 불확실성을 우리가 아니라 시장이 먼저 해소하게 만든 겁니다.</p>
+      <p>한 번 세운 값은 이후에도 관리해야 했습니다. 본 경매가 끝난 뒤 <strong>43주 동안 공개 경매를 이어가며</strong> 가격이 무너지지 않게 유지했습니다.</p>
+      <div class="meta">
+        <div>동시 런칭한 경쟁 프로젝트 중 1위. 10곳 중 4곳이 완판에 실패한 달이었습니다</div>
+        <div>경매 구조는 외부 어드바이저와 공동 설계. 마케팅과 KOL, 커뮤니티 동원은 직접 맡았습니다</div>
+      </div>
+    </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
@@ -965,13 +977,23 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>코드 분배와 등록 안내, 사후 관리를 맡았습니다. 국가별 유저 증감을 추적해 반응이 오는 권역에 예산을 집중했고, 이벤트 전후 변화로 효과를 검증했습니다. 인도네시아와 대만에서 폭발적인 반응이 나왔습니다.</p>
-      <div class="meta">
-        <div>2개월 만에 글로벌 500만 유저</div>
-        <div>50만 명 이상이 가입 전환까지 이어짐, 참여 코드 사용률 94%</div>
-        <div>X 팔로워 20만 증가 동반</div>
+      <div class="flow rise">
+        <div><b>500만</b><span class="fl-t">게임 유입</span><span class="fl-d">2개월 만에 글로벌 누적 유저. 설치도 로그인도 없는 형태</span></div>
+        <div><b>94%</b><span class="fl-t">코드 사용률</span><span class="fl-d">나눠준 참여 코드가 실제로 입력된 비율</span></div>
+        <div><b>50만</b><span class="fl-t">가입 전환</span><span class="fl-d">게임에서 들어와 서비스 가입까지 이어진 사람</span></div>
       </div>
     </div>
-    <p class="talk rise">2개월 만에 동남아에서 500만이 모인 이유는, 만나서 이어 말씀드리겠습니다.</p>
+
+    <div class="item rise">
+      <h4>2개월 만에 500만이 모인 이유</h4>
+      <p>세 가지가 겹쳤습니다. 첫째, <strong>이미 사람이 있는 곳에 얹혔습니다.</strong> 새 앱을 깔게 하는 대신 메신저 안에서 바로 도는 형태로 만들었습니다. 설치도 로그인도 없으니 친구에게 보내는 마찰이 거의 0이었습니다.</p>
+      <p>둘째, <strong>퍼지는 곳에 몰았습니다.</strong> 국가별 유저 증감을 매일 추적해 반응이 오는 권역으로 예산을 옮겼습니다. 초기에 넓게 뿌린 뒤 인도네시아와 대만에서 반응이 터지자 그쪽으로 집중했습니다. 절대 규모가 아니라 증가 속도를 기준으로 판단했습니다.</p>
+      <p>셋째, <strong>들어온 사람이 멈추지 않게 동선을 이어붙였습니다.</strong> 게임은 재미로 끝날 수 있습니다. 게임 안에서 참여 코드를 받고, 그 코드를 쓰면 서비스 가입으로 넘어가도록 단계를 붙였습니다. 코드 사용률 94%는 이 동선이 끊기지 않았다는 뜻입니다.</p>
+      <div class="meta">
+        <div>코드 분배와 등록 안내, 사후 관리를 담당. 이벤트 전후 변화로 효과를 검증했습니다</div>
+        <div>같은 기간 X 팔로워 20만 증가 동반</div>
+      </div>
+    </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
@@ -992,13 +1014,22 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>이벤트 구조 기획과 확산을 맡았습니다. 리더보드로 참여자들의 경쟁 심리를 자극하고, 커뮤니티와 KOL 채널로 참여를 끌어올렸습니다. 별도 광고 예산 없이 기존 채널과 보상 설계만으로 진행했고, 확산에는 평소 관리하던 국내 KOL 텔레그램 채널망을 동원했습니다.</p>
-      <div class="meta">
-        <div>전년 대비 거래량 20배</div>
-        <div>확산 채널: 국내 KOL 텔레그램 392개, 합산 구독 280만</div>
-        <div>광고 예산 0원, 기존 채널과 보상 설계만으로 진행</div>
+      <div class="flow rise">
+        <div><b>0원</b><span class="fl-t">광고 예산</span><span class="fl-d">기존 채널과 보상 설계만으로 진행했습니다</span></div>
+        <div><b>392개</b><span class="fl-t">확산 채널</span><span class="fl-d">평소 관리하던 국내 KOL 텔레그램. 합산 구독 280만</span></div>
+        <div><b>20배</b><span class="fl-t">거래량</span><span class="fl-d">전년 대비</span></div>
       </div>
     </div>
-    <p class="talk rise">예산 없이 거래량을 20배로 만든 설계는, 만나서 이어 말씀드리겠습니다.</p>
+
+    <div class="item rise">
+      <h4>예산 없이 20배가 나온 설계</h4>
+      <p>핵심은 <strong>판을 새로 만들지 않은 것</strong>입니다. 우리 이벤트를 열면 사람을 처음부터 모아야 하지만, 이미 사람이 몰려 있는 남의 보상 이벤트에 얹히면 모으는 비용이 사라집니다. 당시 가장 뜨겁던 마켓의 이벤트를 골라 그 위에 우리 보상을 얹었습니다.</p>
+      <p>참여자 입장에서는 <strong>같은 행동으로 보상을 두 번</strong> 받게 됩니다. 원래 이벤트의 보상과 우리 보상이 겹치니 참여할 이유가 두 배가 됩니다.</p>
+      <p>여기에 <strong>초대가 초대를 부르는 계층형 리워드</strong>를 붙였습니다. 내가 부른 사람이 거래하면 나에게도 돌아오는 구조라, 참여자가 스스로 확산 채널이 됩니다. 리더보드로 순위를 보여줘 경쟁 심리를 자극했고, 확산은 평소 관리하던 KOL 텔레그램 채널망으로 밀었습니다.</p>
+      <div class="meta">
+        <div>이벤트 구조 기획과 확산을 담당. 판은 파트너 마켓의 것이었습니다</div>
+      </div>
+    </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
@@ -1018,13 +1049,29 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>X 다섯 계정을 직접 운영했습니다. 티저, 캠페인, 행사의 트래픽을 계정으로 모으고, 발행할 때마다 변수를 하나씩 바꿔 보며 발행 기준을 다듬었습니다. 한 계정은 13개월을 끊김 없이 운영했습니다.</p>
-      <div class="meta">
-        <div>캠페인 기간 X 팔로워 20만 증가</div>
-        <div>런칭 티저 24시간 만에 팔로워 25K</div>
-        <div>직접 운영 계정 합산 200K 이상</div>
+      <div class="flow rise">
+        <div><b>5개</b><span class="fl-t">직접 운영한 계정</span><span class="fl-d">브랜드마다 사용자가 달라 말투 가이드를 따로 만들었습니다</span></div>
+        <div><b>200K</b><span class="fl-t">합산 규모</span><span class="fl-d">다섯 계정을 동시에 굴린 총 팔로워</span></div>
+        <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 끊기지 않고 직접 발행했습니다</span></div>
       </div>
     </div>
-    <p class="talk rise">반짝 유입을 남는 팔로워로 바꾼 발행 기준은, 만나서 이어 말씀드리겠습니다.</p>
+
+    <div class="item rise">
+      <h4>발행 기준은 감이 아니라 실험으로 만들었습니다</h4>
+      <p>한 번에 여러 가지를 바꾸면 무엇이 먹혔는지 알 수 없습니다. 그래서 <strong>변수를 하나씩만 바꿔가며</strong> 같은 조건에서 비교했습니다. 가설을 세우고, 변수 하나만 다르게 발행하고, 대시보드에서 결과를 보고, 이긴 값을 다음 발행의 기본값으로 굳히는 순서입니다.</p>
+      <div class="tw rise" style="margin-top:var(--s5);">
+        <table><tbody>
+          <tr><td class="k">발행 시간</td><td>조회 +13%, 좋아요 +17%</td></tr>
+          <tr><td class="k">평일 발행</td><td>조회 +20.1%</td></tr>
+          <tr><td class="k">영상 첨부</td><td>조회 +8.4%, 좋아요 +4.0%, 댓글 +37.8%</td></tr>
+        </tbody></table>
+      </div>
+      <p style="margin-top:var(--s5);">각 변수의 최적값을 합쳐 발행 가이드를 만들고 이후 캠페인의 기본값으로 삼았습니다. 캠페인이 바뀔 때마다 같은 방식으로 다시 검증했습니다.</p>
+      <div class="meta">
+        <div>검증 사례: KBW 2024 단일 트윗 549,339 노출, 16,251 좋아요, 14,897 리트윗</div>
+        <div>런칭 티저는 유료 집행 없이 24시간 만에 팔로워 25K</div>
+      </div>
+    </div>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
