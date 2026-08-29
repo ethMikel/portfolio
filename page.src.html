@@ -129,7 +129,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .on .bar:nth-child(3) .fill{transition-delay:.24s;}
 
 /* ══ 메인 ═══════════════════════════════════════════════════════════════ */
-.hero{padding:var(--s20) 0 var(--s16);}
+.hero{padding:var(--s16) 0;}
 .hero > *{opacity:0;transform:translateY(16px);animation:heroin .7s var(--ease) both;}
 .hero > *:nth-child(1){animation-delay:.04s;}
 .hero > *:nth-child(2){animation-delay:.13s;}
@@ -140,7 +140,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 @keyframes heroin{to{opacity:1;transform:none;}}
 
 .hero .hi{font-size:19px;color:var(--g600);margin:0 0 var(--s3);}
-.hero .big{font-size:46px;font-weight:800;letter-spacing:-.045em;line-height:1.28;margin:0;}
+.hero .big{font-size:50px;font-weight:800;letter-spacing:-.05em;line-height:1.26;margin:0;}
 .hero .big em{font-style:normal;color:var(--blue);}
 .big .hline{display:block;opacity:0;transform:translateY(14px);animation:heroin .6s var(--ease) both;}
 .big .hline:nth-of-type(1){animation-delay:.15s;}
@@ -149,11 +149,20 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .big .hline:nth-of-type(4){animation-delay:1.35s;}
 .hnum{font-variant-numeric:tabular-nums;}
 .cta2{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin-top:var(--s8);}
-.hstats{display:flex;flex-wrap:wrap;gap:var(--s10);margin-top:var(--s12);}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s16);align-items:center;}
+.hstats{display:grid;gap:var(--s6);margin:0;min-width:200px;}
+.hs{opacity:0;transform:translateY(18px);animation:heroin .55s var(--ease) both;}
+.hs:nth-child(1){animation-delay:.50s;}
+.hs:nth-child(2){animation-delay:.72s;}
+.hs:nth-child(3){animation-delay:.94s;}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:var(--s12);align-items:start;}
+  .hstats{display:flex;flex-wrap:wrap;gap:var(--s10);min-width:0;}
+}
 .hs{text-align:left;transition:transform .2s var(--ease);}
 .hs:hover{transform:translateY(-2px);}
-.hs b{display:block;font-size:34px;font-weight:800;letter-spacing:-.05em;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1.15;}
-.hs span{display:block;font-size:13px;color:var(--g500);font-weight:600;margin-top:6px;letter-spacing:-.01em;}
+.hs b{display:block;font-size:40px;font-weight:800;letter-spacing:-.05em;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1.1;}
+.hs span{display:block;font-size:13.5px;color:var(--g500);font-weight:600;margin-top:7px;letter-spacing:-.01em;}
 .go-work{font-size:15px;font-weight:700;color:#fff;background:var(--blue);
   padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:var(--s2);
   transition:transform .2s var(--ease),background-color .2s var(--ease);}
@@ -588,7 +597,8 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
    각 화면 요소에 자기 배경을 직접 준다. 안 주면 어두운 글자가 흰 종이에 사라진다. */
 body.printing .view{display:block!important;}
 body.printing #prog,body.printing #wipe{display:none!important;}
-body.printing .hero > *,body.printing .rise,body.printing .lg,body.printing .axis span,
+body.printing .hero > *,body.printing .hero .hline,body.printing .hs,
+body.printing .rise,body.printing .lg,body.printing .axis span,
 body.printing .figs > div,body.printing .figs2 > div,body.printing .tiles .tile{
   opacity:1!important;transform:none!important;transition:none!important;animation:none!important;}
 body.printing .bar .fill,body.printing .abr .t i{transform:scaleX(1)!important;transition:none!important;}
@@ -618,7 +628,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   #v-career{break-before:auto;}
   #v-career .sv{padding-top:var(--s8);}
   .sv{padding-top:var(--s4);}
-  .hero{padding:var(--s4) 0 var(--s8);}
+  .hero{padding:var(--s4) 0 var(--s8);display:block!important;}
+  .hstats{display:flex!important;gap:var(--s10);margin-top:var(--s6);}
+  .hs{opacity:1!important;transform:none!important;animation:none!important;}
   .sec{padding:0 0 var(--s8);}
   .item{padding:var(--s5) 0;}
 
@@ -629,7 +641,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
   /* 애니메이션 상태는 전부 최종값으로 */
-  .hero > *,.rise,.lg,.axis span,.figs > div,.figs2 > div,.tiles .tile{
+  .hero > *,.hero .hline,.hs,.rise,.lg,.axis span,.figs > div,.figs2 > div,.tiles .tile{
     opacity:1!important;transform:none!important;animation:none!important;}
   .bar .fill,.abr .t i,.bars .bt i{transform:scaleX(1)!important;}
 
@@ -696,15 +708,14 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <div class="wrap">
 
     <div class="hero">
+      <div class="hcopy">
       <h1 class="big">
         <span class="hline">숫자와 도구를</span>
         <span class="hline">직접 만드는 <em>전동현</em>입니다.</span>
       </h1>
       <p class="sub">무엇을 <strong>측정</strong>할지 직접 정하고, 도구는 <strong>AI</strong>로 제작합니다.</p>
-      <div class="cta2">
-        <a class="go-work" href="#results" data-scroll="results">성과부터 보기 <span class="arw">&darr;</span></a>
-      </div>
       <p class="printmail" hidden>eastboy_12@naver.com</p>
+      </div>
       <div class="hstats">
         <button class="hs" data-go="case-auction"><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></button>
         <button class="hs" data-go="case-minini"><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></button>
@@ -1613,7 +1624,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   /* 히어로 숫자는 로드 직후 차오른다 */
   document.querySelectorAll('.hstats [data-count]').forEach(function(el, i){
     if (reduce){ countUp(el); return; }
-    setTimeout(function(){ countUp(el); }, 500 + i * 220);
+    setTimeout(function(){ if (document.body.classList.contains('printing')) return; countUp(el); }, 500 + i * 220);
   });
 
   /* 섹션 앵커는 해시 라우터와 충돌하므로 스크롤로 직접 이동 */
