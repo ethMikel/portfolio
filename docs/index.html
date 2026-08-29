@@ -263,7 +263,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .figs > div{background:var(--g50);border-radius:var(--r);padding:var(--s6) var(--s5);}
 .figs b{display:block;font-size:38px;font-weight:800;letter-spacing:-.05em;line-height:1.15;}
 #v-home .figs > div{text-align:center;padding:var(--s8) var(--s5);}
-#v-home .figs > div span{font-size:13.5px;}
+#v-home .figs > div span{font-size:13.5px;text-wrap:balance;word-break:keep-all;}
 .figs span{display:block;font-size:13px;color:var(--g600);margin-top:var(--s1);line-height:1.5;}
 
 /* ── 경력 요약 ─────────────────────────────────────────────────────────── */
@@ -378,7 +378,8 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .flow b{display:block;font-size:23px;font-weight:800;letter-spacing:-.045em;color:var(--blue);
   font-variant-numeric:tabular-nums;line-height:1.2;}
 .flow .fl-t{display:block;font-size:13.5px;font-weight:700;color:var(--g900);margin-top:6px;}
-.flow .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;}
+.flow .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;text-wrap:balance;word-break:keep-all;}
+.flow .fl-t{text-wrap:balance;word-break:keep-all;}
 @media (max-width:720px){.flow{grid-template-columns:1fr;}.flow > div + div::before{display:none;}}
 .meta{font-size:14px;color:var(--g600);margin-top:var(--s4);background:var(--g50);border-radius:14px;padding:var(--s4) var(--s5);}
 .meta div{margin-bottom:var(--s1);}
@@ -763,9 +764,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <span class="lab">CRIPCO<small>IPX(LINE FRIENDS) 자회사</small><em>블록체인 마케팅 책임자</em></span>
       <div class="figs">
         <div><b data-count="300" data-suffix="K">0</b><span>직접 운영한 X 5개 계정 합산</span></div>
-        <div><b data-count="91118">0</b><span>한 번의 캠페인으로 만든 구매 등록</span></div>
+        <div><b data-count="91118">0</b><span>한 캠페인이 만든 구매 등록</span></div>
         <div><b data-count="94" data-suffix="%">0</b><span>17,691명이 입력한 참여 코드 사용률</span></div>
-        <div><b data-count="20" data-suffix="배">0배</b><span>예산 없이 만든 전년 대비 거래량</span></div>
+        <div><b data-count="20" data-suffix="배">0배</b><span>예산 없이 만든 거래량 증가</span></div>
       </div>
 
       <div class="sum">
@@ -1069,10 +1070,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <h4>가설</h4>
       <p>계정을 공지판이 아니라 <strong>미디어처럼 운영하면 캠페인이 몰고 온 관심이 팔로워로 남는다</strong>고 봤습니다. 대신 계정마다 보는 사람과 기대치가 다르니 말투를 하나로 쓰면 안 된다고 봤습니다.</p>
       <div class="flow nb rise">
-        <div><b>30만</b><span class="fl-t">다섯 계정 합산</span><span class="fl-d">브랜드 다섯 개를 동시에 운영했습니다</span></div>
+        <div><b>30만</b><span class="fl-t">다섯 계정 합산</span><span class="fl-d">브랜드 다섯 개를 동시 운영</span></div>
         <div><b>20만</b><span class="fl-t">캠페인 기간 증가</span><span class="fl-d">그중 직접 늘린 몫</span></div>
-        <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비 0원, 4주 뒤 42K</span></div>
-        <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 끊기지 않았습니다</span></div>
+        <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비 0원, 4주 뒤 42K까지</span></div>
+        <div><b>13개월</b><span class="fl-t">무중단 운영</span><span class="fl-d">한 계정은 하루도 안 끊겼습니다</span></div>
       </div>
     </div>
 
@@ -1080,7 +1081,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <h4>계정마다 다른 말투로 굴렸습니다</h4>
       <p>같은 캠페인도 계정마다 다른 문장으로 나갔습니다. 한 계정은 공식 발표 중심으로 사실과 링크만, 한 계정은 짧은 영어 구어체로, 한 계정은 캐릭터 말투로 갔습니다. <strong>톤 가이드를 계정별로 따로 만들어</strong> 저뿐 아니라 함께 일한 KOL에게도 배포했습니다.</p>
       <p>발행은 캘린더로 관리했습니다. 다섯 계정 일정을 한 곳에서 짜고, 큰 캠페인의 티저는 <strong>7일 시퀀스</strong>로 나눠 하루에 하나씩 정보를 풀었습니다. 계정끼리 서로 밀어주는 순서도 미리 짜뒀습니다. 한 계정이 올리면 다른 계정이 받아 확산시키는 식입니다.</p>
-      <p>콘텐츠는 영상 중심으로 갔습니다. 최근 발행분 기준 <strong>일곱 중 하나꼴이 아니라 일곱 중 다섯이 영상</strong>이었고, 발행용 트윗 디자인은 한 프로젝트에서만 58종을 기획했습니다.</p>
+      <p>콘텐츠는 영상 중심으로 갔습니다. 최근 발행분 기준 <strong>열에 일곱이 영상</strong>이었고, 발행용 트윗 디자인은 한 프로젝트에서만 58종을 기획했습니다.</p>
     </div>
 
     <div class="item rise">
