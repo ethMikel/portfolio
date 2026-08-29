@@ -20,6 +20,8 @@ IMAGES = {
     "__IMG_MINI__":   "minini.png",
     "__IMG_HUB__":    "hub.png",
     "__IMG_SITED__":  "site-d.png",
+    "__IMG_NETL__":   "net-login.png",
+    "__IMG_NETB__":   "net-board.png",
 }
 PLATE = "title.png"
 FONT = "galmuri11.woff2"

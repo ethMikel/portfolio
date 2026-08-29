@@ -408,6 +408,8 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
   color:var(--g800);font-weight:600;letter-spacing:-.01em;}
 .feat b{display:block;font-size:12px;font-weight:800;color:var(--blue);margin-bottom:4px;letter-spacing:.02em;}
 @media (max-width:820px){.tada{font-size:26px;}}
+body[data-view="net"] .scr,body[data-view="tools"] .scr{border-color:#2c2438;box-shadow:0 18px 50px rgba(0,0,0,.45);}
+body[data-view="net"] .scap,body[data-view="tools"] .scap{color:#8b81a0;}
 @media print{.scr{opacity:1!important;transform:none!important;animation:none!important;box-shadow:none;}
   .tada .pop2,.tada .l1,.fsteps.on > div{animation:none!important;opacity:1!important;transform:none!important;}}
 
@@ -1543,7 +1545,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <h2>팀이 함께 쓰는 운영 도구를 만들었습니다</h2>
     <p class="intro" style="color:var(--g700);">쓰던 도구가 흩어져 있어서 상태를 보려면 매번 여러 곳을 열어야 했습니다. 한 곳에서 보고 한 곳에서 처리하도록 직접 만들었습니다. 소수 인원이 실제로 쓰는 도구입니다.</p>
 
-    <p style="margin-top:var(--s8);font-size:13.5px;color:var(--dim2);">아래는 실제로 배포된 화면을 그대로 옮긴 구조도입니다. 캡처가 아닙니다. 화면 13개 중 사업 내용이 드러나는 하나는 뺐습니다.</p>
+    <div class="scr rise" style="margin-top:var(--s8);"><img src="assets/net-board.png" alt="팀 운영 인트라넷 작업 화면"></div>
+    <p class="scap">실제 운영 중인 화면. 사업명만 가렸습니다</p>
+
+    <p style="margin-top:var(--s10);font-size:13.5px;color:var(--dim2);">아래는 화면 13개를 실제 주소 그대로 옮긴 구조도입니다. 사업 내용이 드러나는 하나는 뺐습니다.</p>
     <div class="map rise">
       <div><b>홈</b><span>오늘 볼 것만 모은 첫 화면</span><code>/home</code></div>
       <div><b>발행 캘린더</b><span>타임존을 고려한 멀티채널 일정</span><code>/calendar</code></div>
@@ -1583,6 +1588,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>로그인과 세션</h4>
       <p>이메일로 로그인합니다. 모든 요청이 지나가는 자리에 세션 검사를 걸어서, 로그인이 풀린 채로 화면이 열리는 일이 없게 했습니다. 여기에 더해 <strong>초대한 이메일만 통과시키는 문을 서버 앞단에 한 겹 더</strong> 뒀습니다. 주소를 알아도 초대받지 않았으면 로그인 화면조차 보이지 않습니다.</p>
+      <div class="scr rise" style="margin-top:var(--s6);"><img src="assets/net-login.png" alt="인트라넷 로그인 화면"></div>
+      <p class="scap">서비스명만 가렸습니다</p>
     </div>
 
     <div class="item rise">
