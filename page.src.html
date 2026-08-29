@@ -176,7 +176,7 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .hero .nm em{font-style:normal;font-size:19px;font-weight:500;color:var(--g400);letter-spacing:-.01em;margin-left:var(--s4);}
 .hero .role{font-size:14px;font-weight:600;color:var(--blue);margin:var(--s4) 0 0;letter-spacing:-.01em;}
 .hero .lede{font-size:26px;font-weight:700;letter-spacing:-.035em;line-height:1.5;margin:var(--s6) 0 0;max-width:22ch;}
-.hero .sub{font-size:19px;line-height:1.65;color:var(--g600);margin:var(--s6) 0 0;max-width:44ch;letter-spacing:-.015em;}
+.hero .sub{font-size:19px;line-height:1.65;color:var(--g600);margin:var(--s6) 0 0;max-width:44ch;letter-spacing:-.015em;word-break:keep-all;}
 .hero .sub strong{font-weight:700;color:var(--g900);}
 .mailbtn{display:inline-block;vertical-align:middle;font-size:13px;font-weight:600;
   letter-spacing:-.01em;color:var(--g700);background:var(--g100);
@@ -310,6 +310,8 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:auto;padding-top:var(--s5);}
 .chips span{font-size:12.5px;font-weight:600;color:var(--g600);background:var(--g100);
   padding:5px 11px;border-radius:999px;}
+.card.nolink{cursor:default;}
+.card.nolink:hover{transform:none;box-shadow:none;}
 .card .go{font-size:14px;font-weight:700;color:var(--ac);margin-top:var(--s5);display:inline-flex;align-items:center;gap:var(--s2);}
 
 /* ── 표 ────────────────────────────────────────────────────────────────── */
@@ -363,7 +365,7 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
 .item{padding:var(--s8) 0;border-bottom:1px solid var(--g100);}
 .item:last-child{border-bottom:0;}
 .item h4{font-size:18px;font-weight:700;margin:0 0 var(--s3);letter-spacing:-.03em;}
-.item p{font-size:15.5px;line-height:1.85;color:var(--g700);}
+.item p{font-size:15.5px;line-height:1.85;color:var(--g700);word-break:keep-all;}
 /* 케이스 제품 이미지: 세로 아트를 왼쪽, 설명을 오른쪽 */
 .pshot{display:grid;grid-template-columns:220px 1fr;gap:var(--s8);align-items:center;
   background:var(--g50);border-radius:20px;padding:var(--s6);margin:var(--s8) 0 0;}
@@ -823,10 +825,10 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec" id="projects">
       <span class="lab">전체 프로젝트<em>마케팅부터 직접 만든 도구까지</em></span>
       <div class="flt" role="tablist">
-        <button class="on" data-cat="all">전체 (14)</button>
+        <button class="on" data-cat="all">전체 (16)</button>
         <button data-cat="mkt">Marketing (6)</button>
         <button data-cat="evt">Event (1)</button>
-        <button data-cat="ai">AI (7)</button>
+        <button data-cat="ai">AI (9)</button>
       </div>
       <div class="tw rise">
         <table class="plist">
@@ -843,6 +845,8 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="ai" data-link="#/tools"><td class="k">X 마케팅 운영 툴</td><td><span class="pc ai">AI</span></td><td>트윗 수집, A/B 태깅, 감성 분석 자동화</td></tr>
             <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 대시보드</td><td><span class="pc ai">AI</span></td><td>주간 파이프라인 7단계 자동 운영</td></tr>
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
+            <tr data-cat="ai"><td class="k">포트폴리오 사이트</td><td><span class="pc ai">AI</span></td><td>웹 화면과 인쇄 문서를 한 소스로 관리, 직접 제작</td></tr>
+            <tr data-cat="ai"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">brand-demand-radar</td><td><span class="pc ai">AI</span></td><td>리셀 웃돈 신호로 브랜드 발굴, 무신사 과제</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">trade-plan-diary</td><td><span class="pc ai">AI</span></td><td>추천 없이 매매 계획을 코치, 카카오페이증권 과제</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">fx-timing-sheet</td><td><span class="pc ai">AI</span></td><td>환율 마케팅 타이밍 판정, 마이리얼트립 과제</td></tr>
@@ -855,14 +859,14 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <span class="lab">AI를 쓰는 방식<em>코드는 AI가 씁니다. 문제는 그다음입니다</em></span>
       <div class="cards">
         <button class="card rise" style="--ac:var(--c-game);" data-go="game">
-          <span class="kk"><i></i>NHN NAN 2026 해커톤</span>
+          <span class="kk"><i></i>해커톤 출품작, 2026</span>
           <h3>히스토리 판타지 리그</h3>
           <p>세계사 인물로 근대 내각을 짜서 집권 연수를 겨루는 웹게임. 기획부터 배포까지 혼자 만들었습니다.</p>
           <div class="chips"><span>웹게임</span><span>픽셀 아트</span><span>리더보드</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
         <button class="card rise" style="--ac:var(--c-tool);" data-go="tools">
-          <span class="kk"><i></i>CRIPCO, 2024 ~</span>
+          <span class="kk"><i></i>2024 ~ 현재</span>
           <h3>마케팅 데이터 도구</h3>
           <p>트윗 수집 봇과 대시보드를 직접 만들었습니다. 무엇을 측정할지 정하고 A/B 테스트를 일상으로 돌렸습니다.</p>
           <div class="chips"><span>Python</span><span>Google Sheets</span><span>Notion</span></div>
@@ -874,6 +878,18 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <p>팀이 함께 쓰는 운영 도구를 직접 만들었습니다. 발행 캘린더부터 계정 권한 관리까지 한 곳에 넣었습니다.</p>
           <div class="chips"><span>Next.js</span><span>Supabase</span><span>Cloudflare</span></div>
           <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise nolink" style="--ac:var(--blue);" type="button" disabled>
+          <span class="kk"><i></i>2026</span>
+          <h3>이 포트폴리오 사이트</h3>
+          <p>지금 보고 계신 페이지도 직접 만들었습니다. 웹 화면과 인쇄용 문서를 하나의 소스로 관리합니다.</p>
+          <div class="chips"><span>HTML</span><span>GitHub Pages</span><span>인쇄 최적화</span></div>
+        </button>
+        <button class="card rise nolink" style="--ac:var(--c-tool);" type="button" disabled>
+          <span class="kk"><i></i>개인 프로젝트, 2026 ~</span>
+          <h3>AI 작업 관리 대시보드</h3>
+          <p>AI로 벌인 작업이 늘면서 기록이 흩어졌습니다. 진행 상황과 다음 할 일을 한 곳에서 보도록 만들어 24시간 자동으로 갱신합니다.</p>
+          <div class="chips"><span>Python</span><span>자동 수집</span><span>무인 운영</span></div>
         </button>
         <button class="card rise" style="--ac:var(--c-codex);" data-go="codex">
           <span class="kk"><i></i>AX 인재전쟁 2026 해커톤</span>
@@ -1213,10 +1229,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   <div class="plate" aria-hidden="true"></div>
   <div class="fade" aria-hidden="true"></div>
   <div class="wrap sv">
-    <span class="kk"><i></i>NHN NAN 2026, 게임 x AI 해커톤</span>
+    <span class="kk"><i></i>게임 x AI 해커톤 출품작, 2026</span>
     <h2>히스토리 판타지 리그</h2>
     <p class="intro">세계사 인물로 근대 내각을 짜서 집권 연수를 겨루는 웹게임입니다. 설치도 로그인도 없이 바로 돌아갑니다.</p>
-    <p style="margin-top:var(--s4);max-width:56ch;">게임을 만들어 본 적이 없습니다. 코드도, 그림도, 소리도 만들지 못합니다. <strong>무엇을 만들 것인가만 정하고 나머지는 전부 시켰습니다.</strong></p>
+    <p style="margin-top:var(--s5);max-width:52ch;">게임을 만들어 본 적이 없습니다. 코드도, 그림도, 소리도 만들지 못합니다.</p>
+    <p style="margin-top:var(--s3);max-width:52ch;"><strong>무엇을 만들 것인가만 정하고, 나머지는 전부 시켰습니다.</strong></p>
 
     <div class="btns">
       <a class="key" href="https://ethmikel.github.io/hfl/" target="_blank" rel="noopener">한 판 해보기 &rsaquo;</a>
