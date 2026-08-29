@@ -150,8 +150,11 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 .hnum{font-variant-numeric:tabular-nums;}
 .cta2{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3);margin-top:var(--s8);}
 .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s16);align-items:center;}
-.hstats{display:grid;gap:var(--s6);margin:0;min-width:200px;}
-.hs{opacity:0;transform:translateY(18px);animation:heroin .55s var(--ease) both;}
+.hstats{display:grid;gap:var(--s5);margin:0;min-width:270px;}
+.hs{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s4);
+  padding-bottom:var(--s4);border-bottom:1px solid var(--g150,var(--g100));
+  opacity:0;transform:translateY(18px);animation:heroin .55s var(--ease) both;}
+.hs:last-child{border-bottom:0;padding-bottom:0;}
 .hs:nth-child(1){animation-delay:.50s;}
 .hs:nth-child(2){animation-delay:.72s;}
 .hs:nth-child(3){animation-delay:.94s;}
@@ -161,8 +164,8 @@ body[data-view="codex"] #prog{background:var(--c-codex);}
 }
 .hs{text-align:left;transition:transform .2s var(--ease);}
 .hs:hover{transform:translateY(-2px);}
-.hs b{display:block;font-size:40px;font-weight:800;letter-spacing:-.05em;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1.1;}
-.hs span{display:block;font-size:13.5px;color:var(--g500);font-weight:600;margin-top:7px;letter-spacing:-.01em;}
+.hs b{font-size:38px;font-weight:800;letter-spacing:-.05em;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1.1;flex:none;}
+.hs span{font-size:14.5px;color:var(--g600);font-weight:600;letter-spacing:-.015em;white-space:nowrap;}
 .go-work{font-size:15px;font-weight:700;color:#fff;background:var(--blue);
   padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:var(--s2);
   transition:transform .2s var(--ease),background-color .2s var(--ease);}
@@ -630,6 +633,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   .sv{padding-top:var(--s4);}
   .hero{padding:var(--s4) 0 var(--s8);display:block!important;}
   .hstats{display:flex!important;gap:var(--s10);margin-top:var(--s6);}
+  .hs{border-bottom:0!important;padding-bottom:0!important;}
   .hs{opacity:1!important;transform:none!important;animation:none!important;}
   .sec{padding:0 0 var(--s8);}
   .item{padding:var(--s5) 0;}
@@ -717,9 +721,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p class="printmail" hidden>eastboy_12@naver.com</p>
       </div>
       <div class="hstats">
-        <button class="hs" data-go="case-auction"><b data-count="46" data-suffix="억">0억</b><span>단일 매출</span></button>
-        <button class="hs" data-go="case-minini"><b data-count="500" data-suffix="만">0만</b><span>글로벌 유저</span></button>
-        <button class="hs" data-go="case-social"><b data-count="20" data-suffix="만">0만</b><span>X 팔로워 증가</span></button>
+        <button class="hs" data-go="case-auction"><span>단일 매출</span><b data-count="46" data-suffix="억">0억</b></button>
+        <button class="hs" data-go="case-minini"><span>글로벌 유저</span><b data-count="500" data-suffix="만">0만</b></button>
+        <button class="hs" data-go="case-social"><span>X 팔로워 증가</span><b data-count="20" data-suffix="만">0만</b></button>
       </div>
     </div>
 
