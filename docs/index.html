@@ -391,14 +391,14 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
   .pshot img{max-width:200px;margin:0 auto;}}
 
 /* 가로 막대: 규모나 증감 비교 */
-.bars{display:grid;gap:var(--s3);margin:var(--s6) 0 var(--s2);}
-.bars > div{display:grid;grid-template-columns:150px 1fr 76px;align-items:center;gap:var(--s4);font-size:14px;}
-.bars .bl{color:var(--g700);font-weight:600;letter-spacing:-.01em;}
-.bars .bt{height:12px;background:var(--g100);border-radius:999px;position:relative;overflow:hidden;}
-.bars .bt i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:999px;
+.hbar{display:grid;gap:var(--s3);margin:var(--s6) 0 var(--s2);}
+.hbar > div{display:grid;grid-template-columns:150px 1fr 76px;align-items:center;gap:var(--s4);font-size:14px;}
+.hbar .bl{color:var(--g700);font-weight:600;letter-spacing:-.01em;}
+.hbar .bt{height:12px;background:var(--g100);border-radius:999px;position:relative;overflow:hidden;}
+.hbar .bt i{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:999px;
   transform-origin:left center;}
-.bars .bv{font-weight:800;color:var(--blue);text-align:right;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
-@media (max-width:720px){.bars > div{grid-template-columns:110px 1fr 62px;gap:var(--s3);font-size:13px;}}
+.hbar .bv{font-weight:800;color:var(--blue);text-align:right;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+@media (max-width:720px){.hbar > div{grid-template-columns:110px 1fr 62px;gap:var(--s3);font-size:13px;}}
 
 /* 타임라인: 순서가 메시지일 때 */
 .tline{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin:var(--s6) 0 var(--s2);}
@@ -418,18 +418,18 @@ body[data-view="tools"] footer{border-top-color:#d5e4e4;}
   .tline > div::after{top:2px;}}
 
 /* 케이스 흐름도: 단계별 숫자와 그 단계에서 본 것 */
-.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s4);margin:var(--s6) 0 var(--s2);}
-.flow > div{background:var(--g50);border-radius:16px;padding:var(--s5);position:relative;}
-.flow.nb > div + div::before{display:none;}
-.flow > div + div::before{content:"";position:absolute;left:calc(var(--s4) * -1 + 3px);top:50%;
+.fsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s4);margin:var(--s6) 0 var(--s2);}
+.fsteps > div{background:var(--g50);border-radius:16px;padding:var(--s5);position:relative;}
+.fsteps.nb > div + div::before{display:none;}
+.fsteps > div + div::before{content:"";position:absolute;left:calc(var(--s4) * -1 + 3px);top:50%;
   width:10px;height:10px;border-top:2px solid var(--g300);border-right:2px solid var(--g300);
   transform:translateY(-50%) rotate(45deg);}
-.flow b{display:block;font-size:23px;font-weight:800;letter-spacing:-.045em;color:var(--blue);
+.fsteps b{display:block;font-size:23px;font-weight:800;letter-spacing:-.045em;color:var(--blue);
   font-variant-numeric:tabular-nums;line-height:1.2;}
-.flow .fl-t{display:block;font-size:13.5px;font-weight:700;color:var(--g900);margin-top:6px;}
-.flow .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;text-wrap:balance;word-break:keep-all;}
-.flow .fl-t{text-wrap:balance;word-break:keep-all;}
-@media (max-width:720px){.flow{grid-template-columns:1fr;}.flow > div + div::before{display:none;}}
+.fsteps .fl-t{display:block;font-size:13.5px;font-weight:700;color:var(--g900);margin-top:6px;}
+.fsteps .fl-d{display:block;font-size:12.5px;color:var(--g600);margin-top:5px;line-height:1.6;text-wrap:balance;word-break:keep-all;}
+.fsteps .fl-t{text-wrap:balance;word-break:keep-all;}
+@media (max-width:720px){.fsteps{grid-template-columns:1fr;}.fsteps > div + div::before{display:none;}}
 .meta{font-size:14px;color:var(--g600);margin-top:var(--s4);background:var(--g50);border-radius:14px;padding:var(--s4) var(--s5);}
 .meta div{margin-bottom:var(--s1);}
 .meta div:last-child{margin-bottom:0;}
@@ -668,11 +668,11 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   /* 애니메이션 상태는 전부 최종값으로 */
   .hero > *,.hero .hline,.hs,.rise,.lg,.axis span,.figs > div,.figs2 > div,.tiles .tile{
     opacity:1!important;transform:none!important;animation:none!important;}
-  .bar .fill,.abr .t i,.bars .bt i{transform:scaleX(1)!important;}
+  .bar .fill,.abr .t i,.hbar .bt i{transform:scaleX(1)!important;}
 
   /* 끊김 관리: 제목은 다음 내용과 붙고, 덩어리는 중간에서 안 갈린다 */
   .lab,.kk,h2,h4,.job,.grp{break-after:avoid;}
-  .item,.sm,.aiw,.tw,.tile,.term,blockquote,figure,.frame,.gframe,.gframe2,.flow > div,.bars,.pshot,
+  .item,.sm,.aiw,.tw,.tile,.term,blockquote,figure,.frame,.gframe,.gframe2,.fsteps > div,.hbar,.pshot,
   .map > div,.fl,.figs,.figs2,.sum,.panel,.tiles,.gsteps > div,.gsplit,.btns,.shots figure{
     break-inside:avoid;}
   /* 코덱스 장의 항목은 터미널 블록까지 묶으면 한 항목이 한 페이지를 통째로 밀어낸다.
@@ -1014,7 +1014,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>런칭 티저로 24시간 만에 팔로워 25K를 모았고, 티저 트윗은 299,353 노출을 기록했습니다. 퍼널을 관심, 사전 신청, 구매 등록, 입찰 4단계로 나눠 단계마다 다른 지표를 봤고, KOL은 사전과 당일과 사후 3단계로 움직였습니다. 약한 단계가 보이면 그 단계만 다시 손봤습니다. 본 경매가 끝난 뒤에도 43주 동안 공개 경매를 이어가며 가격을 관리했습니다.</p>
-      <div class="flow rise">
+      <div class="fsteps rise">
         <div><b>25K</b><span class="fl-t">런칭 티저</span><span class="fl-d">24시간 만에 모은 팔로워. 유료 집행 없음</span></div>
         <div><b>16,355</b><span class="fl-t">사전 신청</span><span class="fl-d">관심을 명단으로 바꾸는 단계. 도달이 아니라 등록 수를 봤습니다</span></div>
         <div><b>91,118</b><span class="fl-t">구매 등록</span><span class="fl-d">가장 많이 빠지는 구간. 카피가 아니라 등록 절차를 손봤습니다</span></div>
@@ -1069,7 +1069,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         </div>
       </div>
 
-      <div class="flow rise">
+      <div class="fsteps rise">
         <div><b>500만</b><span class="fl-t">게임 유입</span><span class="fl-d">2개월 만에 글로벌 누적 유저. 설치도 로그인도 없는 형태</span></div>
         <div><b>94%</b><span class="fl-t">코드 사용률</span><span class="fl-d">나눠준 참여 코드가 실제로 입력된 비율</span></div>
         <div><b>50만</b><span class="fl-t">가입 전환</span><span class="fl-d">게임에서 들어와 서비스 가입까지 이어진 사람</span></div>
@@ -1106,7 +1106,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>실행</h4>
       <p>이벤트 구조 기획과 확산을 맡았습니다. 리더보드로 참여자들의 경쟁 심리를 자극하고, 커뮤니티와 KOL 채널로 참여를 끌어올렸습니다. 별도 광고 예산 없이 기존 채널과 보상 설계만으로 진행했고, 확산에는 평소 관리하던 국내 KOL 텔레그램 채널망을 동원했습니다.</p>
-      <div class="flow rise">
+      <div class="fsteps rise">
         <div><b>0원</b><span class="fl-t">광고 예산</span><span class="fl-d">기존 채널과 보상 설계만으로 진행했습니다</span></div>
         <div><b>392개</b><span class="fl-t">확산 채널</span><span class="fl-d">평소 관리하던 국내 KOL 텔레그램. 합산 구독 280만</span></div>
         <div><b>20배</b><span class="fl-t">거래량</span><span class="fl-d">전년 대비</span></div>
@@ -1137,7 +1137,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>가설</h4>
       <p>계정을 공지판이 아니라 <strong>미디어처럼 운영하면 캠페인이 몰고 온 관심이 팔로워로 남는다</strong>고 봤습니다. 대신 계정마다 보는 사람과 기대치가 다르니 말투를 하나로 쓰면 안 된다고 봤습니다.</p>
-      <div class="bars rise">
+      <div class="hbar rise">
         <div><span class="bl">토큰 프로젝트</span><div class="bt"><i style="width:100%"></i></div><span class="bv">133K</span></div>
         <div><span class="bl">회사 오피셜 계정</span><div class="bt"><i style="width:65%"></i></div><span class="bv">87K</span></div>
         <div><span class="bl">캐릭터 IP 1</span><div class="bt"><i style="width:25%"></i></div><span class="bv">34K</span></div>
@@ -1146,7 +1146,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
       <p style="font-size:13.5px;color:var(--g500);margin:var(--s3) 0 0;">브랜드 성격이 전부 달라 각각 다른 사람이 봅니다. 합산 30만.</p>
 
-      <div class="flow nb rise">
+      <div class="fsteps nb rise">
         <div><b>30만</b><span class="fl-t">다섯 계정 합산</span><span class="fl-d">브랜드 다섯 개를 동시 운영</span></div>
         <div><b>20만</b><span class="fl-t">캠페인 기간 증가</span><span class="fl-d">그중 직접 늘린 몫</span></div>
         <div><b>25K</b><span class="fl-t">24시간 만에</span><span class="fl-d">새로 연 계정. 광고비 0원, 4주 뒤 42K까지</span></div>
@@ -1164,7 +1164,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="item rise">
       <h4>발행 기준은 감이 아니라 실험으로 만들었습니다</h4>
       <p>한 번에 여러 가지를 바꾸면 무엇이 먹혔는지 알 수 없습니다. 그래서 <strong>변수를 하나씩만 바꿔가며</strong> 같은 조건에서 비교했습니다. 가설을 세우고, 변수 하나만 다르게 발행하고, 대시보드에서 결과를 보고, 이긴 값을 다음 발행의 기본값으로 굳히는 순서입니다.</p>
-      <div class="bars rise">
+      <div class="hbar rise">
         <div><span class="bl">영상, 댓글</span><div class="bt"><i style="width:100%"></i></div><span class="bv">+37.8%</span></div>
         <div><span class="bl">평일 발행, 조회</span><div class="bt"><i style="width:53%"></i></div><span class="bv">+20.1%</span></div>
         <div><span class="bl">발행 시간, 좋아요</span><div class="bt"><i style="width:45%"></i></div><span class="bv">+17%</span></div>
