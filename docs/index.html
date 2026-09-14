@@ -498,8 +498,8 @@ body[data-view="frog"] .back:hover{color:#3e8a5a;}
 .fv h2 em{font-style:normal;color:#3e8a5a;}
 .fv .intro strong{color:#3e8a5a;}
 .fshots{display:grid;gap:var(--s12);margin-top:var(--s12);}
-.fshot .ftag{display:inline-block;font-family:var(--pix);font-size:13px;color:#fff;background:#5fa871;
-  padding:6px 12px;border-radius:6px;box-shadow:0 3px 0 #3e8a5a;margin-bottom:var(--s3);}
+.fshot .ftag{display:block;font-family:var(--pix);font-weight:700;font-size:22px;color:#191f28;
+  letter-spacing:0;line-height:1.35;margin:0 0 var(--s2);}
 .fshot p{margin:0 0 var(--s4);color:var(--g700);font-size:15.5px;}
 .fshot .fframe{background:#fff;border:2px solid #dfe6e0;border-radius:14px;overflow:hidden;
   box-shadow:0 6px 0 #e3ebe4, 0 18px 40px rgba(62,138,90,.10);}
@@ -926,12 +926,12 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="op" data-link="#/career"><td class="k">커뮤니티 구축과 운영</td><td><span class="pc op">Operation</span></td><td>X 5개 외에도 디스코드/텔레그램 커뮤니티 운영 및 설계</td></tr>
             <tr data-cat="evt" data-link="#/career"><td class="k">오프라인 행사 3년 연속 기획</td><td><span class="pc evt">Event</span></td><td>3년 연속 자체 기획, 현장 참여 데이터 16K 확보</td></tr>
             <tr data-cat="dt" data-link="#/tools"><td class="k">측정 환경 구축</td><td><span class="pc dt">Data</span></td><td>Redash와 GA 추적 설계, 캠페인별 UTM 체계</td></tr>
+            <tr data-cat="ai" data-link="#/frog"><td class="k">투자 일지 서비스 (Frog log)</td><td><span class="pc ai">AI</span></td><td>한 줄 투자 기록, 시장 사후 채점, 시험 187개</td></tr>
             <tr data-cat="ai" data-link="#/game"><td class="k">히스토리 판타지 리그</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
             <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 데이터 도구</td><td><span class="pc ai">AI</span></td><td>트윗 수집부터 검증까지 주간 7단계 자동화</td></tr>
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
             <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
-            <tr data-cat="ai" data-link="#/frog"><td class="k">투자 일지 서비스 (Frog log)</td><td><span class="pc ai">AI</span></td><td>한 줄 투자 기록, 시장 사후 채점, 시험 187개</td></tr>
             </tbody>
         </table>
       </div>
@@ -940,6 +940,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec sec-cards" id="work">
       <span class="lab">AI를 쓰는 방식<em>코드는 AI가 씁니다. 문제는 그다음입니다</em></span>
       <div class="cards">
+        <button class="card rise" style="--ac:var(--c-frog);" data-go="frog">
+          <span class="kk"><i></i>해커톤 출품작, 2026</span>
+          <h3>투자 일지 서비스 (Frog log)</h3>
+          <p>투자할 때 느낀 마음을 한 줄로 적으면 시장이 사후에 채점해 돌려주는 일지입니다. 기획부터 배포까지 혼자 만들었습니다.</p>
+          <div class="chips"><span>Next.js</span><span>자체 채점 엔진</span><span>픽셀 마스코트</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
         <button class="card rise" style="--ac:var(--c-game);" data-go="game">
           <span class="kk"><i></i>해커톤 출품작, 2026</span>
           <h3>히스토리 판타지 리그</h3>
@@ -973,13 +980,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <h3>Codex 플러그인 3종</h3>
           <p>공개 자료만으로 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 떨어진 뒤 자기 결함을 찾아 고쳤습니다.</p>
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
-          <span class="go">들어가기 &rarr;</span>
-        </button>
-        <button class="card rise" style="--ac:var(--c-frog);" data-go="frog">
-          <span class="kk"><i></i>해커톤 출품작, 2026</span>
-          <h3>투자 일지 서비스 (Frog log)</h3>
-          <p>투자할 때 느낀 마음을 한 줄로 적으면 시장이 사후에 채점해 돌려주는 일지입니다. 기획부터 배포까지 혼자 만들었습니다.</p>
-          <div class="chips"><span>Next.js</span><span>자체 채점 엔진</span><span>픽셀 마스코트</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
       </div>
@@ -1370,17 +1370,17 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
     <div class="fshots">
       <div class="fshot rise">
-        <span class="ftag">차트</span>
+        <h3 class="ftag">차트</h3>
         <p>캔들 위에 그날의 마음이 찍힙니다. 점을 누르면 그 결정이 한 달 뒤 어떻게 됐는지 바로 보입니다.</p>
         <div class="fframe"><img src="assets/frog-chart.png" alt="차트 화면"></div>
       </div>
       <div class="fshot rise">
-        <span class="ftag">투자일지</span>
+        <h3 class="ftag">투자일지</h3>
         <p>한 줄로 적은 기록이 날짜, 행동, 가격, 마음, 계획으로 나뉘고, 보유기간이 끝나면 시장이 성적을 매깁니다.</p>
         <div class="fframe"><img src="assets/frog-table.png" alt="투자일지 화면"></div>
       </div>
       <div class="fshot rise">
-        <span class="ftag">분석</span>
+        <h3 class="ftag">분석</h3>
         <p>적중률, 성적 분포, 지수 대비, 성장 흐름을 봅니다. 기록이 충분히 쌓였을 때만 판정을 말합니다.</p>
         <div class="fframe"><img src="assets/frog-analysis.png" alt="분석 화면"></div>
       </div>
