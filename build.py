@@ -21,6 +21,7 @@ IMAGES = {
     "__IMG_HUB__":    "hub.png",
     "__IMG_NETL__":   "net-login.png",
     "__IMG_NETB__":   "net-board.png",
+    "__IMG_FROG__":   "frog.png",
 }
 PLATE = "title.png"
 FONT = "galmuri11.woff2"

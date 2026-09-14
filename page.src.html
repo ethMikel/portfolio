@@ -16,7 +16,7 @@
   --blue:#3182f6; --blue50:#e8f3ff; --blue700:#1b64da;
 
   /* 서브페이지 고정 라벨색. 프로젝트마다 하나씩. */
-  --c-game:#d9a441; --c-tool:#0e7c86; --c-codex:#c4472f; --c-net:#6b4e8f;
+  --c-game:#d9a441; --c-tool:#0e7c86; --c-codex:#c4472f; --c-net:#6b4e8f; --c-frog:#3f8f5a;
 
   /* 게임 서브 토큰. print.css 실측값 그대로. */
   --ink-900:#17130f;--ink-800:#1c150f;--ink-700:#241c14;--ink-500:#4a3a1e;
@@ -857,12 +857,12 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <div class="sec" id="projects">
       <span class="lab">전체 프로젝트<em>마케팅부터 직접 만든 도구까지</em></span>
       <div class="flt" role="tablist">
-        <button class="on" data-cat="all">전체 (19)</button>
+        <button class="on" data-cat="all">전체 (20)</button>
         <button data-cat="mkt">Marketing (8)</button>
         <button data-cat="op">Operation (3)</button>
         <button data-cat="evt">Event (1)</button>
         <button data-cat="dt">Data (1)</button>
-        <button data-cat="ai">AI (6)</button>
+        <button data-cat="ai">AI (7)</button>
       </div>
       <div class="tw rise">
         <table class="plist">
@@ -886,6 +886,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
             <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
+            <tr data-cat="ai" data-link="#/frog"><td class="k">개구리 투자일지</td><td><span class="pc ai">AI</span></td><td>한 줄 투자 기록, 시장 사후 채점, 시험 187개</td></tr>
             </tbody>
         </table>
       </div>
@@ -927,6 +928,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
           <h3>Codex 플러그인 3종</h3>
           <p>공개 자료만으로 세 회사의 문제를 각각 정의해 도구로 만들었습니다. 떨어진 뒤 자기 결함을 찾아 고쳤습니다.</p>
           <div class="chips"><span>무신사</span><span>카카오페이증권</span><span>마이리얼트립</span></div>
+          <span class="go">들어가기 &rarr;</span>
+        </button>
+        <button class="card rise" style="--ac:var(--c-frog);" data-go="frog">
+          <span class="kk"><i></i>해커톤 출품작, 2026</span>
+          <h3>개구리 투자일지</h3>
+          <p>투자할 때 느낀 마음을 한 줄로 적으면 시장이 사후에 채점해 돌려주는 일지입니다. 지금도 운영 중인 서비스입니다.</p>
+          <div class="chips"><span>Next.js</span><span>자체 채점 엔진</span><span>운영 중</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
       </div>
@@ -1305,6 +1313,44 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <a href="https://ethmikel.github.io/portfolio/">ethmikel.github.io/portfolio</a></p>
     <div class="pdiv-cards"></div>
   </div>
+</div>
+
+<!-- ══════════════ 서브: 개구리 투자일지 ══════════════ -->
+<div class="view cv2" id="v-frog" data-route="/frog" data-tone="home" data-ac="var(--c-frog)" style="--ac:var(--c-frog);">
+  <div class="wrap sv">
+    <span class="kk"><i></i>해커톤 출품작, 2026</span>
+    <h2>무서워서 판 날, 한 달 뒤엔 어땠을까</h2>
+    <p class="intro" style="color:var(--g600);max-width:56ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획부터 배포까지 혼자 만들었고 지금도 운영 중입니다.</p>
+
+    <div class="scr rise" style="margin-top:var(--s8);"><img src="__IMG_FROG__" alt="개구리 투자일지 첫 화면"></div>
+    <p class="scap">실제 서비스 첫 화면. 예시 일지의 마음이 차트 위에 찍혀 있습니다</p>
+
+    <div class="btns" style="margin-top:var(--s6);">
+      <a class="key" href="https://froglog-app.vercel.app" target="_blank" rel="noopener">서비스 열기 &rsaquo;</a>
+    </div>
+
+    <div class="fsteps nb rise">
+      <div><b>187개</b><span class="fl-t">시험</span><span class="fl-d">채점과 해석이 틀리지 않는지 지키는 자동 시험입니다</span></div>
+      <div><b>8,189개</b><span class="fl-t">종목</span><span class="fl-d">국내 주식, 미국 주식, 코인을 한 검색창에서 찾습니다</span></div>
+      <div><b>18건</b><span class="fl-t">리서치</span><span class="fl-d">수식마다 학술 문헌을 먼저 확인하고 만들었습니다</span></div>
+    </div>
+
+    <div class="item rise">
+      <h4>외부 AI를 부르지 않는 엔진</h4>
+      <p>한국어 한 줄에서 종목, 행동, 가격, 마음을 꺼내는 해석부터 시장 채점, 매매 성격 분석, 리포트 문장까지 <strong>규칙과 통계로 직접</strong> 만들었습니다. 같은 기록을 넣으면 언제나 같은 답이 나옵니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>틀린 말을 하지 않는 것부터</h4>
+      <p>기록이 쌓일수록 우연을 경향으로 착각하는 문제가 있었습니다. 아무 의미 없는 무작위 기록 960건을 넣었을 때 "경향"이라는 말이 10.2% 나오던 것을 <strong>1.5%로</strong> 낮췄습니다. 통계 기준을 넘을 때만 문장이 나옵니다.</p>
+    </div>
+
+    <div class="item rise">
+      <h4>리서치 먼저, 코드는 나중</h4>
+      <p>리서치, 수식 정의, 구현, 정답 대조 시험 순서로 진행했습니다. 무엇을 왜 그렇게 계산하는지가 전부 문서로 남아 있습니다.</p>
+    </div>
+  </div>
+  <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
 
 <!-- ══════════════ 서브: 게임 ══════════════ -->
