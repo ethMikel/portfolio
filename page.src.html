@@ -466,6 +466,31 @@ body[data-view="net"] .scap,body[data-view="tools"] .scap{color:#8b81a0;}
 .cv2 .kk{color:var(--blue);} .cv2 .kk i{background:var(--blue);}
 
 /* ══ 서브: 게임 ═════════════════════════════════════════════════════════ */
+/* ══ 서브: Frog log. 앱과 같은 초록 픽셀 테마 ══ */
+body[data-view="frog"]{background:#f4f6f4;}
+body[data-view="frog"] .topbar{background:rgb(244 246 244 / 88%);}
+body[data-view="frog"] #prog{background:#5fa871;}
+body[data-view="frog"] .back:hover{color:#3e8a5a;}
+.fv .mascots{display:block;width:384px;max-width:100%;height:auto;image-rendering:pixelated;margin-bottom:var(--s6);}
+.fv .kk{font-family:var(--pix);font-weight:400;color:#3e8a5a;}
+.fv .kk i{background:#5fa871;border-radius:0;}
+.fv h2{font-family:var(--pix);font-weight:700;color:#191f28;letter-spacing:0;line-height:1.35;}
+.fv h2 em{font-style:normal;color:#3e8a5a;}
+.fv .intro strong{color:#3e8a5a;}
+.fshots{display:grid;gap:var(--s12);margin-top:var(--s12);}
+.fshot .ftag{display:inline-block;font-family:var(--pix);font-size:13px;color:#fff;background:#5fa871;
+  padding:6px 12px;border-radius:6px;box-shadow:0 3px 0 #3e8a5a;margin-bottom:var(--s3);}
+.fshot p{margin:0 0 var(--s4);color:var(--g700);font-size:15.5px;}
+.fshot .fframe{background:#fff;border:2px solid #dfe6e0;border-radius:14px;overflow:hidden;
+  box-shadow:0 6px 0 #e3ebe4, 0 18px 40px rgba(62,138,90,.10);}
+.fshot .fframe img{display:block;width:100%;}
+.fv .fsteps > div{background:#fff;border:2px solid #dfe6e0;box-shadow:0 4px 0 #e3ebe4;}
+.fv .fsteps b{font-family:var(--pix);font-weight:700;color:#3e8a5a;}
+.fv .item h4{font-family:var(--pix);font-weight:700;}
+.fv .item strong{color:#3e8a5a;}
+body[data-view="frog"] footer{border-top-color:#dfe6e0;}
+@media print{.fshot .fframe{box-shadow:none;}}
+
 .gv{position:relative;}
 .gv .plate{position:absolute;left:0;right:0;top:0;height:440px;background-image:var(--plate);
   background-size:cover;background-position:center 30%;opacity:.15;}
@@ -886,7 +911,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
             <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
             <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
-            <tr data-cat="ai" data-link="#/frog"><td class="k">개구리 투자일지</td><td><span class="pc ai">AI</span></td><td>한 줄 투자 기록, 시장 사후 채점, 시험 187개</td></tr>
+            <tr data-cat="ai" data-link="#/frog"><td class="k">투자 일지 서비스 (Frog log)</td><td><span class="pc ai">AI</span></td><td>한 줄 투자 기록, 시장 사후 채점, 시험 187개</td></tr>
             </tbody>
         </table>
       </div>
@@ -932,9 +957,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
         </button>
         <button class="card rise" style="--ac:var(--c-frog);" data-go="frog">
           <span class="kk"><i></i>해커톤 출품작, 2026</span>
-          <h3>개구리 투자일지</h3>
-          <p>투자할 때 느낀 마음을 한 줄로 적으면 시장이 사후에 채점해 돌려주는 일지입니다. 지금도 운영 중인 서비스입니다.</p>
-          <div class="chips"><span>Next.js</span><span>자체 채점 엔진</span><span>운영 중</span></div>
+          <h3>투자 일지 서비스 (Frog log)</h3>
+          <p>투자할 때 느낀 마음을 한 줄로 적으면 시장이 사후에 채점해 돌려주는 일지입니다. 기획부터 배포까지 혼자 만들었습니다.</p>
+          <div class="chips"><span>Next.js</span><span>자체 채점 엔진</span><span>픽셀 마스코트</span></div>
           <span class="go">들어가기 &rarr;</span>
         </button>
       </div>
@@ -1316,17 +1341,29 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 </div>
 
 <!-- ══════════════ 서브: 개구리 투자일지 ══════════════ -->
-<div class="view cv2" id="v-frog" data-route="/frog" data-tone="home" data-ac="var(--c-frog)" style="--ac:var(--c-frog);">
+<div class="view cv2 fv" id="v-frog" data-route="/frog" data-tone="frog" data-ac="var(--c-frog)" style="--ac:var(--c-frog);">
   <div class="wrap sv">
+    <img class="mascots" src="__IMG_FROGM__" alt="마음에 따라 옷이 바뀌는 청개구리 마스코트 10종">
     <span class="kk"><i></i>해커톤 출품작, 2026</span>
-    <h2>무서워서 판 날, 한 달 뒤엔 어땠을까</h2>
-    <p class="intro" style="color:var(--g600);max-width:56ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획부터 배포까지 혼자 만들었고 지금도 운영 중입니다.</p>
+    <h2>투자 일지 서비스 <em>(Frog log)</em></h2>
+    <p class="intro" style="color:var(--g600);max-width:56ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획부터 배포까지 혼자 만들었습니다.</p>
 
-    <div class="scr rise" style="margin-top:var(--s8);"><img src="__IMG_FROG__" alt="개구리 투자일지 첫 화면"></div>
-    <p class="scap">실제 서비스 첫 화면. 예시 일지의 마음이 차트 위에 찍혀 있습니다</p>
-
-    <div class="btns" style="margin-top:var(--s6);">
-      <a class="key" href="https://froglog-app.vercel.app" target="_blank" rel="noopener">서비스 열기 &rsaquo;</a>
+    <div class="fshots">
+      <div class="fshot rise">
+        <span class="ftag">차트</span>
+        <p>캔들 위에 그날의 마음이 찍힙니다. 점을 누르면 그 결정이 한 달 뒤 어떻게 됐는지 바로 보입니다.</p>
+        <div class="fframe"><img src="__IMG_FROGC__" alt="차트 화면"></div>
+      </div>
+      <div class="fshot rise">
+        <span class="ftag">투자일지</span>
+        <p>한 줄로 적은 기록이 날짜, 행동, 가격, 마음, 계획으로 나뉘고, 보유기간이 끝나면 시장이 성적을 매깁니다.</p>
+        <div class="fframe"><img src="__IMG_FROGT__" alt="투자일지 화면"></div>
+      </div>
+      <div class="fshot rise">
+        <span class="ftag">분석</span>
+        <p>적중률, 성적 분포, 지수 대비, 성장 흐름을 봅니다. 기록이 충분히 쌓였을 때만 판정을 말합니다.</p>
+        <div class="fframe"><img src="__IMG_FROGA__" alt="분석 화면"></div>
+      </div>
     </div>
 
     <div class="fsteps nb rise">
