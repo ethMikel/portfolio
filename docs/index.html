@@ -509,6 +509,36 @@ body[data-view="frog"] .back:hover{color:#3e8a5a;}
 .fv .item h4{font-family:var(--pix);font-weight:700;}
 .fv .item strong{color:#3e8a5a;}
 body[data-view="frog"] footer{border-top-color:#dfe6e0;}
+.fsec > .fsub{text-wrap:pretty;}
+/* 개구리 놀이터: 앱 랜딩과 같은 동작. 카드 뒤 배경에서만 논다 */
+#v-frog{position:relative;}
+#v-frog > .wrap, #v-frog > footer{position:relative;z-index:1;}
+.fpd{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;overflow:hidden;}
+.fpd-frog{position:absolute;width:44px;transform:translate(-50%,-50%);}
+.fpd-frog svg{display:block;width:100%;height:auto;image-rendering:pixelated;}
+.fpd-body{display:block;line-height:0;transform-origin:50% 100%;position:relative;}
+.fpd-idle .fpd-body,.fpd-sleep .fpd-body{animation:fpdbreathe 2.6s ease-in-out infinite;}
+.fpd-walk .fpd-body{animation:fpdwalk .5s ease-in-out infinite;}
+.fpd-hop .fpd-body{animation:fpdhop .6s ease-in-out 1;}
+.fpd-flip .fpd-body{animation:fpdflip .8s ease-in-out 1;}
+.fpd-shake .fpd-body{animation:fpdshake .15s ease-in-out 4;}
+.fpd-zz{position:absolute;right:-4px;top:-6px;font-size:11px;font-weight:700;color:#6b7684;line-height:1;display:none;animation:fpdzz 1.6s ease-out infinite;}
+.fpd-sleep .fpd-zz{display:block;}
+.fpd-wx{position:absolute;left:-8px;right:-8px;top:-18px;bottom:8px;background-repeat:repeat;
+  -webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 45%,#000 40%,transparent 100%);mask-image:radial-gradient(ellipse 60% 70% at 50% 45%,#000 40%,transparent 100%);}
+.fpd-rain{background-image:radial-gradient(circle,#6a93d6 1.2px,transparent 1.7px);background-size:7px 9px;animation:fpdrain .45s steps(3,end) infinite;opacity:.85;}
+.fpd-hail{background-image:radial-gradient(circle,#191f28 1.2px,transparent 1.7px);background-size:11px 13px;animation:fpdhail .7s steps(4,end) infinite;opacity:.45;}
+@keyframes fpdbreathe{0%{scale:1 1}50%{scale:1 .95}100%{scale:1 1}}
+@keyframes fpdwalk{0%{translate:0 0}50%{translate:0 -8px}100%{translate:0 0}}
+@keyframes fpdhop{0%{translate:0 0}45%{translate:0 -16px}100%{translate:0 0}}
+@keyframes fpdflip{0%{translate:0 0;rotate:0deg}50%{translate:0 -24px;rotate:180deg}100%{translate:0 0;rotate:360deg}}
+@keyframes fpdshake{0%{rotate:-9deg}50%{rotate:9deg}100%{rotate:-9deg}}
+@keyframes fpdzz{0%{translate:0 0;opacity:0}20%{opacity:1}100%{translate:6px -14px;opacity:0}}
+@keyframes fpdrain{from{background-position-y:0}to{background-position-y:9px}}
+@keyframes fpdhail{from{background-position-y:0}to{background-position-y:13px}}
+@media (max-width:640px){.fpd-frog{width:28px;}}
+@media (prefers-reduced-motion:reduce){.fpd-frog *{animation:none!important;}.fpd-wx{display:none;}}
+@media print{.fpd{display:none!important;}}
 /* Frog log 모델 구축 도식 */
 .fsec{margin-top:var(--s16);}
 .fsec > .fh{font-family:var(--pix);font-weight:700;font-size:26px;color:#191f28;letter-spacing:0;line-height:1.35;margin:0 0 var(--s2);}
@@ -529,11 +559,12 @@ body[data-view="frog"] footer{border-top-color:#dfe6e0;}
 .fspec td:first-child{font-weight:800;color:#191f28;white-space:nowrap;}
 .fspec code{font-family:var(--mono);font-size:12px;background:#f4f6f4;color:#3e8a5a;padding:1px 6px;border-radius:5px;}
 .fwrap{overflow-x:auto;}
-.fproc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:fp;}
-.fproc > div{background:#fff;border:2px solid #dfe6e0;border-radius:12px;padding:14px 16px;counter-increment:fp;}
-.fproc > div::before{content:counter(fp,decimal-leading-zero);display:block;font-family:var(--pix);font-weight:700;color:#5fa871;font-size:14px;margin-bottom:6px;}
-.fproc b{display:block;color:#191f28;font-size:15px;margin-bottom:4px;}
-.fproc span{display:block;color:var(--g600);font-size:13px;line-height:1.5;}
+.fproc{display:grid;gap:8px;counter-reset:fp;}
+.fproc > div{display:grid;grid-template-columns:40px 120px 1fr;align-items:baseline;gap:var(--s3);
+  background:#fff;border:2px solid #dfe6e0;border-radius:12px;padding:13px 18px;counter-increment:fp;}
+.fproc > div::before{content:counter(fp,decimal-leading-zero);font-family:var(--pix);font-weight:700;color:#5fa871;font-size:15px;}
+.fproc b{color:#191f28;font-size:15.5px;white-space:nowrap;}
+.fproc span{color:var(--g700);font-size:14.5px;line-height:1.6;}
 .fbar{display:grid;gap:12px;}
 .fbar > div{display:grid;grid-template-columns:200px 1fr;gap:var(--s4);align-items:center;font-size:14px;}
 .fbar .lab{color:var(--g700);font-weight:600;line-height:1.4;}
@@ -551,6 +582,8 @@ body[data-view="frog"] footer{border-top-color:#dfe6e0;}
 .fref span{font-size:12.5px;color:#3e8a5a;background:#e8f3ec;border-radius:999px;padding:5px 12px;font-weight:600;}
 @media (max-width:720px){
   .farch > div{grid-template-columns:40px 1fr;}
+  .fproc > div{grid-template-columns:34px 1fr;}
+  .fproc span{grid-column:1 / -1;}
   .farch .d{grid-column:1 / -1;}
   .fbar > div{grid-template-columns:1fr;}
 }
@@ -1407,11 +1440,12 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
 
 <!-- ══════════════ 서브: 개구리 투자일지 ══════════════ -->
 <div class="view cv2 fv" id="v-frog" data-route="/frog" data-tone="frog" data-ac="var(--c-frog)" style="--ac:var(--c-frog);">
+  <div class="fpd" aria-hidden="true"></div>
   <div class="wrap sv">
     <img class="mascots" src="assets/frog-mascots.png" alt="마음에 따라 옷이 바뀌는 청개구리 마스코트 10종">
     <span class="kk"><i></i>해커톤 출품작, 2026</span>
     <h2>투자 일지 서비스 <em>(Frog log)</em></h2>
-    <p class="intro" style="color:var(--g600);max-width:58ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획, 분석 모델, 화면, 배포까지 혼자 만들었습니다.</p>
+    <p class="intro" style="color:var(--g600);max-width:none;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획, 분석 모델, 화면, 배포까지 혼자 만들었습니다.</p>
 
     <div class="fshots">
       <div class="fshot rise">
@@ -1444,13 +1478,13 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <!-- 모델 구축 -->
     <section class="fsec rise">
       <h3 class="fh">분석 모델은 이렇게 만들었습니다</h3>
-      <p class="fsub">사용자 화면 뒤에서 외부 AI를 부르지 않습니다. 해석, 채점, 분석을 전부 <strong>규칙과 통계로 직접 설계</strong>했고, Claude Code는 설계, 리서치, 구현, 검토 도구로 썼습니다.</p>
+      <p class="fsub">해석, 채점, 분석을 <strong>규칙과 통계로 직접 설계</strong>했습니다. 서비스 안에서는 외부 AI를 부르지 않고, Claude Code는 만드는 도구로만 썼습니다.</p>
       <div class="fproc">
-        <div><b>문제 정렬</b><span>만들기 전에 제품 문장, 범위, 성공 기준을 설계 문서로 먼저 고정</span></div>
-        <div><b>리서치 22건</b><span>데이터 소스, 채점식, 행동 재무 논문, 경쟁 앱을 1차 출처로 조사</span></div>
-        <div><b>수식 대조</b><span>논문 원문 수식과 한 줄씩 맞추고 스크립트로 다시 계산</span></div>
-        <div><b>구현과 시험</b><span>모델마다 정답 대조 시험을 붙여 679개 시험이 계산을 지킴</span></div>
-        <div><b>반박 검토</b><span>만든 쪽과 다른 방식으로 결함을 찾는 반박자 검토를 반영한 커밋 18개</span></div>
+        <div><b>문제 정렬</b><span>만들기 전에 제품 문장, 범위, 성공 기준부터 문서로 고정했습니다</span></div>
+        <div><b>리서치 22건</b><span>데이터 소스, 채점식, 행동재무 논문, 경쟁 앱을 1차 출처로 조사했습니다</span></div>
+        <div><b>수식 대조</b><span>논문 원문 수식과 맞춰 보고 스크립트로 다시 계산했습니다</span></div>
+        <div><b>구현과 시험</b><span>모델마다 정답 대조 시험을 붙였고, 시험 679개가 계산을 지킵니다</span></div>
+        <div><b>반박 검토</b><span>만든 쪽과 다른 방식으로 결함을 찾게 하고, 그 지적을 18번 반영했습니다</span></div>
       </div>
     </section>
 
@@ -1471,9 +1505,9 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <h3 class="fh">모델 세 겹</h3>
       <p class="fsub">기록이 적은 첫날부터 쓸 수 있어야 하고, 기록이 쌓일수록 그 사람에게 맞춰져야 합니다.</p>
       <div class="fproc">
-        <div><b>규칙</b><span>논문과 시장 수치로 정한 기준값. 기록 1건부터 작동</span></div>
-        <div><b>통계</b><span>사람마다 사후분포를 갱신. 오래된 기록은 조금씩 덜 반영</span></div>
-        <div><b>학습</b><span>사용자 능력과 계획 난이도를 함께 추정하는 모델. 야간에만 돌고, 승격 심판을 통과하기 전엔 화면에 나가지 않음</span></div>
+        <div><b>규칙</b><span>논문과 시장 수치로 정한 기준값으로, 기록 1건부터 작동합니다</span></div>
+        <div><b>통계</b><span>사람마다 사후분포를 갱신하고, 오래된 기록은 조금씩 덜 반영합니다</span></div>
+        <div><b>학습</b><span>능력과 계획 난이도를 함께 추정하며, 승격 심판을 통과하기 전엔 화면에 나가지 않습니다</span></div>
       </div>
       <div class="fwrap" style="margin-top:var(--s6);">
         <table class="fspec">
@@ -1520,6 +1554,117 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
+
+<script>
+/* 개구리 놀이터: 앱 FrogParade.tsx를 옮긴 것. 마음 10종 x 2마리가 각자 성격대로 걷고, 뛰고, 재주넘고, 낮잠 잔다 */
+(function(){
+  var root = document.getElementById('v-frog'); if (!root) return;
+  var layer = root.querySelector('.fpd'); if (!layer) return;
+  var PAL = {g:"#5FA871",G:"#3E8A5A",k:"#191F28",w:"#FFFFFF",r:"#D9736B",p:"#F4A6B7",o:"#E8862A",O:"#C9691A",y:"#F2C94C",Y:"#E5B300",b:"#6A93D6",B:"#3E63B8",v:"#6E4FB3",n:"#8E8A85",d:"#6B7684",R:"#E64980",L:"#A9C23F",t:"#8A5A3C",c:"#DDE3EA",m:"#B03A8C",s:"#C9B48A"};
+  var E = "................";
+  var BODY = [E,E,E,E,"....gg....gg....","...gkgg..ggkg...","...gGgggggggGg..","..gggggggggggg..","..gpggggggggpg..","..ggggrrrrgggg..","...gggggggggg...","....gggggggg....","..gg........gg..",E,E,E];
+  var OUT = {
+    calm: [],
+    fear: ["....vvvvvvvv....","..vvvvvvvvvvvv..","vvvvvvvvvvvvvvvv",".......k........",".......k..b.....","............b...","..b.............",".............b..","....b...........","..........b.....",E,"..b......b......",E,"b....b....b....b","..b....b....b...","b..b..b..b..b..b"],
+    urgency: ["..........oooo..",".........oooooo.","........oooooooo","dd..............","....dd..........",E,"dddd............",E,E,E,E,E,E,E,E,E],
+    greed: ["..............YY",".............YYY","....yyyyyyyy..YY","...yyyyyyyyyyy..","....kkkkkkkk....","...kkkkkkkkkkk..",E,E,E,E,E,E,E,E,E,E],
+    conviction: ["..............Y.",".............YYY","....yyyyyyyy..Y.","...yyyyyyyyyyyy.",E,E,E,E,E,E,E,E,E,E,E,E],
+    hope: ["....RRRRRRRR....","...RoYYYYYYoR...","..Ro.LLLLLL.oR..",".R.L..bbbb..L.R.",E,E,E,E,E,E,E,E,E,E,E,E],
+    regret: ["..b...b...b...b.","b...b...b...b...","..b...b...b...b.","b...b...b...b...",E,E,E,E,E,E,E,"b......b......b.","...b......b.....","b...b...b...b...","..b...b...b...b.","b...b...b...b..b"],
+    resignation: ["....nnnnnnnn....","...nnnnnnnnnn...","....kkkkkkkk....","....kkkkkkkk....",E,E,E,E,E,"..ttttttttttttt.","..tttttttttttt..","...ttttt........",E,E,E,E],
+    anger: ["..k...k...k...k.","....k...k...k...","..k...k...k...k.",E,E,"...gkkg..gkkg...",E,E,E,E,E,E,E,E,E,E],
+    denial: [E,E,"..ssssssssssss..","...sssssssssss..","..ssssssssssss..","...ssssssssss...",E,E,E,E,E,E,E,E,E,E]
+  };
+  function svg(g){
+    var o = OUT[g], s = '<svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">';
+    for (var y = 0; y < 16; y++) for (var x = 0; x < 16; x++) {
+      var ch = BODY[y].charAt(x), l = o && o[y] ? o[y].charAt(x) : '.';
+      if (l && l !== '.') ch = l;
+      if (PAL[ch]) s += '<rect x="'+x+'" y="'+y+'" width="1" height="1" fill="'+PAL[ch]+'"/>';
+    }
+    return s + '</svg>';
+  }
+  var GROUPS = ["calm","hope","conviction","urgency","greed","fear","anger","regret","resignation","denial"];
+  var TEMPER = {
+    calm:{speed:4,rest:[2,5],hop:.12,flip:.03,shake:.02,sleep:.12}, hope:{speed:6,rest:[1,3],hop:.3,flip:.12,shake:.02,sleep:.03},
+    conviction:{speed:7,rest:[1,3],hop:.25,flip:.1,shake:.02,sleep:.03}, urgency:{speed:13,rest:[.4,1.2],hop:.35,flip:.1,shake:.08,sleep:0},
+    greed:{speed:8,rest:[1,2],hop:.3,flip:.08,shake:.03,sleep:.02}, fear:{speed:5,rest:[2,4],hop:.08,flip:0,shake:.14,sleep:.04},
+    anger:{speed:9,rest:[.8,2],hop:.3,flip:.05,shake:.14,sleep:0}, regret:{speed:3,rest:[3,6],hop:.04,flip:0,shake:.12,sleep:.1},
+    resignation:{speed:2,rest:[4,8],hop:.03,flip:0,shake:.03,sleep:.25}, denial:{speed:4,rest:[2,5],hop:.15,flip:.04,shake:.04,sleep:.1}
+  };
+  var ACT = {hop:600, flip:800, shake:600};
+  var WX = {fear:'rain', regret:'rain', anger:'hail'};
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  function clamp(v,a,b){ return Math.min(b, Math.max(a, v)); }
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var frogs = [];
+  GROUPS.concat(GROUPS).forEach(function(g, i){
+    var el = document.createElement('div'); el.className = 'fpd-frog fpd-idle';
+    var body = document.createElement('div'); body.className = 'fpd-body'; body.innerHTML = svg(g);
+    el.appendChild(body);
+    if (WX[g]) { var w = document.createElement('div'); w.className = 'fpd-wx fpd-' + WX[g]; el.appendChild(w); }
+    var z = document.createElement('span'); z.className = 'fpd-zz'; z.textContent = 'z'; el.appendChild(z);
+    layer.appendChild(el);
+    var side = i % 2 ? rnd(86, 98) : rnd(2, 14);
+    var f = {g:g, k: i >= 10 ? 1 : 0, el:el, body:body, x: side, y: 3 + (i * 37) % 94, dir: i % 2 ? -1 : 1, mode:'idle'};
+    frogs.push(f); draw(f, 0);
+  });
+  function draw(f, ms){
+    f.el.style.transition = ms ? 'left '+ms+'ms linear, top '+ms+'ms linear' : 'none';
+    f.el.style.left = f.x + '%'; f.el.style.top = f.y + '%';
+    f.body.style.transform = 'scaleX(' + f.dir + ')';
+    f.el.className = 'fpd-frog fpd-' + (still ? 'idle' : f.mode);
+  }
+  // 놀이터 윗선 = 화면 캡처 구간 윗선
+  function measure(){
+    var a = root.querySelector('.fshots'); if (!a) return;
+    layer.style.top = Math.max(0, a.getBoundingClientRect().top - root.getBoundingClientRect().top) + 'px';
+  }
+  window.addEventListener('resize', measure);
+  window.addEventListener('hashchange', function(){ setTimeout(measure, 60); });
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(root);
+  measure();
+  if (still) return;
+
+  function active(){ return document.body.getAttribute('data-view') === 'frog' && !document.hidden; }
+  function think(f){
+    if (!active()) { setTimeout(function(){ think(f); }, 1000); return; }
+    var b = TEMPER[f.g];
+    var t = f.k ? {speed:b.speed*1.3, rest:[b.rest[0]*.7, b.rest[1]*.7], hop:b.hop, flip:b.flip, shake:b.shake, sleep:b.sleep} : b;
+    var r = Math.random();
+    var act = r < t.hop ? 'hop' : r < t.hop+t.flip ? 'flip' : r < t.hop+t.flip+t.shake ? 'shake' : null;
+    if (act) {
+      f.mode = act; draw(f, 0);
+      setTimeout(function(){ f.mode = 'idle'; draw(f, 0); setTimeout(function(){ think(f); }, rnd(300, 1200)); }, ACT[act]);
+      return;
+    }
+    if (r < t.hop+t.flip+t.shake+t.sleep) {
+      f.mode = 'sleep'; draw(f, 0);
+      setTimeout(function(){ f.mode = 'idle'; draw(f, 0); setTimeout(function(){ think(f); }, rnd(500, 1500)); }, rnd(3000, 6000));
+      return;
+    }
+    if (r < t.hop+t.flip+t.shake+t.sleep+.45) {
+      // 목적지: 본문 옆 여백(60%), 맨 아래 바닥(20%), 가까운 곳(20%). 카드 뒤는 가려져 잘 안 간다
+      var zone = Math.random(), tx, ty;
+      if (zone < .6) { tx = (f.x < 50 ? Math.random() < .85 : Math.random() < .15) ? rnd(2, 14) : rnd(86, 98); ty = f.y + rnd(-5, 5); }
+      else if (zone < .8 && f.y > 88) { ty = rnd(93, 98); tx = f.x + (Math.random() < .5 ? -1 : 1) * rnd(4, 30); }
+      else { tx = f.x + rnd(-8, 8); ty = f.y + rnd(-10, 10); }
+      tx = clamp(tx, 2, 98); ty = clamp(ty, 1, 98);
+      var dist = Math.hypot(tx - f.x, (ty - f.y) * 2);
+      var ms = Math.max(300, dist / t.speed * 1000);
+      f.dir = Math.abs(tx - f.x) < 1 ? f.dir : (tx > f.x ? 1 : -1);
+      f.x = tx; f.y = ty; f.mode = 'walk'; draw(f, ms);
+      setTimeout(function(){ f.mode = 'idle'; draw(f, 0); setTimeout(function(){ think(f); }, rnd(t.rest[0], t.rest[1]) * 1000); }, ms);
+      return;
+    }
+    if (Math.random() < .3) f.dir = -f.dir;
+    f.mode = 'idle'; draw(f, 0);
+    setTimeout(function(){ think(f); }, rnd(t.rest[0], t.rest[1]) * 1000);
+  }
+  frogs.forEach(function(f){ setTimeout(function(){ think(f); }, rnd(200, 3000)); });
+})();
+</script>
 
 <!-- ══════════════ 서브: 게임 ══════════════ -->
 <div class="view gv" id="v-game" data-route="/game" data-tone="game" data-ac="var(--c-game)" style="--ac:var(--c-game);">
