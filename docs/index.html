@@ -509,6 +509,51 @@ body[data-view="frog"] .back:hover{color:#3e8a5a;}
 .fv .item h4{font-family:var(--pix);font-weight:700;}
 .fv .item strong{color:#3e8a5a;}
 body[data-view="frog"] footer{border-top-color:#dfe6e0;}
+/* Frog log 모델 구축 도식 */
+.fsec{margin-top:var(--s16);}
+.fsec > .fh{font-family:var(--pix);font-weight:700;font-size:26px;color:#191f28;letter-spacing:0;line-height:1.35;margin:0 0 var(--s2);}
+.fsec > .fsub{color:var(--g600);margin:0 0 var(--s6);font-size:15.5px;}
+.farch{display:grid;gap:10px;}
+.farch > div{display:grid;grid-template-columns:44px 170px 1fr;align-items:center;gap:var(--s4);
+  background:#fff;border:2px solid #dfe6e0;border-radius:12px;padding:14px 18px;box-shadow:0 3px 0 #e3ebe4;position:relative;}
+.farch > div + div::before{content:"";position:absolute;left:39px;top:-12px;width:2px;height:12px;background:#b9cfbf;}
+.farch .n{font-family:var(--pix);font-weight:700;font-size:15px;color:#fff;background:#5fa871;border-radius:8px;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 #3e8a5a;}
+.farch .t{font-weight:800;color:#191f28;font-size:16px;line-height:1.35;}
+.farch .t small{display:block;font-weight:600;color:#3e8a5a;font-size:12px;margin-top:2px;}
+.farch .d{color:var(--g700);font-size:14.5px;line-height:1.6;}
+.farch .d b{color:#191f28;}
+.fspec{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:2px solid #dfe6e0;border-radius:12px;overflow:hidden;font-size:14px;}
+.fspec th{background:#e8f3ec;color:#3e8a5a;text-align:left;font-weight:800;padding:11px 14px;font-size:13px;}
+.fspec td{padding:12px 14px;border-top:1px solid #edf2ee;color:var(--g700);vertical-align:top;line-height:1.55;}
+.fspec td:first-child{font-weight:800;color:#191f28;white-space:nowrap;}
+.fspec code{font-family:var(--mono);font-size:12px;background:#f4f6f4;color:#3e8a5a;padding:1px 6px;border-radius:5px;}
+.fwrap{overflow-x:auto;}
+.fproc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:fp;}
+.fproc > div{background:#fff;border:2px solid #dfe6e0;border-radius:12px;padding:14px 16px;counter-increment:fp;}
+.fproc > div::before{content:counter(fp,decimal-leading-zero);display:block;font-family:var(--pix);font-weight:700;color:#5fa871;font-size:14px;margin-bottom:6px;}
+.fproc b{display:block;color:#191f28;font-size:15px;margin-bottom:4px;}
+.fproc span{display:block;color:var(--g600);font-size:13px;line-height:1.5;}
+.fbar{display:grid;gap:12px;}
+.fbar > div{display:grid;grid-template-columns:200px 1fr;gap:var(--s4);align-items:center;font-size:14px;}
+.fbar .lab{color:var(--g700);font-weight:600;line-height:1.4;}
+.fbar .lab small{display:block;color:var(--g500);font-weight:500;font-size:12px;}
+.fbar .fb-tr{display:grid;gap:5px;}
+.fbar .fb-row{display:grid;grid-template-columns:1fr 64px;align-items:center;gap:10px;}
+.fbar .fb-bx{height:14px;border-radius:4px;background:#f0f2f0;overflow:hidden;}
+.fbar .fb-bx i{display:block;height:100%;border-radius:4px;}
+.fbar .bef i{background:#d9736b;} .fbar .aft i{background:#5fa871;}
+.fbar .fb-row em{font-style:normal;font-weight:800;font-size:13px;text-align:right;font-variant-numeric:tabular-nums;}
+.fbar .bef em{color:#b25650;} .fbar .aft em{color:#3e8a5a;}
+.flegend{display:flex;gap:var(--s4);font-size:12.5px;color:var(--g600);margin-top:var(--s3);}
+.flegend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+.fref{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s4);}
+.fref span{font-size:12.5px;color:#3e8a5a;background:#e8f3ec;border-radius:999px;padding:5px 12px;font-weight:600;}
+@media (max-width:720px){
+  .farch > div{grid-template-columns:40px 1fr;}
+  .farch .d{grid-column:1 / -1;}
+  .fbar > div{grid-template-columns:1fr;}
+}
 @media print{.fshot .fframe{box-shadow:none;}}
 
 .gv{position:relative;}
@@ -903,16 +948,22 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <span class="lab">전체 프로젝트<em>마케팅부터 직접 만든 도구까지</em></span>
       <div class="flt" role="tablist">
         <button class="on" data-cat="all">전체 (20)</button>
+        <button data-cat="ai">AI (7)</button>
         <button data-cat="mkt">Marketing (8)</button>
         <button data-cat="op">Operation (3)</button>
         <button data-cat="evt">Event (1)</button>
         <button data-cat="dt">Data (1)</button>
-        <button data-cat="ai">AI (7)</button>
       </div>
       <div class="tw rise">
         <table class="plist">
           <thead><tr><th>프로젝트</th><th>분류</th><th>요약</th></tr></thead>
           <tbody>
+            <tr data-cat="ai" data-link="#/frog"><td class="k">투자 일지 서비스 (Frog log)</td><td><span class="pc ai">AI</span></td><td>마음까지 적는 투자 일지, 차트/일지/분석 화면 제공</td></tr>
+            <tr data-cat="ai" data-link="#/game"><td class="k">히스토리 판타지 리그</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
+            <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 데이터 도구</td><td><span class="pc ai">AI</span></td><td>트윗 수집부터 검증까지 주간 7단계 자동화</td></tr>
+            <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
+            <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
+            <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
             <tr data-cat="mkt" data-link="#/case-auction"><td class="k">런칭 경매 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>비공개 입찰로 가격 기준선을 세운 뒤 공개 판매, 단일 매출 46억</td></tr>
             <tr data-cat="mkt" data-link="#/career"><td class="k">토큰 KOL 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>회차 단위 테스트로 KOL 믹스 최적화, 코드 사용률 94%</td></tr>
             <tr data-cat="mkt" data-link="#/case-minini"><td class="k">게임 연계 캠페인</td><td><span class="pc mkt">Marketing</span></td><td>인앱 유입 동선 설계로 글로벌 500만, 최종 전환 50만</td></tr>
@@ -926,12 +977,6 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
             <tr data-cat="op" data-link="#/career"><td class="k">커뮤니티 구축과 운영</td><td><span class="pc op">Operation</span></td><td>X 5개 외에도 디스코드/텔레그램 커뮤니티 운영 및 설계</td></tr>
             <tr data-cat="evt" data-link="#/career"><td class="k">오프라인 행사 3년 연속 기획</td><td><span class="pc evt">Event</span></td><td>3년 연속 자체 기획, 현장 참여 데이터 16K 확보</td></tr>
             <tr data-cat="dt" data-link="#/tools"><td class="k">측정 환경 구축</td><td><span class="pc dt">Data</span></td><td>Redash와 GA 추적 설계, 캠페인별 UTM 체계</td></tr>
-            <tr data-cat="ai" data-link="#/frog"><td class="k">투자 일지 서비스 (Frog log)</td><td><span class="pc ai">AI</span></td><td>마음까지 적는 투자 일지, 차트/일지/분석 화면 제공</td></tr>
-            <tr data-cat="ai" data-link="#/game"><td class="k">히스토리 판타지 리그</td><td><span class="pc ai">AI</span></td><td>웹게임 1인 제작, 인물 611명, 검사기 53개</td></tr>
-            <tr data-cat="ai" data-link="#/tools"><td class="k">마케팅 데이터 도구</td><td><span class="pc ai">AI</span></td><td>트윗 수집부터 검증까지 주간 7단계 자동화</td></tr>
-            <tr data-cat="ai" data-link="#/net"><td class="k">팀 운영 인트라넷</td><td><span class="pc ai">AI</span></td><td>화면 13개, 접근 정책 84개, 역할 3종 권한</td></tr>
-            <tr data-cat="ai" data-link="#/codex"><td class="k">Codex 플러그인 3종</td><td><span class="pc ai">AI</span></td><td>기업별 실무 도구 3종, 공개 자료만으로 문제 정의</td></tr>
-            <tr data-cat="ai" data-link="#/hub"><td class="k">AI 작업 관리 대시보드</td><td><span class="pc ai">AI</span></td><td>작업 기록 자동 수집, 24시간 무인 갱신</td></tr>
             </tbody>
         </table>
       </div>
@@ -1366,7 +1411,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
     <img class="mascots" src="assets/frog-mascots.png" alt="마음에 따라 옷이 바뀌는 청개구리 마스코트 10종">
     <span class="kk"><i></i>해커톤 출품작, 2026</span>
     <h2>투자 일지 서비스 <em>(Frog log)</em></h2>
-    <p class="intro" style="color:var(--g600);max-width:56ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획부터 배포까지 혼자 만들었습니다.</p>
+    <p class="intro" style="color:var(--g600);max-width:58ch;">투자자는 자기 감정이 수익을 얼마나 깎는지 모릅니다. 마음을 한 줄로 적으면 시장이 사후에 채점하고, 쌓인 기록으로 <strong>나를 하나의 전략처럼 검증</strong>합니다. 기획, 분석 모델, 화면, 배포까지 혼자 만들었습니다.</p>
 
     <div class="fshots">
       <div class="fshot rise">
@@ -1381,7 +1426,7 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       </div>
       <div class="fshot rise">
         <h3 class="ftag">분석</h3>
-        <p>적중률, 성적 분포, 지수 대비, 성장 흐름을 봅니다. 기록이 충분히 쌓였을 때만 판정을 말합니다.</p>
+        <p>적중률과 지수 대비 성적에 더해 결과, 경로, 실행, 위험 네 축으로 결정을 나눠 봅니다. 기록이 충분할 때만 판정을 말합니다.</p>
         <div class="fframe"><img src="assets/frog-analysis.png" alt="분석 화면"></div>
       </div>
     </div>
@@ -1396,15 +1441,82 @@ body.printing #v-codex{background:#0d0d0e;color:#d7d3cc;}
       <p>결정하는 날 한 줄만 적게 하면 마음이 편집되기 전에 남습니다. 채점을 내가 아니라 시장이 하면 자기 합리화가 끼어들 틈이 없습니다. 그래서 입력은 <strong>한 줄</strong>로 줄이고, 채점은 <strong>보유기간이 끝난 뒤 시세와 지수</strong>로 하게 했습니다. 계획을 적어두면 기다리던 가격이 실제로 왔는지도 시세로 판정합니다.</p>
     </div>
 
-    <div class="item rise">
-      <h4>검증</h4>
-      <p>가장 경계한 건 통계가 우연을 경향이라고 말하는 일이었습니다. 아무 의미 없는 무작위 기록 960건을 넣자 "경향"이라는 말이 10.2% 나왔습니다. 칸마다 20건이 모이기 전엔 건수만 보여주고, 여러 칸을 한꺼번에 볼 때 생기는 착각까지 보정해 <strong>1.5%로</strong> 낮췄습니다.</p>
-      <div class="fsteps nb rise">
-        <div><b>0곳</b><span class="fl-t">판정을 멈추는 앱</span><span class="fl-d">조사한 매매일지 앱 7곳 중 기록이 모자라면 결론을 보류하는 곳</span></div>
-        <div><b>20건</b><span class="fl-t">판정 시작</span><span class="fl-d">그 전까지는 건수만 보여주고 결론을 말하지 않습니다</span></div>
-        <div><b>1.5%</b><span class="fl-t">거짓 경향</span><span class="fl-d">무작위 기록 960건 기준. 고치기 전 10.2%</span></div>
+    <!-- 모델 구축 -->
+    <section class="fsec rise">
+      <h3 class="fh">분석 모델은 이렇게 만들었습니다</h3>
+      <p class="fsub">사용자 화면 뒤에서 외부 AI를 부르지 않습니다. 해석, 채점, 분석을 전부 <strong>규칙과 통계로 직접 설계</strong>했고, Claude Code는 설계, 리서치, 구현, 검토 도구로 썼습니다.</p>
+      <div class="fproc">
+        <div><b>문제 정렬</b><span>만들기 전에 제품 문장, 범위, 성공 기준을 설계 문서로 먼저 고정</span></div>
+        <div><b>리서치 22건</b><span>데이터 소스, 채점식, 행동 재무 논문, 경쟁 앱을 1차 출처로 조사</span></div>
+        <div><b>수식 대조</b><span>논문 원문 수식과 한 줄씩 맞추고 스크립트로 다시 계산</span></div>
+        <div><b>구현과 시험</b><span>모델마다 정답 대조 시험을 붙여 679개 시험이 계산을 지킴</span></div>
+        <div><b>반박 검토</b><span>만든 쪽과 다른 방식으로 결함을 찾는 반박자 검토를 반영한 커밋 18개</span></div>
       </div>
-    </div>
+    </section>
+
+    <section class="fsec rise">
+      <h3 class="fh">엔진 흐름 6단계</h3>
+      <p class="fsub">한 줄 기록이 들어와서 문장 하나가 나가기까지의 흐름입니다.</p>
+      <div class="farch">
+        <div><span class="n">1</span><span class="t">해석<small>규칙 파서</small></span><span class="d">한국어 한 줄에서 종목, 행동, 날짜, 가격, 수량, 보유기간, 목표가와 손절가, 계획성, <b>마음 56개 낱말</b>을 강도까지 뽑습니다.</span></div>
+        <div><span class="n">2</span><span class="t">채점<small>시장이 매기는 성적</small></span><span class="d">사용자가 정한 보유기간을 창으로 삼아 <b>지수 대비 초과수익을 변동성으로 나눈 z</b>로 채점합니다. 평균단가 장부로 매수와 매도를 짝짓고, 결과와 계획 준수를 나눠 A부터 D까지 매깁니다.</span></div>
+        <div><span class="n">3</span><span class="t">행동<small>매매 성격</small></span><span class="d">추격매수, 패닉매도, 처분효과, 손실 뒤 과열(틸트), 감정별 매수 크기, 마음과 행동 교차표, 마음 습관 6축을 봅니다.</span></div>
+        <div><span class="n">4</span><span class="t">성과<small>퀀트 지표</small></span><span class="d">창 길이가 제각각인 기록을 한 눈금으로 맞춘 뒤 <b>샤프, 소르티노, 알파와 베타, 최대 낙폭</b>을 냅니다. 창이 겹치는 만큼 유효 표본을 줄여 계산합니다.</span></div>
+        <div><span class="n">5</span><span class="t">성장<small>나아지고 있나</small></span><span class="d">기록이 20, 40, 80건처럼 두 배가 되는 시점에만 앞 절반과 뒤 절반을 비교합니다. 매번 들여다보면 우연이 성장처럼 보이기 때문입니다.</span></div>
+        <div><span class="n">6</span><span class="t">표현<small>말해도 되는 것만</small></span><span class="d">통계 기준을 넘을 때만 문장이 나옵니다. 그 전엔 "10번 중 7번"처럼 건수만 보여주고, 지시하는 말투는 시험으로 막습니다.</span></div>
+      </div>
+    </section>
+
+    <section class="fsec rise">
+      <h3 class="fh">모델 세 겹</h3>
+      <p class="fsub">기록이 적은 첫날부터 쓸 수 있어야 하고, 기록이 쌓일수록 그 사람에게 맞춰져야 합니다.</p>
+      <div class="fproc">
+        <div><b>규칙</b><span>논문과 시장 수치로 정한 기준값. 기록 1건부터 작동</span></div>
+        <div><b>통계</b><span>사람마다 사후분포를 갱신. 오래된 기록은 조금씩 덜 반영</span></div>
+        <div><b>학습</b><span>사용자 능력과 계획 난이도를 함께 추정하는 모델. 야간에만 돌고, 승격 심판을 통과하기 전엔 화면에 나가지 않음</span></div>
+      </div>
+      <div class="fwrap" style="margin-top:var(--s6);">
+        <table class="fspec">
+          <thead><tr><th>모델</th><th>방법</th><th>근거</th></tr></thead>
+          <tbody>
+            <tr><td>적중률</td><td>표본이 적으면 반반에서 출발하는 <code>Beta(2,2)</code> 사전분포와 80% 구간. 3건 미만 숨김, 10건부터 경향</td><td>Agresti &amp; Coull 1998</td></tr>
+            <tr><td>처분효과</td><td>평균단가 기준으로 이익 매도 비율과 손실 매도 비율의 차이</td><td>Odean 1998</td></tr>
+            <tr><td>과다거래</td><td>월별 결정 수와 성과의 관계</td><td>Barber &amp; Odean 2000</td></tr>
+            <tr><td>샤프 신뢰도</td><td>표준오차 보정과 확률적 샤프로 "참고용, 경향, 뚜렷" 구분</td><td>Lo 2002, Bailey &amp; López de Prado 2012</td></tr>
+            <tr><td>소르티노</td><td>하방편차 분모를 전체 표본으로</td><td>Sortino &amp; van der Meer</td></tr>
+            <tr><td>마음과 행동</td><td>20건 이상 칸만 후보, 거짓발견율 <code>q=0.02</code>, 효과 0.15 이상일 때만 발화</td><td>Benjamini &amp; Hochberg</td></tr>
+            <tr><td>성장 판정</td><td>판정 시점 8번 전체의 거짓 경보를 5%로 맞춘 문턱 <code>z=2.74</code></td><td>몬테카를로 보정</td></tr>
+            <tr><td>개인화</td><td>기록 적은 마음 칸은 전체 평균 쪽으로 당기는 부분 풀링</td><td>Gelman BDA3</td></tr>
+            <tr><td>학습 모델 승격</td><td>홀드아웃 50명, 450건 이상에서 로그손실 개선과 보정 유지. 통과해도 사람이 검토한 뒤 전환</td><td>Riley 2019</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="fsec rise">
+      <h3 class="fh">검증: 틀린 말을 하지 않도록</h3>
+      <p class="fsub">가장 경계한 건 통계가 우연을 경향이라고 말하는 일이었습니다. 아무 의미 없는 무작위 기록을 1,500번씩 넣어, <strong>"경향"이라는 말이 6%를 넘게 나오면 시험이 실패하도록</strong> 걸어 두었습니다.</p>
+      <div class="fbar">
+        <div><span class="lab">무작위 기록 960건<small>마음과 행동 교차표</small></span>
+          <span class="fb-tr">
+            <span class="fb-row bef"><span class="fb-bx"><i style="width:67%"></i></span><em>6.7%</em></span>
+            <span class="fb-row aft"><span class="fb-bx"><i style="width:34%"></i></span><em>3.4%</em></span>
+          </span></div>
+      </div>
+      <div class="flegend"><span><i style="background:#d9736b"></i>거짓발견율 기준 0.05</span><span><i style="background:#5fa871"></i>0.02로 조인 뒤</span><span>막대 끝 = 10%</span></div>
+      <div class="fsteps nb rise" style="margin-top:var(--s8);">
+        <div><b>0~4%</b><span class="fl-t">거짓 경향</span><span class="fl-d">무작위 기록 240건부터 1,920건까지, 오늘 코드로 다시 잰 값. 기준 6% 이하</span></div>
+        <div><b>20건</b><span class="fl-t">판정 시작</span><span class="fl-d">그 전까지는 건수만 보여주고 결론을 말하지 않습니다</span></div>
+        <div><b>0곳</b><span class="fl-t">판정을 멈추는 앱</span><span class="fl-d">조사한 매매일지 앱 7곳 중 기록이 모자라면 결론을 보류하는 곳</span></div>
+      </div>
+      <div class="item" style="border-bottom:0;">
+        <h4>내 시험도 의심했습니다</h4>
+        <p>다른 모델을 만들다가 <strong>시험용 난수가 같은 기록을 되풀이하는 결함</strong>을 찾았습니다. 그 결과를 무효로 돌리고 난수를 바꿔 다시 쟀고, 기준을 넘는 칸이 나와 판정 문턱을 한 단계 더 조였습니다. 학습 모델도 합성 투자자 200명으로 시험해 능력을 되찾는 정도(상관 0.854)와 80% 구간이 실제로 80% 안팎을 담는지(0.871)를 확인했고, 일부러 망친 모델은 시험에서 떨어지는지까지 봤습니다.</p>
+        <div class="fref">
+          <span>Odean 1998</span><span>Barber &amp; Odean 2000</span><span>Lo 2002</span><span>Bailey &amp; López de Prado 2012</span><span>Sortino</span><span>Agresti &amp; Coull 1998</span><span>Benjamini &amp; Hochberg</span><span>Tversky &amp; Kahneman 1992</span><span>Gelman BDA3</span><span>Riley 2019</span>
+        </div>
+      </div>
+    </section>
   </div>
   <footer><div class="wrap">전동현 / eastboy_12@naver.com</div></footer>
 </div>
